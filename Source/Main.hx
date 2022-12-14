@@ -22,5 +22,6 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.NoAnimTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ArraySwapTestState));
         addChild(new flixel.FlxGame(0, 0, states.FlxStripShaderTestState));
+        // addChild(new flixel.FlxGame(0, 0, states.DestroyedSpriteTestState));
     }
 }
