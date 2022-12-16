@@ -3,16 +3,16 @@ package states;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
-// @:build(flixel.system.FlxAssets.buildFileReferences("Assets/", true, [".png"]))
+// @:build(flixel.system.FlxAssets.buildFileReferences("assets/", true, [".png"]))
 // class AssetPaths_migrate {}
 
-// @:build(flixel.system.FlxAssets.buildFileReferences("Assets/", true))
+// @:build(flixel.system.FlxAssets.buildFileReferences("assets/", true))
 // class AssetPaths_simple {}
 
-// @:build(flixel.system.FlxAssets.buildFileReferences("Assets/", true, null, ~/\/test\/|.ase/))
+// @:build(flixel.system.FlxAssets.buildFileReferences("assets/", true, null, ~/\/test\/|.ase/))
 // class AssetPaths_exclude {}
 
-// @:build(flixel.system.FlxAssets.buildFileReferences("Assets/", true, null, null, function (file)
+// @:build(flixel.system.FlxAssets.buildFileReferences("assets/", true, null, null, function (file)
 // {
 // 	if (file.indexOf(".ase") == file.length - 4)
 // 		return null; // exclude .ase files

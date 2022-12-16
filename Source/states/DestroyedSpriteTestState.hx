@@ -6,14 +6,14 @@ import flixel.FlxSprite;
 
 class DestroyedSpriteTestState extends flixel.FlxState
 {
-	var sprite = new FlxSprite("Assets/images/haxe.png");
+	var sprite = new FlxSprite("assets/images/haxe.png");
 	
 	override function create()
 	{
 		super.create();
 		
 		add(new FlxSprite());
-		add(new FlxSprite("Assets/images/haxe.png"));
+		add(new FlxSprite("assets/images/haxe.png"));
 		add(sprite);
 	}
 	

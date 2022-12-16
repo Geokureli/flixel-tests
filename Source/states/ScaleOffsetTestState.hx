@@ -48,13 +48,13 @@ class ScaleOffsetTestGroup extends FlxSpriteGroup
 		FlxG.debugger.drawDebug = true;
 		ignoreDrawDebug = true;
 		
-		add(_sprite = new FlxSprite("Assets/images/haxe.png"));
+		add(_sprite = new FlxSprite("assets/images/haxe.png"));
 		
 		add(_text = new FlxText(newMethod ? "NEW WAY" : "OLD WAY", 16));
 		_text.color = 0xFFFF0000;
 		_text.ignoreDrawDebug = true;
 		
-		_origin = new FlxSprite("Assets/images/origin.png");
+		_origin = new FlxSprite("assets/images/origin.png");
 		_origin.ignoreDrawDebug = true;
 		
 		if (newMethod)
