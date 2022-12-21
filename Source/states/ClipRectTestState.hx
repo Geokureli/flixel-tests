@@ -46,7 +46,7 @@ class ClipRectTestGroup extends FlxSpriteGroup
 	{
 		super(x, y);
 		
-		add(_sprite = new FlxSprite("Assets/images/haxe.png"));
+		add(_sprite = new FlxSprite("assets/images/haxe.png"));
 		
 		add(_subGroup = new FlxSpriteGroup());
 		_subGroup.add(_text = new FlxText(text, 16));

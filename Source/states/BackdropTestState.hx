@@ -15,9 +15,9 @@ class BackdropTestState extends flixel.FlxState
 		FlxG.scaleMode = new flixel.system.scaleModes.StageSizeScaleMode();
 		// FlxG.camera.zoom = 0.5;
 		
-		// backdrop = new FlxBackdrop("Assets/images/haxe.png", 1, 1, true, true, 100, 50); // old
-		backdrop = new FlxBackdrop("Assets/images/haxe-anim.png");
-		backdrop.loadGraphic("Assets/images/haxe-anim.png", true);
+		// backdrop = new FlxBackdrop("assets/images/haxe.png", 1, 1, true, true, 100, 50); // old
+		backdrop = new FlxBackdrop("assets/images/haxe-anim.png");
+		backdrop.loadGraphic("assets/images/haxe-anim.png", true);
 		backdrop.animation.add("loop", [0, 1, 2, 3, 4, 5, 6, 7, 8, 7, 6, 5, 4, 3, 2, 1], 16);
 		backdrop.animation.play("loop");
 		backdrop.screenCenter();

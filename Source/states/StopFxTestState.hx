@@ -11,8 +11,8 @@ class StopFxTestState extends flixel.FlxState
 	{
 		// FlxG.scaleMode = new flixel.system.scaleModes.StageSizeScaleMode();
 		
-		var backdrop = new FlxBackdrop("Assets/images/haxe.png");
-		// var backdrop = new FlxSprite("Assets/images/haxe.png");
+		var backdrop = new FlxBackdrop("assets/images/haxe.png");
+		// var backdrop = new FlxSprite("assets/images/haxe.png");
 		backdrop.screenCenter();
 		backdrop.velocity.set(50, 100);
 		backdrop.antialiasing = true;
