@@ -29,6 +29,10 @@ import flixel.FlxSprite;
 // @:build(flixel.system.FlxAssets.buildAllManifestReferences(null, "*/test/*"))
 // class FlxManifest_exclude {}
 
+/**
+ * Test state for [flixel#2575](https://github.com/HaxeFlixel/flixel/pull/2575) and
+ * [Geokureli/assetpaths_manifest](https://github.com/Geokureli/flixel/tree/assetpaths_manifest) 
+**/
 class AssetPathsTestState extends flixel.FlxState
 {
 	override public function create():Void

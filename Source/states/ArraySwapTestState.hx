@@ -9,6 +9,9 @@ import flixel.util.FlxColor;
 
 using flixel.util.FlxArrayUtil;
 
+/**
+ * Test state for [flixel#2685](https://github.com/HaxeFlixel/flixel/pull/2685)
+**/
 class ArraySwapTestState extends FlxState
 {
 	var card1:FlxSprite;
