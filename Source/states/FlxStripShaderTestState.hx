@@ -40,7 +40,7 @@ class FlxStripShaderTestState extends FlxState
 		x += WIDTH;
 		
 		add(sprite = func(x, y));
-		sprite.setColorTransform(.5, 1.0, 0.0, 0x40, 0x40, 0x40);
+		sprite.setColorTransform(1.0, 0.5, 0.0, 1.0, 0x40, 0x40, 0x40, 0);
 		x += WIDTH;
 	}
 	
