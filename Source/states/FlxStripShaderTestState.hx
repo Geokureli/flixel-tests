@@ -15,60 +15,57 @@ class FlxStripShaderTestState extends FlxState
 	{
 		super.create();
 
+		createSet(0,   0, createSprite);
+		createSet(0, 160, createStrip);
+		createSet(0, 320, createTile);
+	}
+	
+	inline static var WIDTH = 160;
+	function createSet(x = 0.0, y = 0.0, func:(Float, Float, ?Int)->FlxSprite)
+	{
 		var sprite:FlxSprite;
-		add(sprite = createSprite(0, 0));
+		add(sprite = func(x, y));
+		x += WIDTH;
 		
-		add(sprite = createSprite(110, 0, FlxColor.BLUE));
+		add(sprite = func(x, y, FlxColor.BLUE));
 		sprite.color = 0xFF000080;
+		x += WIDTH;
 		
-		add(sprite = createSprite(220, 0));
+		add(sprite = func(x, y));
 		sprite.color = 0xFFff0080;
+		x += WIDTH;
 		
-		add(sprite = createSprite(330, 0));
+		add(sprite = func(x, y));
 		sprite.shader = new GreenShader();
+		x += WIDTH;
 		
-		add(sprite = createSprite(440, 0));
+		add(sprite = func(x, y));
 		sprite.setColorTransform(.5, 1.0, 0.0, 0x40, 0x40, 0x40);
-		
-		// strips
-		
-		var strip:FlxStrip;
-		add(strip = createStrip(0, 110));
-
-		add(strip = createStrip(110, 110, FlxColor.BLUE));
-		strip.color = 0xFF000080;
-		
-		add(strip = createStrip(220, 110));
-		strip.color = 0xFFff0080;
-		
-		add(strip = createStrip(330, 110));
-		strip.shader = new GreenShader();
-		
-		add(strip = createStrip(440, 110));
-		strip.setColorTransform(.5, 1.0, 0.0, 0x40, 0x40, 0x40);
-		
-		// tiled-sprite
-		
-		final background = new FlxTiledSprite("assets/images/haxe.png", FlxG.width - 20, FlxG.width - 210);
-		background.x = 10;
-		background.y = 200;
-		add(background);
+		x += WIDTH;
 	}
 	
 	function createSprite(x = 0.0, y = 0.0, color = 0xFFffffff)
 	{
-		return new FlxSprite(x, y).makeGraphic(100, 100, color);
+		return new FlxSprite(x, y).makeGraphic(150, 150, color);
 	}
 	
 	function createStrip(x = 0.0, y = 0.0, color = 0xFFffffff)
 	{
 		var strip:FlxStrip;
 		strip = new FlxStrip(x, y);
-		strip.makeGraphic(100, 100, color);
-		strip.vertices = DrawData.ofArray([0.0, 0.0, 50, 0, 25, 50]);
+		strip.makeGraphic(150, 150, color);
+		strip.vertices = DrawData.ofArray([0.0, 0.0, 150, 0.0, 75, 150]);
 		strip.indices = DrawData.ofArray([0, 1, 2]);
 		strip.uvtData = DrawData.ofArray([0, 0, 0, 1, 1, 1.0]);
 		return strip;
+	}
+	
+	function createTile(x = 0.0, y = 0.0, color = 0xFFffffff)
+	{
+		final tile = new FlxTiledSprite("assets/images/haxe.png", 150, 150);
+		tile.x = x;
+		tile.y = y;
+		return tile;
 	}
 }
 
