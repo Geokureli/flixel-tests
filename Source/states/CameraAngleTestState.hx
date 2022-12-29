@@ -9,11 +9,11 @@ class CameraAngleTestState extends flixel.FlxState
     {
         super.create();
         
-        FlxG.camera.bgColor = 0xFF404040;
+        FlxG.cameras.bgColor = 0xFF404040;
         
-        final top = 0;
-        final left = 0;
-        var y = 0;
+        final top = -FlxG.height * 0.5;
+        final left = -FlxG.width * 0.5;
+        var y = top;
         while (y < FlxG.height * 1.5)
         {
             var x = left;
