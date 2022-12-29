@@ -19,8 +19,7 @@ class CameraAngleTestState extends flixel.FlxState
             var x = left;
             while (x < FlxG.width * 1.5)
             {
-                final sprite = new FlxSprite(x, y);
-                sprite.loadGraphic("assets/images/haxe-anim.png", true, 100, 100);
+                final sprite = new FlxSprite(x, y, "assets/images/haxe.png");
                 add(sprite);
                 x += 150;
             }
