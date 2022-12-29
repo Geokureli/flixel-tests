@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxStrip;
+import flixel.addons.display.FlxTiledSprite;
 import flixel.graphics.tile.FlxDrawTrianglesItem.DrawData;
 import flixel.system.FlxAssets.FlxShader;
 import flixel.util.FlxColor;
@@ -45,6 +46,13 @@ class FlxStripShaderTestState extends FlxState
 		
 		add(strip = createStrip(440, 110));
 		strip.setColorTransform(.5, 1.0, 0.0, 0x40, 0x40, 0x40);
+		
+		// tiled-sprite
+		
+		final background = new FlxTiledSprite("assets/images/haxe.png", FlxG.width - 20, FlxG.width - 210);
+		background.x = 10;
+		background.y = 200;
+		add(background);
 	}
 	
 	function createSprite(x = 0.0, y = 0.0, color = 0xFFffffff)
