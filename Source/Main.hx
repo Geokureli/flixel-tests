@@ -1,5 +1,8 @@
 package ;
 
+import flixel.FlxG;
+import flixel.FlxState;
+
 class Main extends openfl.display.Sprite
 {
     public function new()
@@ -21,10 +24,27 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.ButtonZoomTestState));
         // addChild(new flixel.FlxGame(0, 0, states.NoAnimTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ArraySwapTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxStripShaderTestState));
+        addChild(new flixel.FlxGame(0, 0, states.FlxStripShaderTestState));
         // addChild(new flixel.FlxGame(0, 0, states.PivotTestState));
         // addChild(new flixel.FlxGame(0, 0, states.DestroyedSpriteTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ErrorSoundTestState));
-        addChild(new flixel.FlxGame(0, 0, states.CameraAngleTestState));
+        // addChild(new flixel.FlxGame(0, 0, states.CameraAngleTestState));
+    }
+}
+
+class BootState extends FlxState
+{
+    public static var initialState:Class<FlxState>;
+    
+    override function create()
+    {
+        super.create();
+    }
+    
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+        
+        FlxG.switchState(Type.createInstance(initialState, []));
     }
 }
