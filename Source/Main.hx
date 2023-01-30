@@ -30,7 +30,9 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.ErrorSoundTestState));
         // addChild(new flixel.FlxGame(0, 0, states.CameraAngleTestState));
         // addChild(new flixel.FlxGame(0, 0, states.FlxTilemapExpTextState));
-        addChild(new flixel.FlxGame(0, 0, states.VscDebuggerTestState));
+        // addChild(new flixel.FlxGame(0, 0, states.VscDebuggerTestState));
+        addChild(new flixel.FlxGame(0, 0, states.FlxBitmapTextTestState2530));
+        // addChild(new flixel.FlxGame(0, 0, states.FlxBitmapTextTestState2710));
     }
 }
 
