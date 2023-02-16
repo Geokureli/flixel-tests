@@ -56,9 +56,10 @@ class FlxBitmapTextTestState2530 extends flixel.FlxState
             return text;
         }
         
-        final msg1 = "The quick brown fox jumps over the lazy dog, supercala-phragalist-icexpiala-docious";
-        final msg2 = "The quick brown fox jumps over the lazy dog, supercala-phragalist\nicexpiala-docious";
-        final msg3 = "The quick brown fox jumps over the lazy dog, supercalaphragalisticexpialadocious";
+        final msg = "The quick brown fox jumps over the lazy dog, ";
+        final msg1 = msg + "supercala-phragalist-icexpiala-docious"; // hyphens
+        final msg2 = msg + "supercala-phragalist\nicexpiala-docious"; // \n and hyphens
+        final msg3 = msg + "supercalaphragalisticexpialadocious"; // one long line
         
         var header = createHeader("NONE");
         createText(msg1, NONE);
