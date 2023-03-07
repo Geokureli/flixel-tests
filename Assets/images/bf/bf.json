@@ -1,0 +1,117 @@
+{
+   "texture": "BOYFRIEND",
+   "healthColor": "#31B0D1",
+   "flipX": true,
+   "animations": [
+      {
+         "name": "idle",
+         "prefix": "BF idle dance",
+         "offset": {
+            "x": 5,
+            "y": 0
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "hey",
+         "prefix": "BF HEY!!",
+         "offset": {
+            "x": 7,
+            "y": 5
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "shaking",
+         "prefix": "BF idle shaking",
+         "offset": {
+            "x": 4,
+            "y": 1
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singLEFT",
+         "prefix": "BF NOTE LEFT0",
+         "offset": {
+            "x": 4,
+            "y": -7
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singDOWN",
+         "prefix": "BF NOTE DOWN0",
+         "offset": {
+            "x": -22,
+            "y": -51
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singUP",
+         "prefix": "BF NOTE UP0",
+         "offset": {
+            "x": -47,
+            "y": 28
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singRIGHT",
+         "prefix": "BF NOTE RIGHT0",
+         "offset": {
+            "x": -48,
+            "y": -5
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singLEFTmiss",
+         "prefix": "BF NOTE LEFT MISS",
+         "offset": {
+            "x": 4,
+            "y": 19
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singDOWNmiss",
+         "prefix": "BF NOTE DOWN MISS",
+         "offset": {
+            "x": -22,
+            "y": -21
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singUPmiss",
+         "prefix": "BF NOTE UP MISS",
+         "offset": {
+            "x": -43,
+            "y": 28
+         },
+         "loops": false,
+         "framerate": 24
+      },
+      {
+         "name": "singRIGHTmiss",
+         "prefix": "BF NOTE RIGHT MISS",
+         "offset": {
+            "x": -42,
+            "y": 23
+         },
+         "loops": false,
+         "framerate": 24
+      }
+   ]
+}
