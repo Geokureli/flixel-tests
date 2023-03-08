@@ -59,9 +59,7 @@ abstract Text(FlxBitmapText) to FlxBitmapText
 {
     public function new (x = 0.0, y = 0.0, text, ?font)
     {
-        this = new FlxBitmapText(font);
-        this.text = text;
-        
+        this = new FlxBitmapText(x, y, text, font);
         this.scale.set(4, 4);
         this.updateHitbox();
     }
