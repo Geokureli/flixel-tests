@@ -1,6 +1,7 @@
 package ;
 
 import flixel.FlxG;
+import flixel.math.FlxPoint;
 import flixel.FlxState;
 
 class Main extends openfl.display.Sprite
@@ -8,6 +9,14 @@ class Main extends openfl.display.Sprite
     public function new()
     {
         super();
+        
+        final p1 = FlxPoint.get(1, 2);
+        trace(p1);// (x: 1 | y: 2)
+        p1.put();
+        final p2 = FlxPoint.get(3, 4);
+        trace(p1);// (x: 3 | y: 4)
+        trace(p2);// (x: 3 | y: 4)
+        trace(p1 == p2); // true
         
         // addChild(new flixel.FlxGame(0, 0, states.ClipRectTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ScaleOffsetTestState));
@@ -36,7 +45,8 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.OfffsetRotateTestState));
         // addChild(new flixel.FlxGame(0, 0, states.FlxTextWidthTestState2729));
         // addChild(new flixel.FlxGame(0, 0, states.MergeSaveTestState2735));
-        addChild(new flixel.FlxGame(0, 0, states.AtlasOffsetTestState2746));
+        // addChild(new flixel.FlxGame(0, 0, states.AtlasOffsetTestState2746));
+        addChild(new flixel.FlxGame(0, 0, states.InvalidFrameSizeTestState));
     }
 }
 
