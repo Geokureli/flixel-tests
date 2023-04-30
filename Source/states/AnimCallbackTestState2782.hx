@@ -3,7 +3,7 @@ package states;
 import flixel.FlxG;
 import flixel.FlxSprite;
 
-class AnimCallbackTestState extends flixel.FlxState
+class AnimCallbackTestState2782 extends flixel.FlxState
 {
     override function create()
     {

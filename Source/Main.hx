@@ -40,7 +40,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.InvalidFrameSizeTestState));
         // addChild(new flixel.FlxGame(0, 0, states.StateOutroTestState));
         // addChild(new flixel.FlxGame(0, 0, states.TransitionTestState));
-        addChild(new flixel.FlxGame(0, 0, states.AnimCallbackTestState));
+        addChild(new flixel.FlxGame(0, 0, states.AnimCallbackTestState2782));
     }
 }
 
