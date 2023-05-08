@@ -11,7 +11,10 @@ import flixel.FlxObject;
 import flixel.text.FlxText;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
+import flixel.system.debug.console.ConsoleUtil;
 import flixel.system.debug.interaction.Interaction;
+
+enum TestEnum { A; B; C; }
 
 class DebugToolTestState extends flixel.FlxState
 {
@@ -24,7 +27,7 @@ class DebugToolTestState extends flixel.FlxState
         
         FlxG.game.debugger.interaction.addTool(new DebugTool(AGraphic, "a"));
         
-        addCamTool();
+        addDebugTools();
         
         FlxG.game.debugger.interaction.addTool(new DebugTool(BGraphic, "b"));
         FlxG.game.debugger.interaction.addTool(new DebugTool(CGraphic, "c"));
@@ -39,21 +42,23 @@ class DebugToolTestState extends flixel.FlxState
     #if debug
     var camTool:DebugTool;
     
-    public function addCamTool()
+    public function addDebugTools()
     {
         camTool = new DebugTool(CameraGraphic, "camera");
         FlxG.game.debugger.interaction.addTool(camTool);
         
-        // FlxG.console.registerObject("cam", this);
+        FlxG.console.registerObject("cam", FlxG.camera);
+        FlxG.console.registerEnum(TestEnum);
     }
     
-    public function removeCamTool()
+    public function removeDebugTools()
     {
         FlxG.game.debugger.interaction.removeTool(camTool);
         camTool.destroy();
         camTool = null;
         
-        // FlxG.console.registerObject("cam", this);// can't be undone
+        FlxG.console.removeByAlias("cam");
+        FlxG.console.removeEnum(TestEnum);
     }
     #end
     
@@ -64,9 +69,9 @@ class DebugToolTestState extends flixel.FlxState
         if (FlxG.keys.justPressed.SPACE)
         {
             if (camTool == null)
-                addCamTool();
+                addDebugTools();
             else
-                removeCamTool();
+                removeDebugTools();
         }
         #end
     }
