@@ -9,6 +9,8 @@ class TryCatchTestState extends flixel.FlxState
 {
     override function create()
     {
+        untyped __global__.__hxcpp_set_critical_error_handler( function(err) { trace(err); } );
+        
         var point:FlxPoint = null;
         try
         {
