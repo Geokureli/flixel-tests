@@ -19,7 +19,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.AustinPixelTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ButtonUpTestState));
         // addChild(new flixel.FlxGame(0, 0, states.FlxTextTestState2656));
-        addChild(new flixel.FlxGame(0, 0, states.AssetPathsTestState));
+        // addChild(new flixel.FlxGame(0, 0, states.AssetPathsTestState));
         // addChild(new flixel.FlxGame(0, 0, states.DebugSelectionTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ButtonZoomTestState));
         // addChild(new flixel.FlxGame(0, 0, states.NoAnimTestState));
@@ -47,6 +47,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.EaseGraphState));
         // addChild(new flixel.FlxGame(0, 0, states.TweenChainTestState));
         // addChild(new flixel.FlxGame(0, 0, states.FlxWeaponTestState));
+        addChild(new flixel.FlxGame(0, 0, states.OgmoTestState388));
     }
 }
 

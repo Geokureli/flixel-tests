@@ -1,0 +1,145 @@
+{
+  "name": "Level Project",
+  "ogmoVersion": "3.4.0",
+  "levelPaths": ["."],
+  "backgroundColor": "#282c34ff",
+  "gridColor": "#3c4049cc",
+  "anglesRadians": true,
+  "directoryDepth": 5,
+  "layerGridDefaultSize": {"x": 16, "y": 16},
+  "levelDefaultSize": {"x": 320, "y": 240},
+  "levelMinSize": {"x": 800, "y": 600},
+  "levelMaxSize": {"x": 16384, "y": 16384},
+  "levelValues": [],
+  "defaultExportMode": ".json",
+  "compactExport": false,
+  "externalScript": "",
+  "playCommand": "",
+  "entityTags": [],
+  "layers": [
+    {
+      "definition": "entity",
+      "name": "entity",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "65209138",
+      "requiredTags": [],
+      "excludedTags": []
+    },
+    {
+      "definition": "tile",
+      "name": "walls",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "65208874",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "Tilemap"
+    },
+    {
+      "definition": "tile",
+      "name": "tree",
+      "gridSize": {"x": 16, "y": 32},
+      "exportID": "65201261",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "More Tree"
+    },
+    {
+      "definition": "tile",
+      "name": "stone",
+      "gridSize": {"x": 32, "y": 32},
+      "exportID": "65203258",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "Stone"
+    },
+    {
+      "definition": "tile",
+      "name": "fruitShop",
+      "gridSize": {"x": 16, "y": 16},
+      "exportID": "65202459",
+      "exportMode": 0,
+      "arrayMode": 1,
+      "defaultTileset": "Shop"
+    }
+  ],
+  "entities": [
+    {
+      "exportID": "65238798",
+      "name": "player",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    },
+    {
+      "exportID": "65231638",
+      "name": "flag",
+      "limit": -1,
+      "size": {"x": 16, "y": 16},
+      "origin": {"x": 0, "y": 0},
+      "originAnchored": true,
+      "shape": {
+        "label": "Rectangle",
+        "points": [
+          {"x": -1, "y": -1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": -1},
+          {"x": -1, "y": 1},
+          {"x": 1, "y": 1}
+        ]
+      },
+      "color": "#ff0000ff",
+      "tileX": false,
+      "tileY": false,
+      "tileSize": {"x": 16, "y": 16},
+      "resizeableX": false,
+      "resizeableY": false,
+      "rotatable": false,
+      "rotationDegrees": 360,
+      "canFlipX": false,
+      "canFlipY": false,
+      "canSetColor": false,
+      "hasNodes": false,
+      "nodeLimit": 0,
+      "nodeDisplay": 0,
+      "nodeGhost": true,
+      "tags": [],
+      "values": []
+    }
+  ],
+  "tilesets": [
+    {"label": "More Tree", "path": "../images/moreTree.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABACAYAAABcIPRGAAACPklEQVRoQ+2ZO04EMQyGZ6WtKTkDh0A0dIgLwGUQl+AIcAFER8chOAMl9UqLXFh4MokfsWc3GWUb0Gpj/58f8Uyymzr/7DrXPw2Ac2eQzcDD73SkAt8u2stYFiAVnka5JZAFgCQeYVqB2BaANvqnyIK2/2YZiATQCkj7S9KQlm44gFXApgAk+FzphmagRgDNQM364i708/Vv+vJ6OW9z22iNgHCA24/59KUOKEjXAKUh5s0ABEuywe5CXPQxE593/POQVUDoLtQCAAJp58isiSMAQMDz/f74/XqYBffqcT89vR+KT78omJYI2AEj3LqFQQ5CKh9UjI5z7wo5MaVohwPcvPBRbAIARdBMgHD8cOmsBaC7D5RQmkFTCWENl14VJQCufKR6Tn1SWyW/2aay1jB1LAFYIGgPwP8AAf1CG30BIAnwZsADQHc2hDADSAKkAEjrc9nEoNHdahUAjXgPADZ7sYS8ArzrS02s3oW8ArzrTwZQKgMtgLaMTJPY4jwnwLs+N3fUAFbn6VT2ri8NTTVAyUAP34/j9XNnaWRgZMAZgVFCzgC6l4unBOihlRuZlNh8Q9MayLYApGPBFsup6n6gpTIaAO590GlgW02Mb/1cUFqqf9C5vUHGHSw5y3WV5ez9AJ5KS8eJqyhTGhVvaLR3Akp/4T8TAaSr1XBFRoMsgPaC2+gz9OdsD3QJQMOTe7jrZg4ASHpd2pp4dpAhAPztZhtNu0tzNhnakRXG2FOJAVARUeuSkQFrxKJ//wes+YNQMzY5cgAAAABJRU5ErkJgggAA", "tileWidth": 16, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "Tilemap", "path": "../images/tilemap_1.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAABACAYAAABcIPRGAAACC0lEQVRoQ+2ZsU7DMBCGbQmGsvIKSMztm8DM28HOm7SsSLwCazMwBDmSi+M6ufvtcxKjyxJF8dn3/f/FubT2+XzTm4YPqwAru6cOrGyAEXPgbn9rzqefxXkGALd4eKCJ5MRLAduXx93sNpqCiROek93HhwmH8ahY8VokwOI1AS6oAKBg4sPVAXFJwQnVAVAw8eHqwOtHJ64qMmGxAzGA3RnLSaDvzKgD4Mb5uX28KEB2EkzoWBgHIQaAJs9xiTNGBGCt5B1gMcDbZ8eqeY6aOWMUQB3IqZsgRktIS0hLiPhVghJIS4hSiLjf/i4Ut7WoIGv2QUMvdOmrmS1taR+PCkSNHwBQFUMINJZKCL2f3UnOObfvx19bPqmT5X2tIfHZAC6plHtTi3Mh0PgigNhuanEKwscfv4053P/NHl+HTm4SgHoONg0Qqh0rn3KwCQc8iD9Xc8ApRD0H1E409RxMPT+iDvhFkG0wVe9IfBWAp4f0e+D9i/ceQOIVIC6BKfX8OMoFNF7cATSBUgFEAajkKRdy4kUBqDdojfsKUENVZM6kA8iLBFmsxtgrgNJWoEaSc3OOAC59iDXmEPyDdYyuqX5mSYgkAJXApgFCtWPlqS8qCrzGfZYDHsSfN+tA2M+3oL7L9/9to44K6cdr1DUyZ9KBpgGojpDq5xH1JMZeOdA0AJU81c9LKIrO8QtzhyffZCkxKgAAAABJRU5ErkJgggAA", "tileWidth": 16, "tileHeight": 16, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "Stone", "path": "../images/stone.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACT0lEQVR4Xu2aYbKDMAiE2xv3KN64nXSMEyNkAdHECe9na8nysaAv8f2a/O89ef6vABAOmJxAtMDkBoghGC0QLTA5gWiByQ0Qd4FogWiByQlECzzQAF9Gs6mYph91grYl/vl8dhKWZeEkwfzgBZ2SpZb91om3tBVQmjk+BYAq+QxGAsEDQNmTHvHqwu6ST0kZnMDqsgom+5HoRWv8DOG/Tkq4jN0DADl5S2HMYDoNIMfNADTJJ3ioKBKBWxU0A3FdWBK/FdbU+1xAShMSKO6/ukIOAEzgc9U5p9S6xACQBevh5AFAa3di+v8/KuOYAWjsX/QeAsyF3ZxnHX7SNkACDz2InFANHhSffOApq6a97aFCXe4AycMHEOk6+Mq1KG2oQtw/Hgg0istaHwV2+H6nzSrUQccYIQLAGHXopyIc0I/9GCuHA8aoQz8V4YB+7MdYORwwRh36qQgH9GM/xsrhgDHq0E/FWQek/YKzMfplbxS/OxSp9t0fB0MrmN2ueioIDQDxXp3DvuBtbXEJgKz+BhCnX5aQAmBPadC+vcMBScsN7Lb9+iOYH7qAfStD41EHJ7C70+XhKXEClGQ2c+S+NJ/LcWCMThDroA5QJOApAOJFiV5nX16wApCeD3InVghCDUA86TUtkK41AHDT0lobApCcBUpgXAVAok8KwIU4sCIaupmlug1bRbgVgNMQdClGNaNI+OWHhzN56QBybgGy+meOyZ/mgMNrORmwtSBiAGkh6yKCHoQPJWsMV/ujO9DhLiCxs/Ea1QA0rsH9jF37B56fCFBTlXrdAAAAAElFTkSuQmCC", "tileWidth": 32, "tileHeight": 32, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0},
+    {"label": "Shop", "path": "../images/shop.png", "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAACjUlEQVR4Xu2azVEDMQyFQy8Uw5UquFAOF6rgSjH0AuNMzBhhyU9/2fWuuWVYa6VPT7Lj6OFy8r+Hk8d/WQCWAm4EXh4v31YY71/zKum3BDwArOCs6yKBTwkgEtwCUGmiJfD89nld8vH6ZE3EZut6pfNnG0QgFAAl+AqiRjMDEDeAGvxmKXS8mGucKgUsADf5OxIhLs0EvBTAHNZCS4BmUJtR6XmtLSq1MAW0hmnnpztE+38ETu8ZGoh1twkDQIOiZwIuUxYAbfC7UcAoAz1H6eGJO0xllYD03eHffYB0GEKywAGo4Noy4Uqot1Ug7+a2mF0AoCfGex6pwwBk7f/ZdhcA4cJG1QOyM5VlX6WAnhOlMRYjyLfFrCCsdke3R9CtcAVgcWJraG4AnuD3AGw6ANHQTgGAQtOodtgDNMYs2ctYo/H5kAAKVBTCAiBJEKWYIWOvTdR3UQGoEa+zGetR3xeAo5YA2ggPqwA3ALSGMuo3yiYSA6sAZHGUo1l2kBgODQApgwWAkx8inyzpRtodxbEUIF2BRWZiK1smBYwWbRWM9b1SPNcS8NzbjW5crE5HrksFEOkoaksL/XAAUFC95yi8U80JFiBpADy/3noyql3rBtDOB0oTIFrH7vG8OCeI7gSj3//vEYj1HWmDkrPKv4AMmRI7DYBCzFsCyIwx12es0u91/2pLpYC6CJn46jnLjcFxzTRSWdCYHHosjgLQU1RreyoANOO9cTqkfKYGQEfhKBQUQF03mklEe4JqRAY5D4xKQJoWLU63oNrPXJNFA+WeUwGQ+kCvOyNZbR0b7QKRdV/fGwYA6ezeLB4GAJU2KuNoAKO7g+6lKNIH0IC0z+0CAHoe0Aa3xfMjBfwAM0QiXxqraNsAAAAASUVORK5CYIIA", "tileWidth": 64, "tileHeight": 64, "tileSeparationX": 0, "tileSeparationY": 0, "tileMarginX": 0, "tileMarginY": 0}
+  ]
+}
