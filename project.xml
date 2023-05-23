@@ -29,7 +29,7 @@
 	<!--PATHS SETTINGS-->
 	
 	<set name="no-custom-backend" />
-	<set name="BUILD_DIR" value="Export" />
+	<set name="BUILD_DIR" value="export" />
 	<classpath name="Source" />
 	<classpath path="../../lib/Source" />
 	<assets path="Assets" rename="assets" include="*" />
