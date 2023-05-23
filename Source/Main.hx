@@ -9,6 +9,7 @@ class Main extends openfl.display.Sprite
     {
         super();
         
+        addChild(new flixel.FlxGame(0, 0, states.TemplateTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ClipRectTestState));
         // addChild(new flixel.FlxGame(0, 0, states.ScaleOffsetTestState));
         // addChild(new flixel.FlxGame(0, 0, states.TestState2305));
@@ -47,7 +48,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.EaseGraphState));
         // addChild(new flixel.FlxGame(0, 0, states.TweenChainTestState));
         // addChild(new flixel.FlxGame(0, 0, states.FlxWeaponTestState));
-        addChild(new flixel.FlxGame(0, 0, states.OgmoTestState388));
+        // addChild(new flixel.FlxGame(0, 0, states.OgmoTestState388));
     }
 }
 
