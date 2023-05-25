@@ -13,7 +13,8 @@ class OgmoTestState388 extends flixel.FlxState
     {
         super.create();
         map = new FlxOgmo3Loader("assets388/data/levelProject.ogmo", "assets388/data/lev1.json");
-        walls = map.loadTilemap("assets388/images/tilemap_1.png", 'walls');
+        // walls = map.loadTilemap("assets388/images/tilemap_1.png", 'walls');
+        walls = map.loadTilemap("wrong/path.png", 'walls');
         walls.follow();
         walls.setTileProperties(1, NONE);
         walls.setTileProperties(2, ANY);
