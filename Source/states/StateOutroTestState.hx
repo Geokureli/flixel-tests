@@ -33,18 +33,9 @@ class StateOutroTestState extends FlxState
         }
     }
     
-    var outroComplete = false;
-    override function switchTo(nextState:FlxState):Bool
+    override function startOutro(onOutroComplete:()->Void)
     {
-        if (outroComplete)
-            return true;
-        
-        camera.fade(function ()
-        {
-            outroComplete = true;
-            FlxG.switchState(nextState);
-        });
-        return false;
+        camera.fade(onOutroComplete);
     }
     
     // override function startOutro(onOutroComplete:()->Void)
