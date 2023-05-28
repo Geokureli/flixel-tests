@@ -77,14 +77,14 @@ class DebugToolTestState extends flixel.FlxState
     }
 }
 
-@:bitmap("assets/images/a.png")
+@:bitmap("debugToolAssets/images/a.png")
 private class AGraphic extends BitmapData {}
-@:bitmap("assets/images/b.png")
+@:bitmap("debugToolAssets/images/b.png")
 private class BGraphic extends BitmapData {}
-@:bitmap("assets/images/c.png")
+@:bitmap("debugToolAssets/images/c.png")
 private class CGraphic extends BitmapData {}
 
-@:bitmap("assets/images/cameramover.png")
+@:bitmap("debugToolAssets/images/cameramover.png")
 private class CameraGraphic extends BitmapData {}
 
 

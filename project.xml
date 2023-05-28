@@ -34,6 +34,7 @@
 	<classpath path="../../lib/Source" />
 	<assets path="Assets" rename="assets" />
 	<assets path="assets388" />
+	<assets path="debugToolAssets" />
 	
 	<!--LIBRARIES-->
 		
