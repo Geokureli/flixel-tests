@@ -39,7 +39,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.MergeSaveTestState2735));
         // addChild(new flixel.FlxGame(0, 0, states.AtlasOffsetTestState2746));
         // addChild(new flixel.FlxGame(0, 0, states.InvalidFrameSizeTestState));
-        addChild(new flixel.FlxGame(0, 0, states.StateOutroTestState));
+        // addChild(new flixel.FlxGame(0, 0, states.StateOutroTestState));
         // addChild(new flixel.FlxGame(0, 0, states.TransitionTestState));
         // addChild(new flixel.FlxGame(0, 0, states.AnimCallbackTestState2782));
         // addChild(new flixel.FlxGame(0, 0, states.ResizeGameTestState2744));
@@ -50,6 +50,7 @@ class Main extends openfl.display.Sprite
         // addChild(new flixel.FlxGame(0, 0, states.FlxWeaponTestState));
         // addChild(new flixel.FlxGame(0, 0, states.OgmoTestState388));
         // addChild(new flixel.FlxGame(0, 0, states.ReverseAnimTestState2811));
+        addChild(new flixel.FlxGame(0, 0, states.PPPCTestState2820));
     }
 }
 
