@@ -1,5 +1,6 @@
 package states;
 
+import flixel.addons.effects.FlxSkewedSprite;
 import flixel.tweens.FlxTween;
 import flixel.FlxBasic;
 import flixel.FlxG;
@@ -34,9 +35,11 @@ class FlxStripShaderTestState extends FlxState
 		createSet(0, SPACING * 1, createStrip);
 		createSet(0, SPACING * 2, createTile);
 		createSet(0, SPACING * 3, createFlag);
+		createSet(0, SPACING * 4, createSkew);
+		
 		
 		final skeleton = FlxSpine.readSkeletonData("spineboy", "spineboy", "assets/spine/", 0.6);
-		add(new SpineBoyTest(skeleton, 0, SPACING * 3));
+		add(new SpineBoyTest(skeleton, 0, SPACING * 4));
 	}
 	
 	function createSet(x = 0.0, y = 0.0, func:(Float, Float, ?Int)->FlxSprite)
@@ -93,6 +96,14 @@ class FlxStripShaderTestState extends FlxState
 		strip.indices = DrawData.ofArray([0, 1, 2]);
 		strip.uvtData = DrawData.ofArray([0, 0, 0, 1, 1, 1.0]);
 		return strip;
+	}
+	
+	function createSkew(x = 0.0, y = 0.0, color = 0xFFffffff)
+	{
+		var sprite:FlxSkewedSprite;
+		sprite = new FlxSkewedSprite(x, y, "assets/images/haxe.png");
+		sprite.skew.set(50, 0);
+		return sprite;
 	}
 	
 	function createTile(x = 0.0, y = 0.0, color = 0xFFffffff)

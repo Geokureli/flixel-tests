@@ -1,7 +1,6 @@
 package ;
 
 import flixel.FlxG;
-import flixel.FlxState;
 
 class Main extends openfl.display.Sprite
 {
@@ -9,55 +8,78 @@ class Main extends openfl.display.Sprite
     {
         super();
         
-        // addChild(new flixel.FlxGame(0, 0, states.TemplateTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ClipRectTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ScaleOffsetTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.TestState2305));
-        // addChild(new flixel.FlxGame(0, 0, states.BackdropTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.JumpTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.BlueTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ModMinMaxTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.AustinPixelTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ButtonUpTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxTextTestState2656));
-        // addChild(new flixel.FlxGame(0, 0, states.AssetPathsTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.DebugSelectionTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ButtonZoomTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.NoAnimTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ArraySwapTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxStripShaderTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.PivotTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.DestroyedSpriteTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.ErrorSoundTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.CameraAngleTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxTilemapExpTextState));
-        // addChild(new flixel.FlxGame(0, 0, states.VscDebuggerTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxBitmapTextTestState2530));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxBitmapTextTestState2710));
-        // addChild(new flixel.FlxGame(0, 0, states.OfffsetRotateTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxTextWidthTestState2729));
-        // addChild(new flixel.FlxGame(0, 0, states.MergeSaveTestState2735));
-        // addChild(new flixel.FlxGame(0, 0, states.AtlasOffsetTestState2746));
-        // addChild(new flixel.FlxGame(0, 0, states.InvalidFrameSizeTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.StateOutroTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.TransitionTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.AnimCallbackTestState2782));
-        // addChild(new flixel.FlxGame(0, 0, states.ResizeGameTestState2744));
-        // addChild(new flixel.FlxGame(0, 0, states.DebugToolTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.TryCatchTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.EaseGraphState));
-        // addChild(new flixel.FlxGame(0, 0, states.TweenChainTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.FlxWeaponTestState));
-        // addChild(new flixel.FlxGame(0, 0, states.OgmoTestState388));
-        // addChild(new flixel.FlxGame(0, 0, states.ReverseAnimTestState2811));
-        addChild(new flixel.FlxGame(0, 0, states.PPPCTestState2820));
-        // addChild(new flixel.FlxGame(0, 0, states.TextHeightTestState2789));
+        // addChild(new TestGame(states.TemplateTestState));
+        // addChild(new TestGame(states.ClipRectTestState));
+        // addChild(new TestGame(states.ScaleOffsetTestState));
+        // addChild(new TestGame(states.TestState2305));
+        // addChild(new TestGame(states.BackdropTestState));
+        // addChild(new TestGame(states.JumpTestState));
+        // addChild(new TestGame(states.BlueTestState));
+        // addChild(new TestGame(states.ModMinMaxTestState));
+        // addChild(new TestGame(states.AustinPixelTestState));
+        // addChild(new TestGame(states.ButtonUpTestState));
+        // addChild(new TestGame(states.FlxTextTestState2656));
+        // addChild(new TestGame(states.AssetPathsTestState));
+        // addChild(new TestGame(states.DebugSelectionTestState));
+        // addChild(new TestGame(states.ButtonZoomTestState));
+        // addChild(new TestGame(states.NoAnimTestState));
+        // addChild(new TestGame(states.ArraySwapTestState));
+        // addChild(new TestGame(states.FlxStripShaderTestState));
+        // addChild(new TestGame(states.PivotTestState));
+        // addChild(new TestGame(states.DestroyedSpriteTestState));
+        // addChild(new TestGame(states.ErrorSoundTestState));
+        // addChild(new TestGame(states.CameraAngleTestState));
+        // addChild(new TestGame(states.FlxTilemapExpTextState));
+        // addChild(new TestGame(states.VscDebuggerTestState));
+        // addChild(new TestGame(states.FlxBitmapTextTestState2530));
+        // addChild(new TestGame(states.FlxBitmapTextTestState2710));
+        // addChild(new TestGame(states.OfffsetRotateTestState));
+        // addChild(new TestGame(states.FlxTextWidthTestState2729));
+        // addChild(new TestGame(states.MergeSaveTestState2735));
+        // addChild(new TestGame(states.AtlasOffsetTestState2746));
+        // addChild(new TestGame(states.InvalidFrameSizeTestState));
+        // addChild(new TestGame(states.StateOutroTestState));
+        // addChild(new TestGame(states.TransitionTestState));
+        // addChild(new TestGame(states.AnimCallbackTestState2782));
+        // addChild(new TestGame(states.ResizeGameTestState2744));
+        // addChild(new TestGame(states.DebugToolTestState));
+        // addChild(new TestGame(states.TryCatchTestState));
+        // addChild(new TestGame(states.EaseGraphState));
+        // addChild(new TestGame(states.TweenChainTestState));
+        // addChild(new TestGame(states.FlxWeaponTestState));
+        // addChild(new TestGame(states.OgmoTestState388));
+        // addChild(new TestGame(states.ReverseAnimTestState2811));
+        // addChild(new TestGame(states.PPPCTestState2820));
+        // addChild(new TestGame(states.TextHeightTestState2789));
+        // addChild(new TestGame(states.PixelPerfectShakeTestState, 10));
+        // addChild(new TestGame(states.TilemapUnitTestState, 10));
+        addChild(new TestGame(states.AngleBetweenTestState));
     }
 }
 
-class BootState extends FlxState
+abstract TestGame(flixel.FlxGame) to flixel.FlxGame
 {
-    public static var initialState:Class<FlxState>;
+    inline public function new (state, zoom = 1)
+    {
+        if (zoom == 1)
+        {
+            // set game size to window size
+            this = new flixel.FlxGame(0, 0, state);
+        }
+        else
+        {
+            // set game sizse from zoom
+            final stage = openfl.Lib.current.stage;
+            final gameWidth = Std.int(stage.stageWidth / zoom);
+            final gameHeight = Std.int(stage.stageWidth / zoom);
+            this = new flixel.FlxGame(gameWidth, gameHeight, state);
+        }
+    }
+}
+
+class BootState extends flixel.FlxState
+{
+    public static var initialState:Class<flixel.FlxState>;
     
     override function create()
     {
