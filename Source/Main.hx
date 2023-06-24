@@ -53,7 +53,11 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.TextHeightTestState2789));
         // addChild(new TestGame(states.PixelPerfectShakeTestState, 10));
         // addChild(new TestGame(states.TilemapUnitTestState, 10));
-        addChild(new TestGame(states.AngleBetweenTestState));
+        // addChild(new TestGame(states.AngleBetweenTestState));
+        // addChild(new TestGame(states.EmptyTextTestState));
+        // addChild(new TestGame(states.GroupTestState));
+        addChild(new TestGame(states.TypeTextTestState, 4));
+        // addChild(new TestGame(states.VolumeTestState));
     }
 }
 
