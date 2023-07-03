@@ -57,29 +57,34 @@ class FlxBitmapTextTestState2530 extends flixel.FlxState
         }
         
         final msg = "The quick brown fox jumps over the lazy dog, ";
-        final msg1 = msg + "supercala-phragalist-icexpiala-docious"; // hyphens
-        final msg2 = msg + "supercala-phragalist\nicexpiala-docious"; // \n and hyphens
+        final msg1 = msg + "supercal-aphragalist-icexpiala-docious"; // hyphens
+        final msg2 = msg + "supercal-aphragalist\nicexpiala-docious"; // \n and hyphens
         final msg3 = msg + "supercalaphragalisticexpialadocious"; // one long line
         
-        var header = createHeader("NONE");
+        createHeader("NONE");
         createText(msg1, NONE);
         createText(msg2, NONE);
         createText(msg3, NONE);
         
-        var header = createHeader("CHAR");
+        createHeader("CHAR");
         createText(msg1, CHAR);
         createText(msg2, CHAR);
         createText(msg3, CHAR);
         
-        var header = createHeader("WORD(NEVER)");
+        createHeader("WORD(NEVER)");
         createText(msg1, WORD(NEVER));
         createText(msg2, WORD(NEVER));
         createText(msg3, WORD(NEVER));
         
-        var header = createHeader("WORD(FIELD_WIDTH)");
-        createText(msg1, WORD(FIELD_WIDTH));
-        createText(msg2, WORD(FIELD_WIDTH));
-        createText(msg3, WORD(FIELD_WIDTH));
+        createHeader("WORD(LINE_WIDTH)");
+        createText(msg1, WORD(LINE_WIDTH));
+        createText(msg2, WORD(LINE_WIDTH));
+        createText(msg3, WORD(LINE_WIDTH));
+        
+        createHeader("WORD(CHARS(10))");
+        createText(msg1, WORD(LENGTH(10)));
+        createText(msg2, WORD(LENGTH(10)));
+        createText(msg3, WORD(LENGTH(10)));
         
         reposition();
     }
@@ -90,6 +95,8 @@ class FlxBitmapTextTestState2530 extends flixel.FlxState
         
         final inc = FlxG.keys.pressed.RIGHT;
         final dec = FlxG.keys.pressed.LEFT;
+        
+        FlxG.camera.scroll.y += FlxG.mouse.wheel * 5;
         
         if (!inc == !dec)
             return;

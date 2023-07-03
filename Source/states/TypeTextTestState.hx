@@ -2,6 +2,7 @@ package states;
 
 import flixel.FlxG;
 import flixel.text.FlxBitmapText;
+import flixel.text.FlxText;
 import flixel.addons.text.FlxTextTyper;
 
 class TypeTextTestState extends flixel.FlxState
@@ -14,18 +15,27 @@ class TypeTextTestState extends flixel.FlxState
 	{
 		super.create();
 		
-		var field = new FlxBitmapText(2, 2, "Prefix:");
-		field.fieldWidth = FlxG.width - 4;
-		field.autoSize = false;
-		field.wordWrap = true;
-		field.wrapByWord = true;
-		field.multiLine = true;
+		final prefix = "Prefix:";
 		
-		add(typer = new FlxTextTyper(field.text));
+		final bitmapField = new FlxBitmapText(2, 2, prefix);
+		bitmapField.fieldWidth = FlxG.width - 4;
+		bitmapField.autoSize = false;
+		
+		final field = new FlxText(0, 0, FlxG.width, prefix);
+		field.y = FlxG.height - field.frameHeight;
+		field.textField.defaultTextFormat.leading = 0;
+		
+		add(typer = new FlxTextTyper(prefix));
 		typer.skipKeys = [SPACE];
-		typer.onChange.add(()->field.text = typer.text);
+		typer.onChange.add(function ()
+		{
+			bitmapField.text 
+				= field.text = typer.text;
+			field.y = FlxG.height - field.frameHeight;
+		});
 		// typer.onCharsType.add(FlxG.sound.play.bind("assets/sounds/type.ogg", 0.3));
 
+		add(bitmapField);
 		add(field);
 	}
 	
