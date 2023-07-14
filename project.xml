@@ -35,6 +35,7 @@
 	<assets path="Assets" rename="assets" />
 	<assets path="assets388" />
 	<assets path="debugToolAssets" />
+	<assets path="adventurerAssets" exclude="*.aseprite" />
 	
 	<!--LIBRARIES-->
 		

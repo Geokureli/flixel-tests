@@ -33,7 +33,7 @@ class TypeTextTestState extends flixel.FlxState
 				= field.text = typer.text;
 			field.y = FlxG.height - field.frameHeight;
 		});
-		// typer.onCharsType.add(FlxG.sound.play.bind("assets/sounds/type.ogg", 0.3));
+		typer.onCharsType.add(FlxG.sound.play.bind("assets/sounds/type.ogg", 0.3));
 
 		add(bitmapField);
 		add(field);

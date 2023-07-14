@@ -163,10 +163,9 @@ class FlxTextTyper extends FlxBasic
 	/**
 	 * Begins the typing effect.
 	 * 
-	 * @param text        The text to type. Do not include the prefix
-	 * @param onComplete  Optional callback when typing is completed. If non-null sets `changeCallback`
-	 * @param clear       If true, all typed text is removed, otherwise - if some of the desired
-	 *                    message is already typed - it will continue where it left off.
+	 * @param text   The text to type. Do not include the prefix
+	 * @param clear  If true, all typed text is removed, otherwise, if some of the desired
+	 *               message is already typed, it will continue where it left off.
 	 */
 	public function startTyping(text:String, clear = true)
 	{
@@ -180,6 +179,25 @@ class FlxTextTyper extends FlxBasic
 			typingCompleted();
 			return;
 		}
+		
+		timer = delay.random();
+		state = TYPING;
+	}
+	
+	/**
+	 * Begins the typing effect while preserving any text that is already typed.
+	 * 
+	 * @param text         The text to type. Do not include the prefix
+	 * @param skipCurrent  If the type is currently typing or erasing, it will finish
+	 *                     first before appending the desired text.
+	 */
+	public function startAppending(text:String, skipCurrent = true)
+	{
+		prefix += typedText;
+		finalText = text;
+		
+		if (skipCurrent && state.match(TYPING, ERASING))
+			skip();
 		
 		timer = delay.random();
 		state = TYPING;
