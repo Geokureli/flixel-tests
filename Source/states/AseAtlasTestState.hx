@@ -50,10 +50,7 @@ abstract AseAtlasSprite(FlxSprite) to FlxSprite
         this.frames = FlxAtlasFrames.fromAseprite(graphic, data);
         
         for (frameTag in aseData.meta.frameTags)
-        {
             this.animation.addByPrefix(frameTag.name, frameTag.name + " ");
-            trace(frameTag);
-        }
     }
 }
 
