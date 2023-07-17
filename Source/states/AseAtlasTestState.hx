@@ -3,7 +3,10 @@ package states;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
+import flixel.graphics.FlxAsepriteUtil;
 import flixel.system.FlxAssets;
+
+using flixel.graphics.FlxAsepriteUtil;
 
 class AseAtlasTestState extends flixel.FlxState
 {
@@ -45,29 +48,6 @@ abstract AseAtlasSprite(FlxSprite) to FlxSprite
     public function new(x = 0, y = 0, graphic, data:FlxAsepriteJsonAsset)
     {
         this = new FlxSprite(x, y);
-        
-        final aseData:AsepriteAtlasObject = cast data.getData();
-        this.frames = FlxAtlasFrames.fromAseprite(graphic, data);
-        
-        for (frameTag in aseData.meta.frameTags)
-            this.animation.addByPrefix(frameTag.name, frameTag.name + " ");
+        this.loadAseAtlas(graphic, data, " ");
     }
-}
-
-
-typedef AsepriteAtlasObject = TexturePackerObject &
-{
-	var frames:Dynamic;
-	var meta:AsepriteAtlasMetaObject;
-}
-
-typedef AsepriteAtlasMetaObject =
-{
-	var app:String;
-	var version:String;
-	var image:String;
-	var format:String;
-	var size:{ w:Int, h:Int };
-	var scale:String;
-	var frameTags: Array<{ name: String, from:Int, to:Int, direction:String }>;
 }

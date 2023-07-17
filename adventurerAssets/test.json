@@ -1,0 +1,44 @@
+{ "frames": {
+   " 0": {
+    "frame": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "rotated": false,
+    "trimmed": false,
+    "spriteSourceSize": { "x": 0, "y": 0, "w": 100, "h": 100 },
+    "sourceSize": { "w": 100, "h": 100 },
+    "duration": 100
+   }
+ },
+ "meta": {
+  "app": "https://www.aseprite.org/",
+  "version": "1.2.40-x64",
+  "image": "test.png",
+  "format": "I8",
+  "size": { "w": 100, "h": 100 },
+  "scale": "1",
+  "frameTags": [
+  ],
+  "layers": [
+   { "name": "Layer 1", "opacity": 255, "blendMode": "normal" },
+   { "name": "Layer 2", "opacity": 255, "blendMode": "darken" },
+   { "name": "Layer 3", "opacity": 255, "blendMode": "multiply" },
+   { "name": "Layer 4", "opacity": 255, "blendMode": "color_burn" },
+   { "name": "Layer 5", "opacity": 255, "blendMode": "lighten" },
+   { "name": "Layer 6", "opacity": 255, "blendMode": "screen" },
+   { "name": "Layer 7", "opacity": 255, "blendMode": "color_dodge" },
+   { "name": "Layer 8", "opacity": 255, "blendMode": "addition" },
+   { "name": "Layer 9", "opacity": 255, "blendMode": "overlay" },
+   { "name": "Layer 10", "opacity": 255, "blendMode": "soft_light" },
+   { "name": "Layer 11", "opacity": 255, "blendMode": "hard_light" },
+   { "name": "Layer 12", "opacity": 255, "blendMode": "difference" },
+   { "name": "Layer 13", "opacity": 255, "blendMode": "exclusion" },
+   { "name": "Layer 14", "opacity": 255, "blendMode": "subtract" },
+   { "name": "Layer 15", "opacity": 255, "blendMode": "divide" },
+   { "name": "Layer 16", "opacity": 255, "blendMode": "hsl_hue" },
+   { "name": "Layer 17", "opacity": 255, "blendMode": "hsl_saturation" },
+   { "name": "Layer 18", "opacity": 255, "blendMode": "hsl_color", "cels": [{ "frame": 0, "data": "foo" }] },
+   { "name": "Layer 19", "opacity": 255, "blendMode": "hsl_luminosity", "cels": [{ "frame": 0, "color": "#494b4b5c", "data": "user data, broasknfawdjkfbnaksjdbnfkajwbdfkjnasbdfknasb df.kajnb dfkjasbdf.kajwbdflkjasbd" }] }
+  ],
+  "slices": [
+  ]
+ }
+}
