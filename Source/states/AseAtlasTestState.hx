@@ -48,6 +48,6 @@ abstract AseAtlasSprite(FlxSprite) to FlxSprite
     public function new(x = 0, y = 0, graphic, data:FlxAsepriteJsonAsset)
     {
         this = new FlxSprite(x, y);
-        this.loadAseAtlas(graphic, data, " ");
+        this.loadAseAtlasAndTagsByPrefix(graphic, data);
     }
 }
