@@ -61,6 +61,7 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.AnimationFrameTestState2847));
         // addChild(new TestGame(states.PixelPerfectRenderTestState2849, 10));
         addChild(new TestGame(states.SoundPanTestState2852));
+        // addChild(new TestGame(states.SoundFLPanTestState2852));
         // addChild(new TestGame(states.AseAtlasTestState, 4));
         // addChild(new TestGame(states.CircleWipeShaderTestState));
         // addChild(new TestGame(states.ExceptionTestState11265));
