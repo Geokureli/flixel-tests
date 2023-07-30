@@ -34,7 +34,7 @@
 	<classpath path="../../lib/Source" />
 	<assets path="Assets" rename="assets" />
 	<assets path="assets388" />
-	<assets path="debugToolAssets" />
+	<assets path="debugToolAssets" embed="true"/>
 	<assets path="adventurerAssets" exclude="*.aseprite" />
 	
 	<!--LIBRARIES-->

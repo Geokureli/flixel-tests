@@ -1,0 +1,128 @@
+<box width="100%" height="100%" style="padding: 30px; border-style: solid; border-width: 1px">
+	<vbox width="100%" id="tintBox" height="100%" style="padding: 5px">
+		<!-- <section-header text="Tint"/> -->
+		
+		<dropdown text="Color Effect" id="effect" width="120" selectedItem="Tint"
+			onChange=
+			" tintBox.hidden = effect.selectedItem.text != 'Tint'
+			; brightnessBox.hidden = effect.selectedItem.text != 'Brightness'
+			"
+		>
+			<data>
+				<item text="None"/>
+				<item text="Tint"/>
+				<item text="Brightness"/>
+			</data>
+		</dropdown>
+		
+		<!-- TINT -->
+		<vbox width="100%" id="tintBox">
+			<hbox width="100%">
+				<vbox width="100%" height="100%" horizontalAlign="center">
+					<!-- RED -->
+					<hbox width="100%">
+						<label text="Red" width="80" verticalAlign="center"/>
+						<slider id="red" width="100%" pos="255" max="255" step="1" verticalAlign="center"
+							onChange=
+							" redDisplay.text = Std.string(red.pos)
+							; hex.text = '0x'+ StringTools.hex
+								( (Math.round(red.pos) << 16)
+								| (Math.round(green.pos) << 8)
+								| Math.round(blue.pos)
+								, 6)
+							"
+						/>
+						<textfield id="redDisplay" width="40" disabled="true"/>
+					</hbox>
+					<!-- GREEN -->
+					<hbox width="100%">
+						<label text="Green" width="80" verticalAlign="center"/>
+						<slider id="green" width="100%" pos="0" max="255" step="1" verticalAlign="center"
+							onChange=
+							" greenDisplay.text = Std.string(green.pos)
+							; hex.text = '0x'+ StringTools.hex
+								( (Math.round(red.pos) << 16)
+								| (Math.round(green.pos) << 8)
+								| Math.round(blue.pos)
+								, 6)
+							"
+						/>
+						<textfield id="greenDisplay" width="40" disabled="true"/>
+					</hbox>
+					<!-- BLUE -->
+					<hbox width="100%">
+						<label text="Blue" width="80" verticalAlign="center"/>
+						<slider id="blue" width="100%" pos="0" max="255" step="1" verticalAlign="center"
+							onChange=
+							" blueDisplay.text = Std.string(blue.pos)
+							; hex.text = '0x'+ StringTools.hex
+								( (Math.round(red.pos) << 16)
+								| (Math.round(green.pos) << 8)
+								| Math.round(blue.pos)
+								, 6)
+							"
+						/>
+						<textfield id="blueDisplay" width="40" disabled="true"/>
+					</hbox>
+					<!-- Strength -->
+					<hbox width="100%">
+						<label text="Strength" width="80" verticalAlign="center"/>
+						<slider id="strength" width="100%" pos="50" max="100" step="1" verticalAlign="center"
+							onChange=
+							" strengthDisplay.text = Std.string(strength.pos / 100)
+							"
+						/>
+						<textfield id="strengthDisplay" width="40" disabled="true"/>
+					</hbox>
+				</vbox>
+				<vbox verticalAlign="center">
+					<box width="100" height="100" id="preview"/>
+					<textfield width="100%" id="hex" 
+						onChange=
+						" var color = Std.parseInt(hex.text)
+						; preview.backgroundColor = color
+						; red.pos   = (color >> 16) & 0xFF
+						; green.pos = (color >>  8) & 0xFF
+						; blue.pos  =  color        & 0xFF
+						"
+					/>
+				</vbox>
+			</hbox>
+			<rule/>
+			<hbox>
+				<label text="Mode" width="80" verticalAlign="center"/>
+				<dropdown id="tintMode" selectedItem="Constant"
+					onChange="flashTint.hidden = tintMode.selectedItem.text != 'Flash'"
+				>
+					<data>
+						<item text="Constant" />
+						<item text="Flash" />
+					</data>
+				</dropdown>
+			</hbox>
+			<vbox id="flashTint">
+				<hbox>
+					<label text="Duration" width="80" verticalAlign="center"/>
+					<number-stepper id="flashDuration" pos="0.5" step="0.05" min="0" />
+				</hbox>
+				<!-- TODO: drop down of tint functions -->
+				<button id="flash" text="Start Flash"/>
+			</vbox>
+		</vbox>
+		
+		<!-- BRIGHTNESS -->
+		<hbox width="100%" id="brightnessBox">
+			<vbox width="100%" height="100%" horizontalAlign="center">
+				<hbox width="100%">
+					<label text="Brightness" width="80" verticalAlign="center"/>
+					<slider id="brightness" width="100%" pos="50" min="-100" max="100" step="1" majorTicks="100" minorTicks="50" verticalAlign="center"
+						onChange=
+						" brightnessDisplay.text = Std.string(brightness.pos / 100)
+						"
+					/>
+					<textfield id="brightnessDisplay" width="40" disabled="true"/>
+				</hbox>
+			</vbox>
+		</hbox>
+	</vbox>
+</box>
