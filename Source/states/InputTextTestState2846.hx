@@ -4,7 +4,8 @@ import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.addons.ui.FlxInputText;
 
-class InputTextTestState extends flixel.FlxState
+// https://github.com/HaxeFlixel/flixel/pull/2846
+class InputTextTestState2846 extends flixel.FlxState
 {
     var text1:FlxText;
     var text2:FlxText;
