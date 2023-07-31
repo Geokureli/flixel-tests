@@ -38,7 +38,7 @@ class FlxColorEffectList extends flixel.FlxBasic
 		target.setColorTransform
 		(
 			out.redMultiplier, out.greenMultiplier, out.blueMultiplier, out.alphaMultiplier,
-			out.redOffset, out.greenOffset, out.blueOffset, out.alphaOffset
+			Std.int(out.redOffset), Std.int(out.greenOffset), Std.int(out.blueOffset), Std.int(out.alphaOffset)
 		);
 	}
 	
