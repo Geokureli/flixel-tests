@@ -4,7 +4,8 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 
-class VignetteShaderTestState extends flixel.FlxState
+// https://github.com/HaxeFlixel/flixel/issues/2874
+class VignetteShaderTestState2874 extends flixel.FlxState
 {
     var shader:VignetteShader;
     
@@ -45,6 +46,9 @@ class VignetteShaderTestState extends flixel.FlxState
     }
 }
 
+/**
+ * Stolen from https://www.shadertoy.com/view/lsKSWR
+ */
 class VignetteShader extends flixel.system.FlxAssets.FlxShader
 {
     public var strength(get, set):Float;
