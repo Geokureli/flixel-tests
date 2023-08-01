@@ -19,8 +19,8 @@ class ColorEffectListTestState2869 extends flixel.FlxState
         add(sprite);
         
         final list = new FlxColorEffectList(sprite);
-        list.add(new FlxBrightnessTransform(0.5));
-        list.add(new FlxTintTransform(0xFF00FF, 0.5));
+        list.add(new FlxBrightnessEffect(0.5));
+        list.add(new FlxTintEffect(0xFF00FF, 0.5));
         add(list);
     }
 }

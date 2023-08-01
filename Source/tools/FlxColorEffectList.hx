@@ -13,7 +13,7 @@ class FlxColorEffectList extends flixel.FlxBasic
 	public var length(get, never):Int;
 	inline function get_length() return list.length;
 	
-	final list:Array<ColorTransform> = [];
+	final list:Array<FlxColorEffect> = [];
 	
 	public function new (target:FlxSprite)
 	{
@@ -28,11 +28,27 @@ class FlxColorEffectList extends flixel.FlxBasic
 		if (list.length == 0 || target == null)
 			return;
 		
+		var isDirty = false;
+		for (transform in list)
+		{
+			if (transform.isDirty)
+			{
+				isDirty = true;
+				break;
+			}
+		}
+		
+		if (isDirty == false)
+			return;
+		
 		target.setColorTransform();
 		
 		final out = target.colorTransform;
 		for (transform in list)
-			concat(out, transform);
+		{
+			transform.concatTo(out);
+			transform.isDirty = false;
+		}
 		
 		// reapply
 		target.setColorTransform
@@ -42,25 +58,7 @@ class FlxColorEffectList extends flixel.FlxBasic
 		);
 	}
 	
-	/**
-	 * Does what `ColorTransform.concat` is supposed to do, according to the doc
-	 * @param base 
-	 * @param second 
-	 */
-	function concat(base:ColorTransform, second:ColorTransform)
-	{
-		base.redOffset = base.redOffset * second.redMultiplier + second.redOffset;
-		base.greenOffset = base.greenOffset * second.greenMultiplier + second.greenOffset;
-		base.blueOffset = base.blueOffset * second.blueMultiplier + second.blueOffset;
-		base.alphaOffset = base.alphaOffset * second.alphaMultiplier + second.alphaOffset;
-		
-		base.redMultiplier *= second.redMultiplier;
-		base.greenMultiplier *= second.greenMultiplier;
-		base.blueMultiplier *= second.blueMultiplier;
-		base.alphaMultiplier *= second.alphaMultiplier;
-	}
-	
-	public function add<T:ColorTransform>(transform:T):T
+	public function add<T:FlxColorEffect>(transform:T):T
 	{
 		if (transform == null)
 		{
@@ -75,7 +73,7 @@ class FlxColorEffectList extends flixel.FlxBasic
 		return transform;
 	}
 	
-	public function insert<T:ColorTransform>(position:Int, transform:T):T
+	public function insert<T:FlxColorEffect>(position:Int, transform:T):T
 	{
 		if (transform == null)
 		{
@@ -96,14 +94,14 @@ class FlxColorEffectList extends flixel.FlxBasic
 		return transform;
 	}
 	
-	inline public function remove<T:ColorTransform>(transform:T):T
+	inline public function remove<T:FlxColorEffect>(transform:T):T
 	{
 		list.remove(transform);
 		return transform;
 	}
 	
 	//@:generic
-	public function getFirst<T:ColorTransform>(type:Class<T>):Null<T>
+	public function getFirst<T:FlxColorEffect>(type:Class<T>):Null<T>
 	{
 		for (effect in list)
 		{
@@ -115,7 +113,144 @@ class FlxColorEffectList extends flixel.FlxBasic
 	}
 }
 
-class FlxBrightnessTransform extends ColorTransform
+class FlxColorEffect
+{
+	@:allow(tools.FlxColorEffectList)
+	var isDirty:Bool = true;
+	var transform:ColorTransform = new ColorTransform();
+	
+	public function new () {}
+	
+	/**
+	 * Does what `ColorTransform.concat` is supposed to do, according to the doc
+	 */
+	public function concatTo(base:ColorTransform)
+	{
+		base.redOffset = base.redOffset * transform.redMultiplier + transform.redOffset;
+		base.greenOffset = base.greenOffset * transform.greenMultiplier + transform.greenOffset;
+		base.blueOffset = base.blueOffset * transform.blueMultiplier + transform.blueOffset;
+		base.alphaOffset = base.alphaOffset * transform.alphaMultiplier + transform.alphaOffset;
+		
+		base.redMultiplier *= transform.redMultiplier;
+		base.greenMultiplier *= transform.greenMultiplier;
+		base.blueMultiplier *= transform.blueMultiplier;
+		base.alphaMultiplier *= transform.alphaMultiplier;
+	}
+}
+
+class FlxColorTransformEffect extends FlxColorEffect
+{
+	/** A decimal value that is multiplied with the alpha transparency channel value. **/
+	public var alphaMultiplier(get, set):Float;
+	public function get_alphaMultiplier() return transform.alphaMultiplier;
+	public function set_alphaMultiplier(value:Float)
+	{
+		isDirty = transform.alphaMultiplier != value;
+		return transform.alphaMultiplier = value;
+	}
+	
+	/** A decimal value that is multiplied with the red channel value **/
+	public var redMultiplier(get, set):Float;
+	public function get_redMultiplier() return transform.redMultiplier;
+	public function set_redMultiplier(value:Float)
+	{
+		isDirty = transform.redMultiplier != value;
+		return transform.redMultiplier = value;
+	}
+	
+	/** A decimal value that is multiplied with the green channel value **/
+	public var greenMultiplier(get, set):Float;
+	public function get_greenMultiplier() return transform.greenMultiplier;
+	public function set_greenMultiplier(value:Float)
+	{
+		isDirty = transform.greenMultiplier != value;
+		return transform.greenMultiplier = value;
+	}
+	
+	/** A decimal value that is multiplied with the blue channel value. **/
+	public var blueMultiplier(get, set):Float;
+	public function get_blueMultiplier() return transform.blueMultiplier;
+	public function set_blueMultiplier(value:Float)
+	{
+		isDirty = transform.blueMultiplier != value;
+		return transform.blueMultiplier = value;
+	}
+	
+	/**
+	 * A number from -255 to 255 that is added to the alpha transparency channel
+	 * value after it has been multiplied by the `alphaMultiplier` value.
+	**/
+	public var alphaOffset(get, set):Float;
+	public function get_alphaOffset() return transform.alphaOffset;
+	public function set_alphaOffset(value:Float)
+	{
+		isDirty = transform.alphaOffset != value;
+		return transform.alphaOffset = value;
+	}
+	
+	/**
+	 * A number from -255 to 255 that is added to the red channel value after it
+	 * has been multiplied by the `redMultiplier` value.
+	**/
+	public var redOffset(get, set):Float;
+	public function get_redOffset() return transform.redOffset;
+	public function set_redOffset(value:Float)
+	{
+		isDirty = transform.redOffset != value;
+		return transform.redOffset = value;
+	}
+	
+	/**
+	 * A number from -255 to 255 that is added to the green channel value after
+	 * it has been multiplied by the `greenMultiplier` value.
+	**/
+	public var greenOffset(get, set):Float;
+	public function get_greenOffset() return transform.greenOffset;
+	public function set_greenOffset(value:Float)
+	{
+		isDirty = transform.greenOffset != value;
+		return transform.greenOffset = value;
+	}
+	
+	/**
+	 * A number from -255 to 255 that is added to the blue channel value after it
+	 * has been multiplied by the `blueMultiplier` value.
+	**/
+	public var blueOffset:Float;
+	public function get_blueOffset() return transform.blueOffset;
+	public function set_blueOffset(value:Float)
+	{
+		isDirty = transform.blueOffset != value;
+		return transform.blueOffset = value;
+	}
+	
+	/**
+	 * The RGB color value for a ColorTransform object.
+	 * 
+	 * When you set this property, it changes the three color offset values
+	 * (`redOffset`, `greenOffset`, and
+	 * `blueOffset`) accordingly, and it sets the three color
+	 * multiplier values(`redMultiplier`,
+	 * `greenMultiplier`, and `blueMultiplier`) to 0. The
+	 * alpha transparency multiplier and offset values do not change.
+	 * 
+	 * When you pass a value for this property, use the format
+	 * 0x_RRGGBB_. _RR_, _GG_, and _BB_ each consist of two
+	 * hexadecimal digits that specify the offset of each color component. The 0x
+	 * tells the ActionScript compiler that the number is a hexadecimal
+	 * value.
+	**/
+	public var color(get, set):Int;
+	public function get_color() return transform.color;
+	public function set_color(value:Int)
+	{
+		isDirty = transform.color != value;
+		return transform.color = value;
+	}
+	
+}
+
+class FlxBrightnessEffect extends FlxColorEffect
 {
 	public var amount(default, set):Float;
 	
@@ -130,21 +265,21 @@ class FlxBrightnessTransform extends ColorTransform
 		
 		final mult = 1.0 - Math.abs(value);
 		final offset = Math.round(Math.max(0, 0xFF * value));
-
-		redMultiplier = mult;
-		greenMultiplier = mult;
-		blueMultiplier = mult;
-		alphaMultiplier = 1.0;
-		redOffset = offset;
-		greenOffset = offset;
-		blueOffset = offset;
-		alphaOffset = 0.0;
+		
+		transform.redMultiplier = mult;
+		transform.greenMultiplier = mult;
+		transform.blueMultiplier = mult;
+		transform.alphaMultiplier = 1.0;
+		transform.redOffset = offset;
+		transform.greenOffset = offset;
+		transform.blueOffset = offset;
+		transform.alphaOffset = 0.0;
 		
 		return value;
 	}
 }
 
-class FlxTintTransform extends ColorTransform
+class FlxTintEffect extends FlxColorEffect
 {
 	/** The color of this tint */
 	public var rgb(default, set):FlxColor;
@@ -161,14 +296,15 @@ class FlxTintTransform extends ColorTransform
 	public function set(rgb:FlxColor, strength:Float)
 	{
 		final mult = 1 - strength;
-		redMultiplier = mult;
-		greenMultiplier = mult;
-		blueMultiplier = mult;
-		alphaMultiplier = 1.0;
-		redOffset = Math.round(rgb.red * strength);
-		greenOffset = Math.round(rgb.green * strength);
-		blueOffset = Math.round(rgb.blue * strength);
-		alphaOffset = 0.0;
+		transform.redMultiplier = mult;
+		transform.greenMultiplier = mult;
+		transform.blueMultiplier = mult;
+		transform.alphaMultiplier = 1.0;
+		transform.redOffset = Math.round(rgb.red * strength);
+		transform.greenOffset = Math.round(rgb.green * strength);
+		transform.blueOffset = Math.round(rgb.blue * strength);
+		transform.alphaOffset = 0.0;
+		isDirty = true;
 	}
 	
 	public function set24Bit(tint:FlxColor)
@@ -199,8 +335,8 @@ class FlxTintTransform extends ColorTransform
 	 * Shorthand for creating a tint from an 0xAARRRGGBB,
 	 * where alpha represents the desired strength.
 	 */
-	inline static function from24Bit(srgb:FlxColor):FlxTintTransform
+	inline static function from24Bit(srgb:FlxColor):FlxTintEffect
 	{
-		return new FlxTintTransform(srgb.rgb, srgb.alphaFloat);
+		return new FlxTintEffect(srgb.rgb, srgb.alphaFloat);
 	}
 }
