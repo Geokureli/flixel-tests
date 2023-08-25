@@ -62,14 +62,19 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.PixelPerfectRenderTestState2849, 10));
         // addChild(new TestGame(states.SoundPanTestState2852));
         // addChild(new TestGame(states.SoundFLPanTestState2852));
-        // addChild(new TestGame(states.AseAtlasTestState, 4));
+        addChild(new TestGame(states.AseAtlasTestState, 4));
         // addChild(new TestGame(states.CircleWipeShaderTestState));
         // addChild(new TestGame(states.ExceptionTestState11265));
         // addChild(new TestGame(states.JustifyTextTestState));
         // addChild(new TestGame(states.TintTestState));
-        // addChild(new TestGame(states.InputTextTestState));
+        // addChild(new TestGame(states.InputTextTestState2846));
         // addChild(new TestGame(states.VignetteShaderTestState2847));
-        addChild(new TestGame(states.ColorEffectListTestState2869));
+        // addChild(new TestGame(states.ColorEffectListTestState2869));
+        // addChild(new TestGame(states.TilemapSizeTestState2882));
+        // addChild(new TestGame(states.RuntimeShaderTestState399));
+        // addChild(new TestGame(states.MacKeysTestState));
+        
+        // addChild(new tests.KeyEventTest());
     }
 }
 

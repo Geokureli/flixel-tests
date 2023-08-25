@@ -33,9 +33,11 @@ class SoundPanTestState2852 extends flixel.FlxState
 		{
 			if (soundPlaying)
 				sound.pan = (right ? 1 : 0) - (left ? 1 : 0);
-			else
+			// else
+			if (!soundPlaying)
 			{
 				sound = new FlxSound().loadEmbedded("flixel/sounds/flixel.ogg");
+				// sound = new FlxSound().loadEmbedded("assets/sounds/flixel-mono.ogg");
 				sound.pan = (right ? 1 : 0) - (left ? 1 : 0);
 				sound.play();
 				// sound = FlxG.sound.play("flixel/sounds/flixel.ogg", 1);

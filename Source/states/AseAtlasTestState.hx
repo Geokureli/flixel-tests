@@ -19,6 +19,12 @@ class AseAtlasTestState extends flixel.FlxState
         sprite = new AseAtlasSprite("adventurerAssets/adventurer.png", "adventurerAssets/adventurer.json");
         sprite.animation.play("idle");
         add(sprite);
+        
+        final a = new flixel.FlxObject();
+        final b = new flixel.FlxObject();
+        
+        FlxG.collide(a, b, function (a:flixel.FlxObject, b:flixel.FlxObject) { });
+        FlxG.watch
     }
     
     override function update(elapsed)
