@@ -1619,14 +1619,13 @@
   "size": { "w": 432, "h": 260 },
   "scale": "1",
   "frameTags": [
-   { "name": "idle", "from": 0, "to": 3, "direction": "forward", "color": "#6acd5bff" },
-   { "name": "crouch", "from": 4, "to": 7, "direction": "forward", "color": "#000000ff" },
-   { "name": "run", "from": 8, "to": 13, "direction": "forward", "color": "#57b9f2ff" },
-   { "name": "a", "from": 11, "to": 11, "direction": "forward", "color": "#000000ff" },
+   { "name": "idle", "from": 0, "to": 3, "direction": "forward", "repeat": "1", "color": "#6acd5bff" },
+   { "name": "crouch", "from": 4, "to": 7, "direction": "forward", "repeat": "1", "color": "#000000ff" },
+   { "name": "run", "from": 8, "to": 13, "direction": "forward", "repeat": "1", "color": "#57b9f2ff" },
    { "name": "jump", "from": 14, "to": 17, "direction": "forward", "color": "#f7a547ff" },
    { "name": "smrslt", "from": 18, "to": 21, "direction": "forward", "color": "#000000ff" },
-   { "name": "fall", "from": 22, "to": 23, "direction": "forward", "color": "#57b9f2ff" },
-   { "name": "slide", "from": 24, "to": 25, "direction": "forward", "color": "#d186dfff" },
+   { "name": "fall", "from": 22, "to": 23, "direction": "forward", "repeat": "1", "color": "#57b9f2ff" },
+   { "name": "slide", "from": 24, "to": 25, "direction": "forward", "repeat": "1", "color": "#d186dfff" },
    { "name": "stand", "from": 26, "to": 28, "direction": "forward", "color": "#f3ce52ff" },
    { "name": "crnr-grb", "from": 29, "to": 32, "direction": "forward", "color": "#6acd5bff" },
    { "name": "crnr-clmb", "from": 33, "to": 37, "direction": "forward", "color": "#d186dfff" },
@@ -1659,20 +1658,6 @@
    { "name": "crouch-walk", "from": 161, "to": 166, "direction": "forward", "color": "#000000ff" },
    { "name": "run2", "from": 167, "to": 172, "direction": "forward", "color": "#000000ff" },
    { "name": "wall-run", "from": 173, "to": 178, "direction": "forward", "color": "#000000ff" }
-  ],
-  "layers": [
-   { "name": "Hero" },
-   { "name": "back-arm", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "legs", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "body", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "scarf", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "weapon", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "head", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "front-arm", "group": "Hero", "opacity": 255, "blendMode": "normal" },
-   { "name": "FX", "group": "Hero", "opacity": 255, "blendMode": "normal" }
-  ],
-  "slices": [
-   { "name": "Slice 1", "color": "#0000ffff", "keys": [{ "frame": 0, "bounds": {"x": 19, "y": 8, "w": 12, "h": 29 } }, { "frame": 4, "bounds": {"x": 19, "y": 15, "w": 12, "h": 22 } }, { "frame": 8, "bounds": {"x": 19, "y": 15, "w": 12, "h": 29 } }, { "frame": 12, "bounds": {"x": 23, "y": 10, "w": 14, "h": 27 } }] }
   ]
  }
 }
