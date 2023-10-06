@@ -75,7 +75,9 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MacKeysTestState));
         // addChild(new TestGame(states.WatchFunctionTestState));
         // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
-        addChild(new TestGame(states.FlxExtendedSpriteTestState));
+        // addChild(new TestGame(states.FlxExtendedSpriteTestState));
+        // addChild(new TestGame(states.SoundTrayTestState));
+        addChild(new TestGame(states.StackingSoundTestState2926));
         
         // addChild(new tests.KeyEventTest());
     }
