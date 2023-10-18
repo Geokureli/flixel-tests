@@ -58,6 +58,13 @@
 	
 	<!--HAXEDEFINES-->
 	
+	<!-- <haxedef name="telemetry"/> -->
+	<section if="telemetry">
+		<define name="hxcpp"/>
+		<!-- already included if telemetry is defined -->
+		<haxelib name="hxtelemetry"/>
+	</section>
+	
 	<!--Enable this for nape release builds for a serious peformance improvement-->
 	<!-- <haxedef name="NAPE_RELEASE_BUILD" unless="debug" /> -->
 	

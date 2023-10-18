@@ -77,7 +77,11 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
         // addChild(new TestGame(states.FlxExtendedSpriteTestState));
         // addChild(new TestGame(states.SoundTrayTestState));
-        addChild(new TestGame(states.StackingSoundTestState2926));
+        // addChild(new TestGame(states.StackingSoundTestState2926));
+        // addChild(new TestGame(states.TelemetryTestState));
+        // addChild(new TestGame(states.UiInputTextState253));
+        // addChild(new TestGame(states.UiListTestState254));
+        addChild(new TestGame(states.TextAutoSizeTestState));
         
         // addChild(new tests.KeyEventTest());
     }
@@ -87,6 +91,9 @@ abstract TestGame(flixel.FlxGame) to flixel.FlxGame
 {
     inline public function new (state, zoom = 1)
     {
+        if (FlxG.game != null)
+            throw "Already created a FlxGame";
+        
         if (zoom == 1)
         {
             // set game size to window size
