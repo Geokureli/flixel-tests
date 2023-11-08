@@ -81,7 +81,9 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.TelemetryTestState));
         // addChild(new TestGame(states.UiInputTextState253));
         // addChild(new TestGame(states.UiListTestState254));
-        addChild(new TestGame(states.TextAutoSizeTestState));
+        // addChild(new TestGame(states.TextAutoSizeTestState, 2));
+        // addChild(new TestGame(states.FlxBarTestState2938));
+        // addChild(new TestGame(states.PluginTestState));
         
         // addChild(new tests.KeyEventTest());
     }
@@ -104,7 +106,7 @@ abstract TestGame(flixel.FlxGame) to flixel.FlxGame
             // set game sizse from zoom
             final stage = openfl.Lib.current.stage;
             final gameWidth = Std.int(stage.stageWidth / zoom);
-            final gameHeight = Std.int(stage.stageWidth / zoom);
+            final gameHeight = Std.int(stage.stageHeight / zoom);
             this = new flixel.FlxGame(gameWidth, gameHeight, state);
         }
     }

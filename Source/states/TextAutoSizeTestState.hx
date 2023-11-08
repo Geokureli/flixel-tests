@@ -1,73 +1,89 @@
 package states;
 
-import flixel.tweens.FlxTween;
 import flixel.FlxG;
-import flixel.util.FlxColor;
-import flixel.text.FlxText;
 import flixel.FlxState;
+import flixel.text.FlxText;
+import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
 
+/**
+ * https://github.com/HaxeFlixel/snippets.haxeflixel.com/pull/35
+ */
 class TextAutoSizeTestState extends FlxState
 {
 	override public function create()
 	{
-		bgColor = 0xFFffffff;
 		super.create();
 
-		var autoSizedText = new MorphingText("This text has an ", "auto width and height");
-		autoSizedText.screenCenter(X);
-		autoSizedText.y = 30;
-		add(autoSizedText);
+		bgColor = 0;
 
-		var fixedSize = new MorphingText("This text has a ", "fixed width and height");
-		fixedSize.fieldWidth = 140;
-		fixedSize.fieldHeight = 70;
-		fixedSize.screenCenter(X);
-		fixedSize.y = autoSizedText.getScreenBounds().bottom + 10;
+		final gap = 4;
+		final margin = 8;
+		var xCoord:Float = margin;
+		var yCoord:Float = margin;
+
+		var autoSized = createText(xCoord, yCoord, "autosized");
+		add(autoSized);
+		yCoord += autoSized.height + gap;
+
+		var fixedSize = createText(xCoord, yCoord, "fixed size");
+		fixedSize.fieldWidth = 70;
+		fixedSize.fieldHeight = 24;
 		add(fixedSize);
+		yCoord += fixedSize.height + gap;
 
-		var autoHeight = new MorphingText("This text has a ", "fixed width\nand auto height");
-		autoHeight.fieldWidth = 100;
+		var autoHeight = createText(xCoord, yCoord, 'fixed width\nauto height');
+		autoHeight.fieldWidth = 70;
 		autoHeight.fieldHeight = 0;
-		autoHeight.screenCenter(X);
-		autoHeight.y = fixedSize.getScreenBounds().bottom + 10;
 		add(autoHeight);
-		
-		var autoWidth = new MorphingText("This text has a ", "fixed height\nand auto width");
-		autoWidth.fieldWidth = 0;
-		autoWidth.fieldHeight = 100;
-		autoWidth.screenCenter(X);
-		autoWidth.y = autoHeight.getScreenBounds().bottom + 10;
-		add(autoWidth);
-	}
-}
+		yCoord += autoHeight.height + gap;
 
-/**
- * A helper class for a FlxText with a dark blue background, cyan text and ever-changing text
- */
-@:forward
-abstract MorphingText(FlxText) to FlxText
-{
-	/**
-	 * @param   morphingText  The text that disappears and reappears
-	 * @param   staticText    The text that always shows
-	 * @param   size          The size of the text
-	 */
-	public function new (morphingText:String, staticText:String, size = 16)
-	{
-		this = new FlxText(0, 0, 0, morphingText + staticText, size);
-		colorize();
-		
-		FlxTween.num(0, 1, 1.0, { loopDelay: 1.0, type: PINGPONG }, function(num)
+		final prefix = 'Description: ';
+
+		// create a button that add or removes the prefix on click
+		var btn:FlxButton = null;
+		btn = new FlxButton(0, 0, "Add Text", function()
 		{
-			this.text = morphingText.substr(0, Math.round(morphingText.length * num)) + staticText;
+			if (btn.text == "Add Text")
+			{
+				addText(autoSized, prefix);
+				addText(fixedSize, prefix);
+				addText(autoHeight, prefix);
+				btn.text = "Remove Text";
+			}
+			else
+			{
+				removeText(autoSized, prefix);
+				removeText(fixedSize, prefix);
+				removeText(autoHeight, prefix);
+				btn.text = "Add Text";
+			}
 		});
+		btn.x = FlxG.width - btn.width - margin;
+		btn.y = FlxG.height - btn.height - margin;
+		add(btn);
 	}
-	
-	function colorize()
+
+	/**
+	 * Simple helper to create a stylish FlxText
+	 */
+	function createText(x:Float = 0, y:Float = 0, text:String, size = 8)
 	{
-		this.color = FlxColor.CYAN;
+		var field = new FlxText(x, y, 0, text, size);
+		field.color = FlxColor.CYAN;
 		// accessing background through underlying openfl TextField object
-		this.textField.background = true;
-		this.textField.backgroundColor = 0x0C365F;
+		field.textField.background = true;
+		field.textField.backgroundColor = 0x0C365F;
+		return field;
+	}
+
+	function addText(field:FlxText, prefix:String)
+	{
+		field.text = prefix + field.text;
+	}
+
+	function removeText(field:FlxText, prefix:String)
+	{
+		field.text = field.text.split(prefix)[1];
 	}
 }
