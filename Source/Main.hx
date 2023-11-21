@@ -1,4 +1,4 @@
-package ;
+package;
 
 import flixel.FlxG;
 
@@ -84,6 +84,8 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.TextAutoSizeTestState, 2));
         // addChild(new TestGame(states.FlxBarTestState2938));
         // addChild(new TestGame(states.PluginTestState));
+        // addChild(new TestGame(states.TransitionCameraTestState));
+        addChild(new TestGame(states.TilemapPerfTestState));
         
         // addChild(new tests.KeyEventTest());
     }

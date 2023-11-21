@@ -3,8 +3,11 @@
     , "../../lib/flixel"
     , "../../lib/flixel/tests/coverage/source"
     , "../../lib/flixel/tests/unit/src"
-	]
+    ]
 , "haxeTestExplorer.testCommand":
     [ "haxelib", "run", "lime", "test", "../../lib/flixel/tests/unit/project.xml", "neko", "--haxelib=test-adapter"
     ]
+,   "[haxe]":
+    { "editor.formatOnSave": false
+    }
 }
