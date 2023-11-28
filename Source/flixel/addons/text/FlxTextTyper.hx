@@ -23,6 +23,11 @@ class FlxTextTyper extends FlxBasic
 	public var eraseDelay:FlxTypeDelay = CONST(0.02);
 	
 	/**
+	 * Special delay when a specific characgter is typed, has no effect when erasing
+	 */
+	public var charDelayScaler:Map<String, Float> = [','=>2.0, '.'=>2.0,'?'=>2.0];
+	
+	/**
 	 * Set to true to show a blinking cursor at the end of the text.
 	 */
 	public var showCursor:Bool = false;
@@ -196,7 +201,7 @@ class FlxTextTyper extends FlxBasic
 		prefix += typedText;
 		finalText = text;
 		
-		if (skipCurrent && state.match(TYPING, ERASING))
+		if (skipCurrent && (state == TYPING || state == ERASING))
 			skip();
 		
 		timer = delay.random();
@@ -246,8 +251,9 @@ class FlxTextTyper extends FlxBasic
 		timer -= elapsed;
 		while (timer < 0)
 		{
-			typedText += finalText.charAt(typedText.length);
-			timer += delay.random();
+			final char = finalText.charAt(typedText.length);
+			typedText += char;
+			timer += getCharTypeDelay(char);
 			changed = true;
 			
 			if (typedText == finalText)
@@ -261,6 +267,19 @@ class FlxTextTyper extends FlxBasic
 			onCharsType.dispatch();
 		
 		return changed;
+	}
+	
+	function getCharTypeDelay(char:String):Float
+	{
+		if (charDelayScaler.exists(char))
+			return delay.scale(charDelayScaler[char]).random();
+		
+		return delay.random();
+	}
+	
+	function getCharEraseDelay(char:String):Float
+	{
+		return eraseDelay.random();
 	}
 	
 	public function typingCompleted()
@@ -283,8 +302,9 @@ class FlxTextTyper extends FlxBasic
 		while (timer < 0)
 		{
 			// remove last typed character
+			final char = typedText.charAt(typedText.length - 1);
 			typedText = typedText.substr(0, typedText.length - 1);
-			timer += eraseDelay.random();
+			timer += getCharEraseDelay(char);
 			changed = true;
 			
 			if (typedText == "")
@@ -340,6 +360,21 @@ class FlxTypeDelayTools
 				base * (1 + FlxG.random.float(-variance, variance));
 			case NORMAL(mean, deviation):
 				FlxG.random.floatNormal(mean, deviation);
+		}
+	}
+	
+	public static function scale(delay:FlxTypeDelay, scaler:Float)
+	{
+		return switch(delay)
+		{
+			case CONST(amount):
+				CONST(amount * scaler);
+			case RANGE(min, max): 
+				RANGE(min * scaler, max * scaler);
+			case VARIED(base, variance):
+				VARIED(base * scaler, variance * scaler);
+			case NORMAL(mean, deviation):
+				NORMAL(mean * scaler, deviation * scaler);
 		}
 	}
 }
