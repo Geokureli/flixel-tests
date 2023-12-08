@@ -85,7 +85,13 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.FlxBarTestState2938));
         // addChild(new TestGame(states.PluginTestState));
         // addChild(new TestGame(states.TransitionCameraTestState));
-        addChild(new TestGame(states.TilemapPerfTestState));
+        // addChild(new TestGame(states.TilemapPerfTestState));
+        // addChild(new TestGame(states.ColorTestState));
+        // addChild(new TestGame(states.HudCursorTestState));
+        // addChild(new TestGame(states.SaveTestState));
+        // addChild(new TestGame(states.HistogramTestState));
+        addChild(new TestGame(states.BMFontTestState, 2));
+        
         
         // addChild(new tests.KeyEventTest());
     }

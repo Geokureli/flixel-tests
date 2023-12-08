@@ -6,28 +6,29 @@ import flixel.FlxSprite;
 
 class DestroyedSpriteTestState extends flixel.FlxState
 {
-	var sprite = new FlxSprite("assets/images/haxe.png");
+	var sprite1 = new FlxSprite(100, 100, "assets/images/haxe.png");
+	var sprite2:FlxSprite;
 	
 	override function create()
 	{
 		super.create();
 		
-		add(new FlxSprite());
-		add(new FlxSprite("assets/images/haxe.png"));
-		add(sprite);
+		add(new FlxSprite(0, 100));
+		add(sprite2 = new FlxSprite(100, 0, "assets/images/haxe.png"));
+		add(sprite1);
 	}
 	
-	override function add(object:FlxBasic):FlxBasic
+	override function update(elapsed:Float)
 	{
-		if (object is FlxSprite)
-		{
-			var sprite:FlxSprite = cast object;
-			if (sprite.animation == null)
-				FlxG.log.error("Attempting to add a destroyed FlxObject");
-			if (sprite.graphic != null && sprite.graphic.key == null)
-				FlxG.log.error("Attempting to add a FlxSprite with a destroyed graphic");
-		}
+		if (FlxG.keys.justPressed.SPACE)
+			sprite2.destroy();
 		
-		return super.add(object);
+		if (FlxG.keys.justPressed.ENTER)
+			FlxG.switchState(new DestroyedSpriteTestState());
+	}
+	
+	override function draw()
+	{
+		super.draw();
 	}
 }
