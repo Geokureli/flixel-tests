@@ -39,6 +39,9 @@
 	<assets path="debugToolAssets" embed="true"/>
 	<assets path="adventurerAssets" exclude="*.aseprite" />
 	
+	<!-- <assets path="fonts" exclude="*.bmfc*" /> -->
+	<assets path="fonts" exclude="*.bmfc|*arial*" />
+	
 	<!--LIBRARIES-->
 		
 	<haxelib name="flixel" />
