@@ -1,13 +1,35 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxGame;
+#if (flixel >= "5.6.0")
+import flixel.util.typeLimit.NextState;
+#end
 
 class Main extends openfl.display.Sprite
 {
+    #if (html5 && munit)
+    static var isFirst = true;
+    #end
+    
     public function new()
     {
         super();
         
+        // munit makes this happen twice for some reason
+        #if (html5 && munit)
+        if (!isFirst)
+            createTest();
+            
+        isFirst = false;
+        #else
+        createTest();
+        #end
+        
+    }
+    
+    function createTest()
+    {
         // addChild(new TestGame(states.TemplateTestState));
         // addChild(new TestGame(states.ClipRectTestState));
         // addChild(new TestGame(states.ScaleOffsetTestState));
@@ -75,7 +97,7 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MacKeysTestState));
         // addChild(new TestGame(states.WatchFunctionTestState));
         // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
-        // addChild(new TestGame(states.FlxExtendedSpriteTestState));
+        addChild(new TestGame(states.FlxExtendedSpriteTestState));
         // addChild(new TestGame(states.SoundTrayTestState));
         // addChild(new TestGame(states.StackingSoundTestState2926));
         // addChild(new TestGame(states.TelemetryTestState));
@@ -90,14 +112,20 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.HudCursorTestState));
         // addChild(new TestGame(states.SaveTestState));
         // addChild(new TestGame(states.HistogramTestState));
-        addChild(new TestGame(states.BMFontTestState, 2));
+        // addChild(new TestGame(states.BMFontTestState, 2));
+        // addChild(new TestGame(states.OriginTestState2981));
+        // addChild(new TestGame(states.CameraBlackLineTestState));
+        // addChild(new TestGame(states.DefaultMovesTestState2980));
+        // addChild(new TestGame(states.CompileFlagTestState));
+        // addChild(new TestGame(states.CursorTestState, 3));
+        // addChild(new TestGame(states.NestingTestState, 2));
         
         
         // addChild(new tests.KeyEventTest());
     }
 }
 
-abstract TestGame(flixel.FlxGame) to flixel.FlxGame
+abstract TestGame(FlxGame) to FlxGame
 {
     inline public function new (state, zoom = 1)
     {
@@ -107,7 +135,7 @@ abstract TestGame(flixel.FlxGame) to flixel.FlxGame
         if (zoom == 1)
         {
             // set game size to window size
-            this = new flixel.FlxGame(0, 0, state);
+            this = new FlxGame(0, 0, state);
         }
         else
         {
@@ -115,24 +143,27 @@ abstract TestGame(flixel.FlxGame) to flixel.FlxGame
             final stage = openfl.Lib.current.stage;
             final gameWidth = Std.int(stage.stageWidth / zoom);
             final gameHeight = Std.int(stage.stageHeight / zoom);
-            this = new flixel.FlxGame(gameWidth, gameHeight, state);
+            this = new FlxGame(gameWidth, gameHeight, state);
         }
     }
 }
 
+#if (flixel >= "5.6.0")
 class BootState extends flixel.FlxState
 {
-    public static var initialState:Class<flixel.FlxState>;
+    var nextState:NextState;
     
-    override function create()
+    public function new (nextState:NextState)
     {
-        super.create();
+        this.nextState = nextState;
+        super();
     }
     
     override function update(elapsed:Float)
     {
         super.update(elapsed);
         
-        FlxG.switchState(Type.createInstance(initialState, []));
+        FlxG.switchState(nextState);
     }
 }
+#end

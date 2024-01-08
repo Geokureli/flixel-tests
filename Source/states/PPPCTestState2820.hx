@@ -25,8 +25,8 @@ class PPPCTestState2820 extends flixel.FlxState
     {
         super.update(elapsed);
         
-        final overlap = FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, sprite);
-        // final overlap = sprite.pixelsOverlapPoint(FlxG.mouse.getPosition(FlxPoint.weak()));
+        // final overlap = FlxCollision.pixelPerfectPointCheck(FlxG.mouse.x, FlxG.mouse.y, sprite);
+        final overlap = sprite.pixelsOverlapPoint(FlxG.mouse.getPosition(FlxPoint.weak()));
         sprite.color = overlap ? 0xFF00ff00 : 0xFFffffff;
         
         if (FlxG.keys.pressed.D) sprite.x++;

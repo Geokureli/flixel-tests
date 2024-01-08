@@ -48,9 +48,9 @@ class BMFontTestState extends flixel.FlxState
 				texts.add(text);
 			}
 			
-			createText('fonts/$assetId.xml', 'This $assetId font uses XML');
-			createText('fonts/$assetId.txt', 'This $assetId font uses Text');
-			createText('fonts/$assetId.fnt', 'This $assetId font uses Binary');
+			createText('fonts/$assetId.xml', 'This $assetId font uses XML!');
+			createText('fonts/$assetId.txt', 'This $assetId font uses Text!');
+			createText('fonts/$assetId.fnt', 'This $assetId font uses Binary!');
 			y += 5;// group spacing
 			// x += texts.width + 5;
 		}
