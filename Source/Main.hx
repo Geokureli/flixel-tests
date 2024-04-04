@@ -42,8 +42,8 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ButtonUpTestState));
         // addChild(new TestGame(states.FlxTextTestState2656));
         // addChild(new TestGame(states.AssetPathsTestState));
-        // addChild(new TestGame(states.DebugSelectionTestState));
-        // addChild(new TestGame(states.ButtonZoomTestState));
+        // addChild(new TestGame(states.DebugSelectionTestState, 4));
+        // addChild(new TestGame(states.ButtonZoomTestState, 2));
         // addChild(new TestGame(states.NoAnimTestState));
         // addChild(new TestGame(states.ArraySwapTestState));
         // addChild(new TestGame(states.FlxStripShaderTestState));
@@ -97,7 +97,7 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MacKeysTestState));
         // addChild(new TestGame(states.WatchFunctionTestState));
         // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
-        addChild(new TestGame(states.FlxExtendedSpriteTestState));
+        // addChild(new TestGame(states.FlxExtendedSpriteTestState));
         // addChild(new TestGame(states.SoundTrayTestState));
         // addChild(new TestGame(states.StackingSoundTestState2926));
         // addChild(new TestGame(states.TelemetryTestState));
@@ -113,13 +113,19 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.SaveTestState));
         // addChild(new TestGame(states.HistogramTestState));
         // addChild(new TestGame(states.BMFontTestState, 2));
+        // addChild(new TestGame(states.BMFontTestState3024, 2));
         // addChild(new TestGame(states.OriginTestState2981));
         // addChild(new TestGame(states.CameraBlackLineTestState));
         // addChild(new TestGame(states.DefaultMovesTestState2980));
         // addChild(new TestGame(states.CompileFlagTestState));
         // addChild(new TestGame(states.CursorTestState, 3));
         // addChild(new TestGame(states.NestingTestState, 2));
-        
+        // addChild(new TestGame(states.DebugStuffTestState, 2));
+        // addChild(new TestGame(states.TextFormatTestState, 4));
+        // addChild(new TestGame(states.AsyncImageTestState, 2));
+        // addChild(new TestGame(states.BarTestState, 2));
+        // addChild(new TestGame(states.HealthTestState, 2));
+        addChild(new TestGame(states.FlickerTweenTestState, 2));
         
         // addChild(new tests.KeyEventTest());
     }

@@ -1,6 +1,6 @@
 package states;
 
-import flixel.group.FlxSpriteGroup;
+import flixel.group.FlxSpriteContainer;
 import flixel.FlxG;
 import flixel.graphics.frames.FlxBitmapFont;
 import flixel.text.FlxBitmapText;
@@ -25,7 +25,7 @@ class BMFontTestState extends flixel.FlxState
 	
 	public function createAllTexts()
 	{
-		final groups = new FlxTypedSpriteGroup<FlxTypedSpriteGroup<FlxBitmapText>>();
+		final groups = new FlxTypedSpriteContainer<FlxTypedSpriteContainer<FlxBitmapText>>();
 		// var x = 0.0;
 		var y = 0.0;
 		function createGroup(assetId:String)
@@ -34,7 +34,7 @@ class BMFontTestState extends flixel.FlxState
 				return;
 			
 			// var y = 0.0;
-			final texts = new FlxTypedSpriteGroup<FlxBitmapText>();
+			final texts = new FlxTypedSpriteContainer<FlxBitmapText>();
 			groups.add(texts);
 			
 			function createText(fontKey:String, text:String)

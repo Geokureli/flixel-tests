@@ -15,7 +15,7 @@ class DebugSelectionTestState extends flixel.FlxState
 	{
 		super.create();
 		
-		createMess();
+		createMess(16, 1.0);
 		
 		// create ui on separate camera
 		add(zoomText = new UIText(4, 4, "Zoom: 1.0"));

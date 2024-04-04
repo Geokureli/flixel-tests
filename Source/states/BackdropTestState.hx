@@ -1,6 +1,7 @@
 package states;
 
 import flixel.FlxG;
+import flixel.group.FlxGroup;
 import flixel.util.FlxAxes;
 import flixel.addons.util.FlxScene;
 

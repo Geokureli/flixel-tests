@@ -219,8 +219,6 @@ typedef FlxBarOptions
 	@:optional var min:Float;
 	@:optional var max:Float;
 	@:optional var value:Float;
-	@:optional var ratio:Float;
-	@:optional var percent:Float;
 	
 	@:optional var showFrame:Bool;
 	@:optional var frameSprite:FlxSprite;
