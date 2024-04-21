@@ -166,6 +166,7 @@ class FlxBarRange
 {
 	public final min:Float = 0.0;
 	public final max:Float = 1.0;
+	public final numIntervals:Int = 0;
 	
 	public function validate()
 	{
@@ -174,6 +175,24 @@ class FlxBarRange
 			throw 'Invalid range, min: $min, max: $max';
 			return;
 		}
+	}
+	
+	inline public function getDiff()
+	{
+		return max - min;
+	}
+	
+	inline public function getInterval()
+	{
+		return numIntervals == 0 ? 0 : (max - min) / numIntervals;
+	}
+	
+	public function snapToNearest(value:Float)
+	{
+		if (numIntervals == 0)
+			return value;
+		
+		return Math.round((value - min) / getInterval()) * ;
 	}
 }
 

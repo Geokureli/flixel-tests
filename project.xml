@@ -32,10 +32,13 @@
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="Source" />
 	<classpath path="../../lib/Source" />
-	<assets path="Assets" rename="assets"/>
-	<assets path="async-assets" embed="false" preload="true" />
-	<!-- <library name="async" preload="false"/> -->
-	<!-- <assets path="async-assets" library="async"/> -->
+	<assets path="Assets" rename="assets" embed="true"/>
+	
+	<!-- <assets path="async-assets"/> -->
+	<!-- <library name="async" preload="true"/> -->
+	<library name="async" embed="true"/>
+	<assets path="async-assets" library="async"/>
+	
 	<assets path="assets388" />
 	<assets path="assets399" rename="assets" />
 	<assets path="assets2926" rename="assets" />
@@ -67,9 +70,10 @@
 	
 	<!--HAXEDEFINES-->
 	
-	<!-- <haxedef name="telemetry"/> -->
+	<haxedef name="telemetry"/>
 	<section if="telemetry">
 		<define name="hxcpp"/>
+		<haxedef name="advanced-telemetry"/>
 		<!-- already included if telemetry is defined -->
 		<haxelib name="hxtelemetry"/>
 	</section>

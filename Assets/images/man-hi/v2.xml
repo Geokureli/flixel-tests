@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TextureAtlas imagePath="Man hi.png">
+	<!-- Created with Adobe Animate version 22.0.2.168 -->
+	<!-- http://www.adobe.com/products/animate.html -->
+	<SubTexture name="sparrow instancia 10000" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10001" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10002" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10003" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10004" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10005" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10006" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10007" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10008" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10009" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10010" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10011" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10012" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10013" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10014" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10015" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10016" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10017" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10018" x="0" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10019" x="249" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10020" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10021" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10022" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10023" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10024" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10025" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10026" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10027" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10028" x="0" y="0" width="0" height="0" frameX="339" frameY="197" frameWidth="249" frameHeight="270"/>
+	<SubTexture name="sparrow instancia 10029" x="498" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10030" x="747" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10031" x="498" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10032" x="747" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10033" x="498" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10034" x="747" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10035" x="498" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10036" x="747" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10037" x="498" y="0" width="249" height="270"/>
+	<SubTexture name="sparrow instancia 10038" x="747" y="0" width="249" height="270"/>
+</TextureAtlas>
