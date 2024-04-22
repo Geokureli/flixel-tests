@@ -129,8 +129,9 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MidpointTestState, 1));
         // addChild(new TestGame(states.SparrowVTestState, 1));
         // addChild(new TestGame(states.SpriteGroupCameraTestState, 2));
-        addChild(new TestGame(states.ContainerCameraTestState, 2));
+        // addChild(new TestGame(states.ContainerCameraTestState, 2));
         // addChild(new TestGame(states.SoundRecycleTestState, 2));
+        addChild(new TestGame(states.NoneKeyTestState, 2));
         
         // addChild(new tests.KeyEventTest());
     }
