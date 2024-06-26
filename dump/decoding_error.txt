@@ -1,0 +1,1115 @@
+{
+	doc: An `openfl.Vector<String>` disguised as an `Array<{ x: String, y: String }>`.
+Often used in under-the-hood Flixel systems, like rendering,
+where creating actual instances of objects every frame would balloon memory.
+
+## Example
+In the following example, see how it behaves quite similar to an Array
+```haxe
+	var buffer = new FlxBuffer<{final x:Float; final y:Float;}>();
+	for (i in 0...100)
+		buffer.push({ x: i % 10, y: Std.int(i / 10) });
+	
+	buffer.shift();
+	buffer.pop();
+	
+	for (i=>item in buffer)
+	{
+		trace('$i: $item');
+	}
+```
+
+## Caveats
+- Can only be modified via `push`, `pop`, `shift` and `resize`. Missing notable
+features like `insert` and setting via array access operator, these can be
+implemented but are low priority
+- Editing items retrieved from the buffer will not edit the corresponding indicies,
+for that reason it is recommended to use final vars
+- all retrieved items must be handled via inline functions to avoid ever actually
+instantiating an anonymous structure. This includes `Std.string(item)`
+	fields: [{
+		access: [AStatic, AInline]
+		doc: null
+		kind: FVar(TPath({
+			name: Int
+			pack: []
+			params: []
+			sub: null
+		}), {
+			expr: EConst(CInt(2, null))
+			pos: #pos
+		})
+		meta: null
+		name: FIELDS
+		pos: #pos
+	}, {
+		access: [APublic]
+		doc:  The number of items in this buffer 
+		kind: FProp(get, never, TPath({
+			name: Int
+			pack: []
+			params: []
+			sub: null
+		}), null)
+		meta: null
+		name: length
+		pos: #pos
+	}, {
+		access: [AInline]
+		doc: null
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EReturn({
+					expr: ECall({
+						expr: EField({
+							expr: EConst(CIdent(Std))
+							pos: #pos
+						}, int, Normal)
+						pos: #pos
+					}, [{
+						expr: EBinop(OpDiv, {
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, length, Normal)
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(FIELDS))
+							pos: #pos
+						})
+						pos: #pos
+					}])
+					pos: #pos
+				})
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: get_length
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: null
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EBlock([{
+					expr: EBinop(OpAssign, {
+						expr: EConst(CIdent(this))
+						pos: #pos
+					}, {
+						expr: ENew({
+							name: Vector
+							pack: [openfl]
+							params: []
+							sub: null
+						}, [])
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: new
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Fetches the item at the desired index 
+		kind: FFun({
+			args: [{
+				meta: null
+				name: i
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EBinop(OpMult, {
+								expr: EConst(CIdent(i))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(FIELDS))
+								pos: #pos
+							})
+							pos: #pos
+						}
+						isFinal: true
+						isStatic: false
+						meta: []
+						name: iReal
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EReturn({
+						expr: EObjectDecl([{
+							expr: {
+								expr: EArray({
+									expr: EConst(CIdent(this))
+									pos: #pos
+								}, {
+									expr: EBinop(OpAdd, {
+										expr: EConst(CIdent(iReal))
+										pos: #pos
+									}, {
+										expr: EConst(CInt(0, null))
+										pos: #pos
+									})
+									pos: #pos
+								})
+								pos: #pos
+							}
+							field: x
+							quotes: null
+						}, {
+							expr: {
+								expr: EArray({
+									expr: EConst(CIdent(this))
+									pos: #pos
+								}, {
+									expr: EBinop(OpAdd, {
+										expr: EConst(CIdent(iReal))
+										pos: #pos
+									}, {
+										expr: EConst(CInt(1, null))
+										pos: #pos
+									})
+									pos: #pos
+								})
+								pos: #pos
+							}
+							field: y
+							quotes: null
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TAnonymous([{
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: y
+				pos: #pos
+			}, {
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: x
+				pos: #pos
+			}])
+		})
+		meta: [{
+			name: :arrayAccess
+			params: []
+			pos: #pos
+		}]
+		name: get
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Fetches the item at the desired index 
+		kind: FFun({
+			args: [{
+				meta: null
+				name: pos
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: item
+				opt: false
+				type: TAnonymous([{
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: y
+					pos: #pos
+				}, {
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: x
+					pos: #pos
+				}])
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EBlock([{
+						expr: null <- expected value
+						pos: null <- expected value
+					}, {
+						expr: null <- expected value
+						pos: null <- expected value
+					}])
+					pos: #pos
+				}, {
+					expr: EReturn({
+						expr: EConst(CIdent(item))
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TAnonymous([{
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: y
+				pos: #pos
+			}, {
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: x
+				pos: #pos
+			}])
+		})
+		meta: [{
+			name: :arrayAccess
+			params: []
+			pos: #pos
+		}]
+		name: set
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: 
+			* Inserts the element x at the position pos.
+			* 
+			* This operation modifies this Array in place.
+			* 
+			* The offset is calculated like so:
+			* 
+			* If pos exceeds this.length, the offset is this.length.
+			* If pos is negative, the offset is calculated from the end of this Array, i.e. this.length + pos. If this yields a negative value, the offset is 0.
+			* Otherwise, the offset is pos.
+			* If the resulting offset does not exceed this.length, all elements from and including that offset to the end of this Array are moved one index ahead.
+			
+		kind: FFun({
+			args: [{
+				meta: null
+				name: pos
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: item
+				opt: false
+				type: TAnonymous([{
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: y
+					pos: #pos
+				}, {
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: x
+					pos: #pos
+				}])
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EBlock([{
+						expr: null <- expected value
+						pos: null <- expected value
+					}, {
+						expr: null <- expected value
+						pos: null <- expected value
+					}])
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: insert
+		pos: #pos
+	}, {
+		access: [APublic, AOverload, AExtern, AInline]
+		doc: 
+			 * Adds the item at the end of this Buffer and returns the new length of this Array
+			 * 
+			 * This operation modifies this Array in place
+			 * 
+			 * `this.length` increases by `1`
+			 
+		kind: FFun({
+			args: [{
+				meta: null
+				name: item
+				opt: false
+				type: TAnonymous([{
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: y
+					pos: #pos
+				}, {
+					access: [APublic]
+					doc: null
+					kind: FProp(default, default, TPath({
+						name: String
+						pack: []
+						params: []
+						sub: null
+					}), null)
+					meta: []
+					name: x
+					pos: #pos
+				}])
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EBlock([{
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, push, Normal)
+							pos: #pos
+						}, [{
+							expr: EField({
+								expr: EConst(CIdent(item))
+								pos: #pos
+							}, x, Normal)
+							pos: #pos
+						}])
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, push, Normal)
+							pos: #pos
+						}, [{
+							expr: EField({
+								expr: EConst(CIdent(item))
+								pos: #pos
+							}, y, Normal)
+							pos: #pos
+						}])
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EReturn({
+						expr: EConst(CIdent(length))
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Int
+				pack: []
+				params: []
+				sub: null
+			})
+		})
+		meta: null
+		name: push
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Removes and returns the first item 
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EConst(CInt(0, null))
+							pos: #pos
+						}
+						isFinal: true
+						isStatic: false
+						meta: []
+						name: iReal
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EVars([{
+						expr: {
+							expr: EObjectDecl([{
+								expr: {
+									expr: EArray({
+										expr: EConst(CIdent(this))
+										pos: #pos
+									}, {
+										expr: EBinop(OpAdd, {
+											expr: EConst(CIdent(iReal))
+											pos: #pos
+										}, {
+											expr: EConst(CInt(0, null))
+											pos: #pos
+										})
+										pos: #pos
+									})
+									pos: #pos
+								}
+								field: x
+								quotes: null
+							}, {
+								expr: {
+									expr: EArray({
+										expr: EConst(CIdent(this))
+										pos: #pos
+									}, {
+										expr: EBinop(OpAdd, {
+											expr: EConst(CIdent(iReal))
+											pos: #pos
+										}, {
+											expr: EConst(CInt(1, null))
+											pos: #pos
+										})
+										pos: #pos
+									})
+									pos: #pos
+								}
+								field: y
+								quotes: null
+							}])
+							pos: #pos
+						}
+						isFinal: true
+						isStatic: false
+						meta: []
+						name: item
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBlock([{
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, shift, Normal)
+							pos: #pos
+						}, [])
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, shift, Normal)
+							pos: #pos
+						}, [])
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EReturn({
+						expr: EConst(CIdent(item))
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TAnonymous([{
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: y
+				pos: #pos
+			}, {
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: x
+				pos: #pos
+			}])
+		})
+		meta: null
+		name: shift
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Removes and returns the last item 
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EBlock([{
+					expr: EVars([{
+						expr: {
+							expr: EBinop(OpSub, {
+								expr: EField({
+									expr: EConst(CIdent(this))
+									pos: #pos
+								}, length, Normal)
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(FIELDS))
+								pos: #pos
+							})
+							pos: #pos
+						}
+						isFinal: true
+						isStatic: false
+						meta: []
+						name: iReal
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EVars([{
+						expr: {
+							expr: EObjectDecl([{
+								expr: {
+									expr: EArray({
+										expr: EConst(CIdent(this))
+										pos: #pos
+									}, {
+										expr: EBinop(OpAdd, {
+											expr: EConst(CIdent(iReal))
+											pos: #pos
+										}, {
+											expr: EConst(CInt(0, null))
+											pos: #pos
+										})
+										pos: #pos
+									})
+									pos: #pos
+								}
+								field: x
+								quotes: null
+							}, {
+								expr: {
+									expr: EArray({
+										expr: EConst(CIdent(this))
+										pos: #pos
+									}, {
+										expr: EBinop(OpAdd, {
+											expr: EConst(CIdent(iReal))
+											pos: #pos
+										}, {
+											expr: EConst(CInt(1, null))
+											pos: #pos
+										})
+										pos: #pos
+									})
+									pos: #pos
+								}
+								field: y
+								quotes: null
+							}])
+							pos: #pos
+						}
+						isFinal: true
+						isStatic: false
+						meta: []
+						name: item
+						namePos: #pos
+						type: null
+					}])
+					pos: #pos
+				}, {
+					expr: EBlock([{
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, pop, Normal)
+							pos: #pos
+						}, [])
+						pos: #pos
+					}, {
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, pop, Normal)
+							pos: #pos
+						}, [])
+						pos: #pos
+					}])
+					pos: #pos
+				}, {
+					expr: EReturn({
+						expr: EConst(CIdent(item))
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TAnonymous([{
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: y
+				pos: #pos
+			}, {
+				access: [APublic]
+				doc: null
+				kind: FProp(default, default, TPath({
+					name: String
+					pack: []
+					params: []
+					sub: null
+				}), null)
+				meta: []
+				name: x
+				pos: #pos
+			}])
+		})
+		meta: null
+		name: pop
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: 
+			 * Set the length of the Array.
+			 * If len is shorter than the array's current size, the last length - len elements will
+			 * be removed. If len is longer, the Array will be extended
+			 * 
+			 * **Note:** Since FlxBuffers are actually Arrays of some primitive, often `Float`, it
+			 * will likely add all zeros
+			 * 
+			 * @param   length  The desired length
+			 
+		kind: FFun({
+			args: [{
+				meta: null
+				name: length
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EBinop(OpAssign, {
+						expr: EField({
+							expr: EConst(CIdent(this))
+							pos: #pos
+						}, length, Normal)
+						pos: #pos
+					}, {
+						expr: EBinop(OpMult, {
+							expr: EConst(CIdent(length))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(FIELDS))
+							pos: #pos
+						})
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: resize
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: 
+			* Creates a shallow copy of the range of this Buffer, starting at and including pos,
+			* up to but not including end.
+			* 
+			* This operation does not modify this Buffer.
+			* 
+			* The elements are not copied and retain their identity.
+			* 
+			* If end is omitted or exceeds this.length, it defaults to the end of this Buffer.
+			* 
+			* If pos or end are negative, their offsets are calculated from the end of this
+			* Buffer by this.length + pos and this.length + end respectively. If this yields
+			* a negative value, 0 is used instead.
+			* 
+			* If pos exceeds this.length or if end is less than or equals pos, the result is [].
+			
+		kind: FFun({
+			args: [{
+				meta: null
+				name: pos
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}, {
+				meta: null
+				name: end
+				opt: false
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EBlock([{
+					expr: EReturn({
+						expr: ECall({
+							expr: EField({
+								expr: EConst(CIdent(this))
+								pos: #pos
+							}, slice, Normal)
+							pos: #pos
+						}, [{
+							expr: EBinop(OpMult, {
+								expr: EConst(CIdent(pos))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(FIELDS))
+								pos: #pos
+							})
+							pos: #pos
+						}, {
+							expr: EBinop(OpMult, {
+								expr: EConst(CIdent(end))
+								pos: #pos
+							}, {
+								expr: EConst(CIdent(FIELDS))
+								pos: #pos
+							})
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: TPath({
+				name: Buffer_String_x_y
+				pack: []
+				params: null
+				sub: null
+			})
+		})
+		meta: null
+		name: slice
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Returns an iterator of the buffer's items 
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EBlock([{
+					expr: EReturn({
+						expr: ENew({
+							name: BufferIterator_String_x_y
+							pack: []
+							params: null
+							sub: null
+						}, [{
+							expr: EConst(CIdent(this))
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: iterator
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc:  Returns an iterator of the buffer's indices and items 
+		kind: FFun({
+			args: []
+			expr: {
+				expr: EBlock([{
+					expr: EReturn({
+						expr: ENew({
+							name: BufferKeyValueIterator_String_x_y
+							pack: []
+							params: null
+							sub: null
+						}, [{
+							expr: EConst(CIdent(this))
+							pos: #pos
+						}])
+						pos: #pos
+					})
+					pos: #pos
+				}])
+				pos: #pos
+			}
+			params: []
+			ret: null
+		})
+		meta: null
+		name: keyValueIterator
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: index
+				opt: null
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EArray({
+					expr: EConst(CIdent(this))
+					pos: #pos
+				}, {
+					expr: EBinop(OpAdd, {
+						expr: EBinop(OpMult, {
+							expr: EConst(CIdent(index))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(FIELDS))
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: EConst(CInt(0, null))
+						pos: #pos
+					})
+					pos: #pos
+				})
+				pos: #pos
+			}
+			params: null
+			ret: null
+		})
+		meta: null
+		name: getX
+		pos: #pos
+	}, {
+		access: [APublic, AInline]
+		doc: null
+		kind: FFun({
+			args: [{
+				meta: null
+				name: index
+				opt: null
+				type: TPath({
+					name: Int
+					pack: []
+					params: []
+					sub: null
+				})
+				value: null
+			}]
+			expr: {
+				expr: EArray({
+					expr: EConst(CIdent(this))
+					pos: #pos
+				}, {
+					expr: EBinop(OpAdd, {
+						expr: EBinop(OpMult, {
+							expr: EConst(CIdent(index))
+							pos: #pos
+						}, {
+							expr: EConst(CIdent(FIELDS))
+							pos: #pos
+						})
+						pos: #pos
+					}, {
+						expr: EConst(CInt(1, null))
+						pos: #pos
+					})
+					pos: #pos
+				})
+				pos: #pos
+			}
+			params: null
+			ret: null
+		})
+		meta: null
+		name: getY
+		pos: #pos
+	}]
+	isExtern: false
+	kind: TDAbstract(TPath({
+		name: Vector
+		pack: [openfl]
+		params: [TPType(TPath({
+			name: String
+			pack: []
+			params: []
+			sub: null
+		}))]
+		sub: null
+	}), null, [TPath({
+		name: Vector
+		pack: [openfl]
+		params: [TPType(TPath({
+			name: String
+			pack: []
+			params: []
+			sub: null
+		}))]
+		sub: null
+	})], [TPath({
+		name: Vector
+		pack: [openfl]
+		params: [TPType(TPath({
+			name: String
+			pack: []
+			params: []
+			sub: null
+		}))]
+		sub: null
+	})])
+	meta: []
+	name: Buffer_String_x_y
+	pack: []
+	params: []
+	pos: #pos
+}
+line 262: expected value
+line 263: expected value
+line 265: expected value
+line 266: expected value
+line 361: expected value
+line 362: expected value
+line 364: expected value
+line 365: expected value

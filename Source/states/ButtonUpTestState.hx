@@ -16,7 +16,7 @@ class ButtonUpTestState extends flixel.FlxState
 		add(oldButton);
 		
 		var newButton = new FlxButtonExt("new");
-		newButton.upHandlerState = FlxButton.HIGHLIGHT;
+		newButton.upHandlerState = HIGHLIGHT;
 		newButton.screenCenter();
 		newButton.x += newButton.width;
 		newButton.y -= newButton.height;
@@ -31,7 +31,7 @@ class ButtonUpTestState extends flixel.FlxState
 		
 		var newSwipeButton = new FlxButtonExt("new no swipe");
 		newSwipeButton.allowSwiping = false;
-		newSwipeButton.upHandlerState = FlxButton.HIGHLIGHT;
+		newSwipeButton.upHandlerState = HIGHLIGHT;
 		newSwipeButton.screenCenter();
 		newSwipeButton.x += newSwipeButton.width;
 		newSwipeButton.y += newSwipeButton.height;
@@ -41,7 +41,7 @@ class ButtonUpTestState extends flixel.FlxState
 
 class FlxButtonExt extends FlxButton
 {
-	public var upHandlerState = FlxButton.NORMAL;
+	public var upHandlerState = NORMAL;
 	
 	public function new (x = 0.0, y = 0.0, ?text)
 	{

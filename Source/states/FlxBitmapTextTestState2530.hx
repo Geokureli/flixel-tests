@@ -49,7 +49,7 @@ class FlxBitmapTextTestState2530 extends flixel.FlxState
             text.fieldWidth = 100;
             text.letterSpacing = -1;
             text.multiLine = true;
-            text.wrap = wrap;
+            // text.wrap = wrap;
             text.text = msg;
             text.updateHitbox();
             texts.add(text);

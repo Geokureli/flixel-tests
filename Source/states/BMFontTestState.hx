@@ -56,7 +56,9 @@ class BMFontTestState extends flixel.FlxState
 		}
 		
 		createGroup("digitalpup");
+		#if ALL_FONTS
 		createGroup("arial");
+		#end
 		groups.screenCenter();
 		add(groups);
 	}

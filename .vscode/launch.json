@@ -1,13 +1,30 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Lime",
-            "type": "lime",
-            "request": "launch"
-        }
-    ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Build + Debug",
+			"type": "lime",
+			"request": "launch"
+		},
+		{
+			"name": "Debug",
+			"type": "lime",
+			"request": "launch"
+		},
+		{
+			"name": "Macro",
+			"type": "haxe-eval",
+			"request": "launch"
+		},
+		{
+			"name": "HL Debug",
+			"type": "hl",
+			"cwd":"/Users/booboo/Documents/projects/haxe/test/flixel-tests/export/hl/bin",
+			"hl": "/Applications/hashlink-nightly/hl",
+			"program": "/Users/booboo/Documents/projects/haxe/test/flixel-tests/export/hl/bin/Main.app/Contents/MacOS/hlboot.dat",
+			"request": "launch",
+			"preLaunchTask": "lime: build hl -debug",
+			// "classPaths": ["/Users/booboo/Documents/projects/haxe/test/flixel-tests/src"]
+		}
+	]
 }

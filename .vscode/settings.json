@@ -8,7 +8,10 @@
     , "../../lib/flixel/tests/unit/src"
     ]
 ,   "haxeTestExplorer.testCommand":
-    [ "haxelib", "run", "lime", "test", "../../lib/flixel/tests/unit/project.xml", "cpp", "--haxelib=test-adapter"
+    [ "haxelib", "run", "openfl", "test"
+    , "../../lib/flixel/tests/unit"
+    , "hl" , "-Dtravis", "--haxelib=test-adapter"
+    , "-clean"
     ]
 ,   "[haxe]":
     { "editor.formatOnSave": false

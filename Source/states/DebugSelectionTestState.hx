@@ -1,5 +1,6 @@
 package states;
 
+import flixel.util.FlxSpriteUtil;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -34,7 +35,8 @@ class DebugSelectionTestState extends flixel.FlxState
 			final x = FlxG.random.float(area.left, area.right - size);
 			final y = FlxG.random.float(area.top, area.bottom - size);
 			final sprite = new FlxSprite(x, y);
-			sprite.makeGraphic(size, size, FlxColor.WHITE);
+			sprite.makeGraphic(size, size, 0x0);
+			FlxSpriteUtil.drawCircle(sprite, size / 2, size / 2, size / 2 - 1);
 			sprite.color = FlxColor.fromHSB(FlxG.random.float(0, 360), 1, 1);
 			add(sprite);
 		}
@@ -56,7 +58,6 @@ class DebugSelectionTestState extends flixel.FlxState
 		if (FlxG.keys.anyPressed([S, DOWN]))
 			camera.scroll.y += (FlxG.height / 2) * elapsed;
 		
-		
 		var deltaZoom = 0.0;
 		if (FlxG.mouse.wheel != 0)
 			deltaZoom = FlxG.mouse.wheel / 1000;
@@ -66,6 +67,12 @@ class DebugSelectionTestState extends flixel.FlxState
 			deltaZoom = -0.1;
 		
 		FlxG.camera.zoom = Math.min(2.0, Math.max(0.2, FlxG.camera.zoom - deltaZoom));
+		
+		if (deltaZoom != 0)
+			zoomText.text = 'Zoom: ' + (Math.round(FlxG.camera.zoom * 10) / 10);
+		
+		// if (FlxG.keys.pressed.ENTER)
+		// 	flixel.system.debug.FlxDebugDrawGraphic.debugUseFill = flixel.system.debug.FlxDebugDrawGraphic.debugUseFill;
 	}
 }
 

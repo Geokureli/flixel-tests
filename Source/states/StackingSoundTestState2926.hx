@@ -2,6 +2,10 @@ package states;
 
 import flixel.FlxG;
 
+#if !ALL_SOUNDS
+#error "cannot run StackingSoundTestState2926 without defining ALL_SOUNDS";
+#end
+
 class StackingSoundTestState2926 extends flixel.FlxState
 {
     override public function create()
