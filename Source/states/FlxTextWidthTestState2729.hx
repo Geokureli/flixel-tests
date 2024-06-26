@@ -12,10 +12,12 @@ class FlxTextWidthTestState2729 extends flixel.FlxState
         FlxG.debugger.drawDebug = true;
         
         var label = new FlxText(100, 100, 150, "hello", 24);
-        // label.width = 50; // causes error
-        label.fieldWidth = 50; // avoids error
+        label.wordWrap = false;
+        label.fieldWidth = 50;
         label.alignment = RIGHT;
         add(label);
+        
+        FlxG.random.shuffle([for (i in 0...8) i]);
     }
     
     override function update(elapsed)
