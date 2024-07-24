@@ -10,8 +10,9 @@
 ,   "haxeTestExplorer.testCommand":
     [ "haxelib", "run", "openfl", "test"
     , "../../lib/flixel/tests/unit"
-    , "hl" , "-Dtravis", "--haxelib=test-adapter"
-    , "-clean"
+    , "hl", "-clean"
+    // , "cpp"
+    , "-Dtravis", "--haxelib=test-adapter"
     ]
 ,   "[haxe]":
     { "editor.formatOnSave": false

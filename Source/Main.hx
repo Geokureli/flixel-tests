@@ -34,7 +34,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ClipRectTestState));
         // addChild(new TestGame(states.ScaleOffsetTestState));
         // addChild(new TestGame(states.TestState2305));
-        // addChild(new TestGame(states.BackdropTestState));
         // addChild(new TestGame(states.JumpTestState));
         // addChild(new TestGame(states.BlueTestState));
         // addChild(new TestGame(states.ModMinMaxTestState));
@@ -45,7 +44,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ButtonZoomTestState, 2));
         // addChild(new TestGame(states.NoAnimTestState));
         // addChild(new TestGame(states.ArraySwapTestState));
-        // addChild(new TestGame(states.FlxStripShaderTestState));
         // addChild(new TestGame(states.PivotTestState));
         // addChild(new TestGame(states.DestroyedSpriteTestState));
         // addChild(new TestGame(states.ErrorSoundTestState));
@@ -57,7 +55,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.OfffsetRotateTestState));
         // addChild(new TestGame(states.FlxTextWidthTestState2729));
         // addChild(new TestGame(states.MergeSaveTestState2735));
-        // addChild(new TestGame(states.AtlasOffsetTestState2746));
         // addChild(new TestGame(states.InvalidFrameSizeTestState));
         // addChild(new TestGame(states.StateOutroTestState));
         // addChild(new TestGame(states.TransitionTestState));
@@ -145,7 +142,20 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.BufferTestState));
         // addChild(new TestGame(states.GameSizeTestState));
         // addChild(new TestGame(states.TilemapSetIndexTestState));
-        addChild(new TestGame(states.HLArithTestState));
+        // addChild(new TestGame(states.HLArithTestState));
+        // addChild(new TestGame(states.AtlasOffsetTestState2746));
+        // addChild(new TestGame(states.AlphaTweenTestState3198));
+        // addChild(new TestGame(states.BackdropTestState));
+        // addChild(new TestGame(states.MouseScreenTestState3200, 2, 800-80, 800));
+        // addChild(new TestGame(states.BigMoverPathfinderTestState));
+        // addChild(new TestGame(states.AnimFinishedTestState));
+        // addChild(new TestGame(states.FlxStripShaderTestState));
+        // addChild(new TestGame(states.FlxStripBlendModeTestState));
+        // addChild(new TestGame(states.FlxTextMultilineTest));
+        // addChild(new TestGame(states.LastBlendTestState));
+        // addChild(new TestGame(states.LastBlendTestState2));
+        addChild(new TestGame(states.FlxInputTextTest));
+        // addChild(new TestGame(states.SpriteGroupScaleTestState));
         
         // addChild(new tests.KeyEventTest());
     }
@@ -153,22 +163,21 @@ class Main extends openfl.display.Sprite
 
 abstract TestGame(FlxGame) to FlxGame
 {
-    inline public function new (state, zoom = 1)
+    inline public function new (state, zoom = 1, width = 0, height = 0)
     {
         if (FlxG.game != null)
             throw "Already created a FlxGame";
         
         if (zoom == 1)
         {
-            // set game size to window size
-            this = new FlxGame(0, 0, state);
+            this = new FlxGame(width, height, state);
         }
         else
         {
-            // set game sizse from zoom
+            // set game size from zoom
             final stage = openfl.Lib.current.stage;
-            final gameWidth = Std.int(stage.stageWidth / zoom);
-            final gameHeight = Std.int(stage.stageHeight / zoom);
+            final gameWidth = Std.int((width == 0 ? stage.stageWidth : width) / zoom);
+            final gameHeight = Std.int((height == 0 ? stage.stageHeight : height) / zoom);
             this = new FlxGame(gameWidth, gameHeight, state);
         }
     }

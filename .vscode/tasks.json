@@ -12,6 +12,16 @@
 				"$haxe-trace"
 			],
 			"label": "lime: build hl -debug"
+		},
+		{
+			"label":"Unit 1",
+			"type": "shell",
+			"command": "haxelib run ../../lib/flixel/tests/coverage/Project hl -clean -Dcoverage1"
+		},
+		{
+			"label":"Unit 2",
+			"type": "shell",
+			"command": "haxelib run ../../lib/flixel/tests/coverage/Project hl -clean -Dcoverage2"
 		}
 	]
 }
