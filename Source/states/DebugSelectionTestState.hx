@@ -58,47 +58,13 @@ class DebugSelectionTestState extends flixel.FlxState
 		var i = sprites.length;
 		while (i-- > 0)
 		{
-			if (hueMode)
-			{
-				final hue = 60 * FlxG.random.int(0, 6);
-				members[i].color = FlxColor.fromHSB(hue, 1, 1);
-			}
-			else
-			{
-				members[i].color = FlxG.random.bool() ? FlxColor.WHITE : 0xff003200;
-			}
-		}
-	}
-	
-	function sortByColor(ascending = true)
-	{
-		final members = sprites.members;
-		var i = sprites.length;
-		while (i-- > 0)
-		{
-			final member = members[i];
-			if ((i > sprites.length / 2) == ascending)
-			{
-				member.color = FlxColor.WHITE;
-			}
-		}
-	}
-	
-	function removeMess(density = 0.5, sortColors = true)
-	{
-		final area = FlxRect.get(0, 0, FlxG.width * 2, FlxG.height * 2);
-		var count = Std.int(area.width * area.height / (SIZE * SIZE) * density);
-		if (count > sprites.length)
-			count > sprites.length;
-		
-		while (count-- > 0)
-		{
-			sprites.getFirstAlive().kill();
-		}
-		
-		if (sortColors)
-		{
-			sortByColor();
+			final x = FlxG.random.float(area.left, area.right - size);
+			final y = FlxG.random.float(area.top, area.bottom - size);
+			final sprite = new FlxSprite(x, y);
+			sprite.makeGraphic(size, size, 0x0);
+			FlxSpriteUtil.drawCircle(sprite, size / 2, size / 2, size / 2 - 1);
+			sprite.color = FlxColor.fromHSB(FlxG.random.float(0, 360), 1, 1);
+			add(sprite);
 		}
 	}
 	
@@ -140,17 +106,6 @@ class DebugSelectionTestState extends flixel.FlxState
 		
 		// if (FlxG.keys.pressed.ENTER)
 		// 	flixel.system.debug.FlxDebugDrawGraphic.debugUseFill = flixel.system.debug.FlxDebugDrawGraphic.debugUseFill;
-		
-		if (FlxG.keys.justPressed.LBRACKET)
-			removeMess(1, shift);
-		else if (FlxG.keys.justPressed.RBRACKET)
-			createMess(1, shift);
-		
-		if (FlxG.keys.justPressed.P)
-			randomizeColors(shift);
-		
-		if (FlxG.keys.justPressed.O)
-			sortByColor(shift);
 	}
 }
 
