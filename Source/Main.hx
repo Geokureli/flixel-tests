@@ -59,7 +59,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.StateOutroTestState));
         // addChild(new TestGame(states.TransitionTestState));
         // addChild(new TestGame(states.AnimCallbackTestState2782));
-        // addChild(new TestGame(states.ResizeGameTestState2744));
         // addChild(new TestGame(states.DebugToolTestState));
         // addChild(new TestGame(states.TryCatchTestState));
         // addChild(new TestGame(states.EaseGraphState));
@@ -135,7 +134,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.FeeshyColorTestState));
         // addChild(new TestGame(states.BGSpriteTestState));
         // addChild(new TestGame(states.TiledSpriteTestState));
-        // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.TypeTextTestState, 4));
         // addChild(new TestGame(states.RecyclingTestState3185, 4));
         // addChild(new TestGame(states.ColorTestState));
@@ -156,6 +154,8 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.LastBlendTestState2));
         addChild(new TestGame(states.FlxInputTextTest));
         // addChild(new TestGame(states.SpriteGroupScaleTestState));
+        // addChild(new TestGame(states.DebugSelectionTestState, 4));
+        // addChild(new TestGame(states.ResizeGameTestState));
         
         // addChild(new tests.KeyEventTest());
     }
