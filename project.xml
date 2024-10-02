@@ -32,21 +32,27 @@
 	<set name="BUILD_DIR" value="export" />
 	<classpath name="Source" />
 	<classpath path="../../lib/Source" />
-	<assets path="Assets" rename="assets" embed="true"/>
 	
-	<!-- <assets path="async-assets"/> -->
-	<!-- <library name="async" preload="true"/> -->
-	<library name="async" embed="true"/>
-	<assets path="async-assets" library="async"/>
-	
-	<assets path="assets388" />
-	<assets path="assets399" rename="assets" />
-	<assets path="assets2926" rename="assets" if="ALL_SOUNDS"/>
-	<assets path="debugToolAssets" embed="true"/>
-	<assets path="adventurerAssets" exclude="*.aseprite" />
-	
-	<assets path="fonts" exclude="*.bmfc*" if="ALL_FONTS" />
-	<assets path="fonts" exclude="*.bmfc|*arial*|*.ttf" unless="ALL_FONTS" />
+	<!--ASSETS-->
+	<section unless="no_assets">
+		<assets path="Assets" rename="assets" embed="true"/>
+		
+		<section if="all_assets">
+			<!-- <assets path="async-assets"/> -->
+			<!-- <library name="async" preload="true"/> -->
+			<library name="async" embed="true"/>
+			<assets path="async-assets" library="async"/>
+		
+			<assets path="assets388" />
+			<assets path="assets399" rename="assets" />
+			<assets path="assets2926" rename="assets" if="ALL_SOUNDS"/>
+			<assets path="debugToolAssets" embed="true"/>
+			<assets path="adventurerAssets" exclude="*.aseprite" />
+			
+			<assets path="fonts" exclude="*.bmfc*" if="ALL_FONTS" />
+			<assets path="fonts" exclude="*.bmfc|*arial*|*.ttf" unless="ALL_FONTS" />
+		</section>
+	</section>
 	
 	<!--LIBRARIES-->
 		
@@ -57,7 +63,8 @@
 	
 	<!--In case you want to use the ui package-->
 	<haxelib name="flixel-ui" />
-	<haxelib name="spinehaxe" />
+	<!-- <haxelib name="spinehaxe" /> -->
+	<haxelib name="polymod" />
 	
 	<!--In case you want to use nape with flixel-->
 	<!-- <haxelib name="nape" /> -->

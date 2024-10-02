@@ -42,29 +42,8 @@ class DebugSelectionTestState extends flixel.FlxState
 			sprite.makeGraphic(SIZE, SIZE);
 			sprite.x = FlxG.random.float(area.left, area.right - SIZE);
 			sprite.y = FlxG.random.float(area.top, area.bottom - SIZE);
-			// sort by color, allowing better batch drawing
-			// final hue = 60 * FlxG.random.int(0, 6);
-			// sprite.color = FlxColor.fromHSB(hue, 1, 1);
-			sprite.color = FlxG.random.bool(50) ? 0xff003200 : FlxColor.WHITE;
-		}
-		
-		if (sortColors)
-			sortByColor();
-	}
-	
-	function randomizeColors(hueMode = false)
-	{
-		final members = sprites.members;
-		var i = sprites.length;
-		while (i-- > 0)
-		{
-			final x = FlxG.random.float(area.left, area.right - size);
-			final y = FlxG.random.float(area.top, area.bottom - size);
-			final sprite = new FlxSprite(x, y);
-			sprite.makeGraphic(size, size, 0x0);
-			FlxSpriteUtil.drawCircle(sprite, size / 2, size / 2, size / 2 - 1);
-			sprite.color = FlxColor.fromHSB(FlxG.random.float(0, 360), 1, 1);
-			add(sprite);
+			final hue = 60 * FlxG.random.int(0, 6);
+			sprite.color = FlxColor.fromHSB(hue, 1, 1);
 		}
 	}
 	

@@ -73,7 +73,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.AngleBetweenTestState));
         // addChild(new TestGame(states.EmptyTextTestState));
         // addChild(new TestGame(states.GroupTestState));
-        // addChild(new TestGame(states.VolumeTestState));
         // addChild(new TestGame(states.AnimationFrameTestState2847));
         // addChild(new TestGame(states.PixelPerfectRenderTestState2849, 10));
         // addChild(new TestGame(states.SoundPanTestState2852));
@@ -83,13 +82,11 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ExceptionTestState11265));
         // addChild(new TestGame(states.JustifyTextTestState));
         // addChild(new TestGame(states.TintTestState));
-        // addChild(new TestGame(states.InputTextTestState2846));
         // addChild(new TestGame(states.VignetteShaderTestState2847));
         // addChild(new TestGame(states.ColorEffectListTestState2869));
         // addChild(new TestGame(states.TilemapSizeTestState2882));
         // addChild(new TestGame(states.RuntimeShaderTestState399));
         // addChild(new TestGame(states.MacKeysTestState));
-        // addChild(new TestGame(states.WatchFunctionTestState));
         // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
         // addChild(new TestGame(states.FlxExtendedSpriteTestState));
         // addChild(new TestGame(states.SoundTrayTestState));
@@ -152,10 +149,24 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.FlxTextMultilineTest));
         // addChild(new TestGame(states.LastBlendTestState));
         // addChild(new TestGame(states.LastBlendTestState2));
-        addChild(new TestGame(states.FlxInputTextTest));
         // addChild(new TestGame(states.SpriteGroupScaleTestState));
         // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.ResizeGameTestState));
+        // addChild(new TestGame(states.SliderTestState));
+        // addChild(new TestGame(states.PolymodTestState));
+        // addChild(new TestGame(states.FlxStripColorTestState));
+        // addChild(new TestGame(states.ButtonLabelOffsetTestState, 2));
+        // addChild(new TestGame(states.TextShadowTestState, 4));
+        // addChild(new TestGame(states.ShaderColorTestState));
+        // addChild(new TestGame(states.FlxBarBorderTestState));
+        // addChild(new TestGame(states.SpriteMatrixTestState));
+        // addChild(new TestGame(states.VolumeTestState));
+        // addChild(new TestGame(states.WatchFunctionTestState));
+        // addChild(new TestGame(states.ByteArrayTestState));
+        // addChild(new TestGame(states.InputTextTestState2846));
+        // addChild(new TestGame(states.InputTextTestState283));
+        // addChild(new TestGame(states.FlxInputTextTest));
+        // addChild(new TestGame(states.StarFieldTestState));
         
         // addChild(new tests.KeyEventTest());
     }

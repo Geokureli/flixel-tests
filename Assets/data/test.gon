@@ -1,0 +1,26 @@
+{
+    "glossary": {
+        "title": "example glossary",
+        "GlossDiv": {
+            "title": "S",
+            "GlossList": {
+                "GlossEntry": {
+                    "ID": "SGML",
+                    "SortAs": "SGML",
+                    "GlossTerm": "Standard Generalized Markup Language",
+                    "Acronym": "SGML",
+                    "Abbrev": "ISO 8879:1986",
+                    "GlossDef": {
+                        "para": "A meta-markup language, used to create markup languages such as DocBook.",
+                        "GlossSeeAlso": ["GML" "XML" "a"],
+                        "weekdays": ["Monday" "Tuesday" "Wednesday" "Thursday" "Friday" "Saturday" "Sunday"]
+                    },
+                    "big_factory": {
+                        "location": "New York City", "a": 1, "b": 2, "c": 3, "d": 4
+                    },
+                    "GlossSee": "markup"
+                }
+            }
+        }
+    }
+}
