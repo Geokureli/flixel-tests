@@ -15,7 +15,8 @@
 	<!-- WINDOW SETTINGS -->
 	
 	<!--These window settings apply to all targets-->
-	<window width="800" height="800" fps="60" background="#000000" hardware="true" vsync="true" />
+	<window width="800" height="800" fps="60" background="#000000" hardware="true" vsync="true" unless="no_hardware"/>
+	<window width="800" height="800" fps="60" background="#000000" hardware="false" vsync="true" if="no_hardware"/>
 	
 	<!--HTML5-specific-->
 	<window if="html5" resizable="false" />
@@ -35,7 +36,8 @@
 	
 	<!--ASSETS-->
 	<section unless="no_assets">
-		<assets path="Assets" rename="assets" embed="true"/>
+		<!-- <assets path="assets" embed="true"/> -->
+		<assets path="assets"/>
 		
 		<section if="all_assets">
 			<!-- <assets path="async-assets"/> -->
