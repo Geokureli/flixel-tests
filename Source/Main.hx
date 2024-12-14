@@ -40,7 +40,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.AustinPixelTestState));
         // addChild(new TestGame(states.ButtonUpTestState));
         // addChild(new TestGame(states.FlxTextTestState2656));
-        // addChild(new TestGame(states.AssetPathsTestState));
         // addChild(new TestGame(states.ButtonZoomTestState, 2));
         // addChild(new TestGame(states.NoAnimTestState));
         // addChild(new TestGame(states.ArraySwapTestState));
@@ -75,7 +74,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.GroupTestState));
         // addChild(new TestGame(states.AnimationFrameTestState2847));
         // addChild(new TestGame(states.PixelPerfectRenderTestState2849, 10));
-        // addChild(new TestGame(states.SoundPanTestState2852));
         // addChild(new TestGame(states.SoundFLPanTestState2852));
         // addChild(new TestGame(states.AseAtlasTestState, 4));
         // addChild(new TestGame(states.CircleWipeShaderTestState));
@@ -140,7 +138,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.HLArithTestState));
         // addChild(new TestGame(states.AtlasOffsetTestState2746));
         // addChild(new TestGame(states.AlphaTweenTestState3198));
-        // addChild(new TestGame(states.BackdropTestState));
         // addChild(new TestGame(states.MouseScreenTestState3200, 2, 800-80, 800));
         // addChild(new TestGame(states.BigMoverPathfinderTestState));
         // addChild(new TestGame(states.AnimFinishedTestState));
@@ -150,7 +147,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.LastBlendTestState));
         // addChild(new TestGame(states.LastBlendTestState2));
         // addChild(new TestGame(states.SpriteGroupScaleTestState));
-        // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.ResizeGameTestState));
         // addChild(new TestGame(states.SliderTestState));
         // addChild(new TestGame(states.PolymodTestState));
@@ -169,15 +165,26 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.StarFieldTestState));
         // addChild(new TestGame(states.AssetFrontEndTestState));
         // addChild(new TestGame(states.SaveCrashTestState3270));
-        addChild(new TestGame(states.CameraColorTest3207));
+        // addChild(new TestGame(states.CameraColorTest3207));
+        // addChild(new TestGame(states.DebugSelectionTestState, 4));
+        // addChild(new TestGame(states.SoundPanTestState2852));
+        addChild(new TestGame(states.SoundFocusTestState3271));
+        // addChild(new TestGame(states.BackdropTestState));
+        // addChild(new TestGame(states.AssetPathsTestState));
+        // addChild(new TestGame(states.ViewCenterTestState));
+        
+        // addChild(new TestGame()); 
+        // FlxG.camera.bgColor = 0x0;
         
         // addChild(new tests.KeyEventTest());
+        // addChild(new tests.HardwareTest());
+        // addChild(new tests.Bare());
     }
 }
 
 abstract TestGame(FlxGame) to FlxGame
 {
-    inline public function new (state, zoom = 1, width = 0, height = 0)
+    inline public function new (?state, zoom = 1, width = 0, height = 0)
     {
         if (FlxG.game != null)
             throw "Already created a FlxGame";

@@ -5,6 +5,9 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.ui.FlxUIGroup;
 
+/**
+ * Test
+ */
 @:build(flixel.system.FlxAssets.buildFileReferences("assets/", true))
 class AssetPaths {}
 
