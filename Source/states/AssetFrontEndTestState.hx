@@ -15,6 +15,8 @@ class AssetFrontEndTestState extends flixel.FlxState
         sprite.animation.add("loop", [for (i in 0...sprite.animation.numFrames) i], 8);
         sprite.animation.play("loop");
         add(sprite);
+        
+        trace(FlxG.assets.list().join("\n"));
     }
     
     override function update(elapsed)

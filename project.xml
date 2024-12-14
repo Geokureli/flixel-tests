@@ -34,10 +34,13 @@
 	<classpath name="Source" />
 	<classpath path="../../lib/Source" />
 	
+	<!-- Export no assets when using a custom path -->
+	<define name="no_assets" if="FLX_CUSTOM_ASSETS_DIRECTORY"/>
+	
 	<!--ASSETS-->
 	<section unless="no_assets">
 		<!-- <assets path="assets" embed="true"/> -->
-		<assets path="assets"/>
+		<assets path="assets" embed="true"/>
 		
 		<section if="all_assets">
 			<!-- <assets path="async-assets"/> -->
