@@ -163,7 +163,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.StarFieldTestState));
         // addChild(new TestGame(states.AssetFrontEndTestState));
         // addChild(new TestGame(states.SaveCrashTestState3270));
-        // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.SoundPanTestState2852));
         // addChild(new TestGame(states.SoundFocusTestState3271));
         // addChild(new TestGame(states.BackdropTestState));
@@ -180,11 +179,12 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.CollisionTestState, 2));
         // addChild(new TestGame(states.FlxVirtualStickTestState, 2));
         addChild(new TestGame(states.FlxUIButtonTestState, 2));
+        // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.MultiLockTestState, 2));
         
         flixel.tile.FlxBaseTilemap;
         
-        // addChild(new TestGame());
+        // addChild(new TestGame()); 
         // FlxG.camera.bgColor = 0x0;
         
         // addChild(new tests.ShapeColorTest());

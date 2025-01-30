@@ -1,9 +1,9 @@
 package states;
 
-import flixel.system.debug.log.LogStyle;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.sound.FlxSound;
+import flixel.system.debug.log.LogStyle;
 import openfl.media.Sound;
 import openfl.media.SoundChannel;
 import openfl.utils.Assets;
@@ -32,7 +32,7 @@ class SoundFocusTestState3271 extends flixel.FlxState
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			if (sound == null)
-				sound = FlxG.sound.play("assets/sounds/long-sound.ogg", ()->sound = null);
+				sound = FlxG.sound.play("assets/sounds/long-sound", ()->sound = null);
 			else if (sound.playing)
 				sound.pause();
 			else
