@@ -8,14 +8,16 @@ import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxStrip;
 import flixel.addons.display.FlxTiledSprite;
-import flixel.addons.editors.spine.FlxSpine;
-import flixel.graphics.tile.FlxDrawTrianglesItem.DrawData;
+import flixel.graphics.tile.FlxDrawTrianglesItem;
 import flixel.group.FlxGroup;
 import flixel.system.FlxAssets.FlxShader;
 import flixel.util.FlxColor;
 import flixel.addons.effects.FlxClothSprite;
 
+#if spinehaxe
+import flixel.addons.editors.spine.FlxSpine;
 import spinehaxe.SkeletonData;
+#end
 
 class FlxStripShaderTestState extends FlxState
 {
@@ -37,9 +39,10 @@ class FlxStripShaderTestState extends FlxState
 		createSet(0, SPACING * 3, createFlag);
 		createSet(0, SPACING * 4, createSkew);
 		
-		
+		#if spinehaxe
 		final skeleton = FlxSpine.readSkeletonData("spineboy", "spineboy", "assets/spine/", 0.6);
 		add(new SpineBoyTest(skeleton, 0, SPACING * 4));
+		#end
 	}
 	
 	function createSet(x = 0.0, y = 0.0, func:(Float, Float, ?Int)->FlxSprite)
@@ -150,7 +153,7 @@ class GreenShader extends FlxShader
 	}
 }
 
-
+#if spinehaxe
 /**
  * @author Kris
  */
@@ -193,3 +196,4 @@ class SpineBoyTest extends FlxSpine
 		super.update(elapsed);
 	}
 }
+#end

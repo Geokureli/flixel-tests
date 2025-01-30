@@ -18,4 +18,19 @@
     { "editor.formatOnSave": false
     , "editor.formatOnSaveMode": "modifications"
     }
+,   "lime.targetConfigurations":
+    [ { "label": "Hashlink-clean", "target": "hl", "args":["-clean"] }
+    ]
+,   "lime.targets":
+    [ { "label": "AIR"     , "enabled":false }
+    , { "label": "Electron", "enabled":false }
+    , { "label": "Android" , "enabled":false }
+    , { "label": "tvOS"    , "enabled":false }
+    , { "label": "Neko"    , "enabled":false }
+    , { "label": "iOS"     , "enabled":false }
+    , { "label": "HashLink", "enabled":false }
+    ]
+,   "lime.buildTypes":
+    [ { "label": "Final", "enabled":false }
+	]
 }

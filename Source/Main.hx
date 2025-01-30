@@ -30,7 +30,6 @@ class Main extends openfl.display.Sprite
     
     function createTest()
     {
-        // addChild(new TestGame(states.TemplateTestState));
         // addChild(new TestGame(states.ClipRectTestState));
         // addChild(new TestGame(states.ScaleOffsetTestState));
         // addChild(new TestGame(states.TestState2305));
@@ -75,7 +74,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.AnimationFrameTestState2847));
         // addChild(new TestGame(states.PixelPerfectRenderTestState2849, 10));
         // addChild(new TestGame(states.SoundFLPanTestState2852));
-        // addChild(new TestGame(states.AseAtlasTestState, 4));
         // addChild(new TestGame(states.CircleWipeShaderTestState));
         // addChild(new TestGame(states.ExceptionTestState11265));
         // addChild(new TestGame(states.JustifyTextTestState));
@@ -141,7 +139,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MouseScreenTestState3200, 2, 800-80, 800));
         // addChild(new TestGame(states.BigMoverPathfinderTestState));
         // addChild(new TestGame(states.AnimFinishedTestState));
-        // addChild(new TestGame(states.FlxStripShaderTestState));
         // addChild(new TestGame(states.FlxStripBlendModeTestState));
         // addChild(new TestGame(states.FlxTextMultilineTest));
         // addChild(new TestGame(states.LastBlendTestState));
@@ -161,21 +158,36 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ByteArrayTestState));
         // addChild(new TestGame(states.InputTextTestState2846));
         // addChild(new TestGame(states.InputTextTestState283));
-        // addChild(new TestGame(states.FlxInputTextTest));
+        // addChild(new TestGame(states.FlxInputTextTest, 2));
+        // addChild(new TestGame(states.FlxInputTextBannerTest, 4));
         // addChild(new TestGame(states.StarFieldTestState));
         // addChild(new TestGame(states.AssetFrontEndTestState));
         // addChild(new TestGame(states.SaveCrashTestState3270));
-        // addChild(new TestGame(states.CameraColorTest3207));
         // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.SoundPanTestState2852));
-        addChild(new TestGame(states.SoundFocusTestState3271));
+        // addChild(new TestGame(states.SoundFocusTestState3271));
         // addChild(new TestGame(states.BackdropTestState));
         // addChild(new TestGame(states.AssetPathsTestState));
         // addChild(new TestGame(states.ViewCenterTestState));
+        // addChild(new TestGame(states.PixelModeTestState, 4));
+        // addChild(new TestGame(states.AseAtlasTestState, 4));
+        // addChild(new TestGame(states.CameraColorTest3207));
+        // addChild(new TestGame(states.FlxStripShaderTestState));
+        // addChild(new TestGame(states.LayerTestState));
+        // addChild(new TestGame(states.NGioTestState));
+        // addChild(new TestGame(states.SliceSprite));
+        // addChild(new TestGame(states.RayTestState, 2));
+        // addChild(new TestGame(states.CollisionTestState, 2));
+        // addChild(new TestGame(states.FlxVirtualStickTestState, 2));
+        addChild(new TestGame(states.FlxUIButtonTestState, 2));
+        // addChild(new TestGame(states.MultiLockTestState, 2));
         
-        // addChild(new TestGame()); 
+        flixel.tile.FlxBaseTilemap;
+        
+        // addChild(new TestGame());
         // FlxG.camera.bgColor = 0x0;
         
+        // addChild(new tests.ShapeColorTest());
         // addChild(new tests.KeyEventTest());
         // addChild(new tests.HardwareTest());
         // addChild(new tests.Bare());

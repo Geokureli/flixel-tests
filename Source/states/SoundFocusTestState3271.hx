@@ -1,5 +1,6 @@
 package states;
 
+import flixel.system.debug.log.LogStyle;
 import flixel.FlxG;
 import flixel.text.FlxText;
 import flixel.sound.FlxSound;
@@ -20,6 +21,8 @@ class SoundFocusTestState3271 extends flixel.FlxState
 		text.screenCenter();
 		add(text);
 		FlxG.log.add('defaultSoundExtension: ${FlxG.assets.defaultSoundExtension}');
+		
+		LogStyle.NOTICE.onLog.add((d)->log.error(d));
 	}
 	
 	override function update(elapsed:Float)
@@ -29,7 +32,7 @@ class SoundFocusTestState3271 extends flixel.FlxState
 		if (FlxG.keys.justPressed.SPACE)
 		{
 			if (sound == null)
-				sound = FlxG.sound.play("assets/sounds/long-sound", ()->sound = null);
+				sound = FlxG.sound.play("assets/sounds/long-sound.ogg", ()->sound = null);
 			else if (sound.playing)
 				sound.pause();
 			else

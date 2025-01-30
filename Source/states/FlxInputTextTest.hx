@@ -21,98 +21,114 @@ class FlxInputTextTest extends flixel.FlxState
 		
 		add(fields = new FlxTypedGroup());
 		
-		final textX = 5;
-		var textY = 5.0;
-		
 		/** Helper to create similar input texts below each other*/
-		function createInputText(?fieldWidth:Float, text = "", size = 16)
+		function createInputTextHelper(?fieldWidth:Float, text = "", size = 8, below = true)
 		{
-			if (fieldWidth == null)
-				fieldWidth = FlxG.width - 20;
+			var textX = 5.0;
+			var textY = 5.0;
+			if (fields.members.length > 0)
+			{
+				final prev = fields.members[fields.members.length - 1];
+				if (below)
+				{
+					textY = prev.y + prev.height + 3;
+				}
+				else
+				{
+					textX = prev.x + prev.width + 3;
+					textY = prev.y;
+				}
+			}
 			
-			final length = fields.members.length;
-			// add the new text below the previous text
-			if (length > 0)
-				textY += fields.members[length - 1].height + 5;
+			if (fieldWidth == null)
+				fieldWidth = FlxG.width - 5 - textX;
 			
 			final field = new FlxInputText(textX, textY, fieldWidth, text, size);
 			fields.add(field);
 			return field;
 		}
 		
-		createInputText(0, "This is a default text input.");
+		function createInputTextBelow(?fieldWidth:Float, text = "", size = 8)
+		{
+			return createInputTextHelper(fieldWidth, text, size, true);
+		}
 		
-		final textInput = createInputText("This is a multiline text input with fieldWidth and fieldHeight set.");
-		textInput.fieldHeight = 44;
-		textInput.multiline = true;
+		function createInputText(?fieldWidth:Float, text = "", size = 8)
+		{
+			return createInputTextHelper(fieldWidth, text, size, false);
+		}
 		
-		final textInput = createInputText("This is a multiline text input with word wrapping.");
-		textInput.fieldHeight = 44;
-		textInput.wordWrap = textInput.multiline = true;
+		createInputTextBelow(0, "The default text input.");
 		
-		final textInput = createInputText("This is an uneditable text input.");
+		final textInput = createInputText(0, "An uneditable text input.");
 		textInput.editable = false;
 		
-		final textInput = createInputText("This is an unselectable text input.");
+		final textInput = createInputText("An unselectable text input.");
 		textInput.selectable = false;
 		
-		final textInput = createInputText("This is a formatted text input.");
+		final textInput = createInputTextBelow(188, "A multiline text input with fieldWidth and fieldHeight set.");
+		textInput.fieldHeight = 24;
+		textInput.multiline = true;
+		
+		final textInput = createInputText("A multiline text input with word wrapping.");
+		textInput.fieldHeight = 24;
+		textInput.wordWrap = textInput.multiline = true;
+		
+		final textInput = createInputTextBelow("A fancy text input with formatting!");
 		textInput.setFormat(FlxAssets.FONT_DEBUGGER, 16, FlxColor.LIME);
 		textInput.italic = textInput.bold = true;
 		
-		final textInput = createInputText("This text input is aligned to the center.");
+		final textInput = createInputTextBelow(188, "A center-aligned text input.");
 		textInput.alignment = CENTER;
 		
-		final textInput = createInputText("This text input is aligned to the right.");
+		final textInput = createInputText("A right-aligned text input.");
 		textInput.alignment = RIGHT;
 		
-		final textInput = createInputText("Maximum characters: 30");
+		final textInput = createInputTextBelow(188, "Only Uppercase, Max chars: 35");
+		textInput.forceCase = UPPER_CASE;
 		textInput.maxChars = 30;
-		textInput.onTextChange.add((s,c)->trace(textInput.text));
+		// textInput.onTextChange.add((s,c)->trace(textInput.text));
 		
-		final textInput = createInputText("only lowercase and with a border");
-		// textInput.fieldBorderThickness = 2;
-		// textInput.fieldBorderColor = FlxColor.BLACK;
+		final textInput = createInputText("only lowercase and a 2px border");
+		textInput.fieldBorderThickness = 2;
+		textInput.fieldBorderColor = FlxColor.BLACK;
 		textInput.forceCase = LOWER_CASE;
 		
-		final textInput = createInputText("ONLY UPPERCASE");
-		textInput.forceCase = UPPER_CASE;
-		
-		final textInput = createInputText("OnlyAlphanumeric123");
+		final textInput = createInputTextBelow(128, "OnlyAlphanumeric123");
 		textInput.filterMode = ALPHANUMERIC;
 		
-		final textInput = createInputText("password");
+		final textInput = createInputText(128, "password");
 		textInput.passwordMode = true;
 		
-		final textInput = createInputText("This is a text input with custom selection colors.");
+		final textInput = createInputText("Custom selection colors.");
 		textInput.caretWidth = 2;
 		textInput.caretColor = FlxColor.BLUE;
-		// textInput.selectionColor = FlxColor.BLUE;
-		// textInput.selectedTextColor = FlxColor.WHITE;
+		textInput.selectionColor = FlxColor.BLUE;
+		textInput.selectedTextColor = FlxColor.WHITE;
 		
-		final textInput = createInputText("This is a text input without a background.");
+		final textInput = createInputTextBelow("A text input without a background.");
 		textInput.color = FlxColor.WHITE;
 		textInput.background = false;
 		
-		final actionList = new ActionsText(textInput.x, textInput.y + textInput.height + 5, FlxG.width - 20);
+		final actionList = new ActionsText(textInput.x, textInput.y + textInput.height + 5, FlxG.width - 10);
+		actionList.fieldHeight = FlxG.height - 5 - actionList.y;
 		add(actionList);
 	}
 }
 
 class ActionsText extends FlxText
 {
+	static inline var INITIAL_TEXT = "This logs every \"typing action\" performed on any of the input texts";
+	
 	public var maxLines:Int;
-	public function new (x:Float, y:Float, fieldWidth = 0, text = "", size = 16, maxLines = 17)
+	public function new (x:Float, y:Float, fieldWidth = 0, size = 8, maxLines = 25)
 	{
 		this.maxLines = maxLines;
-		super(x, y, fieldWidth, text, size);
+		super(x, y, fieldWidth, INITIAL_TEXT, size);
 		
 		textField.background = true;
 		setFormat(size, 0x0);
 		textField.backgroundColor = 0xffffff;
-		textField.type = INPUT;
-		textField.selectable = true;
-		setBorderStyle(OUTLINE, FlxColor.BLACK, 1);
 		
 		FlxInputText.globalManager.onTypingAction.add((action)->switch(action)
 		{

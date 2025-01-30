@@ -1,10 +1,9 @@
 package states;
 
-import flixel.graphics.atlas.AseAtlas;
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.graphics.FlxAsepriteUtil;
+import flixel.graphics.atlas.AseAtlas;
 import flixel.system.FlxAssets;
 
 using flixel.graphics.FlxAsepriteUtil;
@@ -19,6 +18,28 @@ class AseAtlasTestState extends flixel.FlxState
         add(new AdventurerSprite( 50, 50, 1.00));
         add(new AdventurerSprite(100, 50, 1.25));
         add(new AdventurerSprite(150, 50, 1.50));
+        
+        #if html5
+        final style = lime.app.Application.current.window.element.style;
+        trace(style.getPropertyValue("image-rendering"));
+        trace(style.getPropertyPriority("image-rendering"));
+        // style.setProperty("image-rendering", "pixelated");
+        // trace(style.getPropertyValue("image-rendering"));
+        // trace(style.getPropertyPriority("image-rendering"));
+        #end
+    }
+    override function update(elapsed:Float)
+    {
+        super.update(elapsed);
+        
+        // if (FlxG.keys.justPressed.ENTER)
+        // {
+        //     if (FlxG.render.pixelMode.match(PIXELATED))
+        //         FlxG.render.setPixelMode(SMOOTH);
+        //     else
+        //         FlxG.render.setPixelMode(PIXELATED);
+        //     trace(FlxG.render.pixelMode);
+        // }
     }
 }
 
@@ -33,11 +54,19 @@ class AdventurerSprite extends AseAtlasSprite
         this.attackTimeScale = attackTimeScale;
         super(x, y, "adventurerAssets/adventurer.png", "adventurerAssets/adventurer.json");
         animation.play("idle");
+        shader = new vfx.DoubleOutline(0xFFff0000, 0xFFffffff);
+        shader = new vfx.DoubleOutline.TestShader();
     }
     
     override function update(elapsed:Float)
     {
         super.update(elapsed);
+        
+        if (FlxG.keys.justPressed.ENTER)
+        {
+            final outline:vfx.DoubleOutline = cast shader;
+            outline.enabled = !outline.enabled;
+        }
         
         if (animation.curAnim.name == ATTACK && animation.finished)
         {
