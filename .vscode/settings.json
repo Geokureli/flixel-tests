@@ -19,7 +19,8 @@
     , "editor.formatOnSaveMode": "modifications"
     }
 ,   "lime.targetConfigurations":
-    [ { "label": "Hashlink-clean", "target": "hl", "args":["-clean"] }
+    [ { "label": "Hashlink", "target": "hl", "args":["-clean"] }
+    , { "label": "Hashlink Debug", "target": "hl", "args":["-clean", "-debug"] }
     ]
 ,   "lime.targets":
     [ { "label": "AIR"     , "enabled":false }

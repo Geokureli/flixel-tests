@@ -1,7 +1,6 @@
 package states;
 
 import flixel.group.FlxGroup;
-import haxe.ui.components.TextArea;
 import flixel.FlxG;
 import flixel.system.FlxAssets;
 import flixel.text.FlxInputText;

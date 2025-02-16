@@ -30,6 +30,8 @@ class Main extends openfl.display.Sprite
     
     function createTest()
     {
+        //{ region  Test States
+        //{ region  Old Test States
         // addChild(new TestGame(states.ClipRectTestState));
         // addChild(new TestGame(states.ScaleOffsetTestState));
         // addChild(new TestGame(states.TestState2305));
@@ -76,8 +78,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.SoundFLPanTestState2852));
         // addChild(new TestGame(states.CircleWipeShaderTestState));
         // addChild(new TestGame(states.ExceptionTestState11265));
-        // addChild(new TestGame(states.JustifyTextTestState));
-        // addChild(new TestGame(states.TintTestState));
         // addChild(new TestGame(states.VignetteShaderTestState2847));
         // addChild(new TestGame(states.ColorEffectListTestState2869));
         // addChild(new TestGame(states.TilemapSizeTestState2882));
@@ -88,8 +88,6 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.SoundTrayTestState));
         // addChild(new TestGame(states.StackingSoundTestState2926));
         // addChild(new TestGame(states.TelemetryTestState));
-        // addChild(new TestGame(states.UiInputTextState253));
-        // addChild(new TestGame(states.UiListTestState254));
         // addChild(new TestGame(states.TextAutoSizeTestState, 2));
         // addChild(new TestGame(states.FlxBarTestState2938));
         // addChild(new TestGame(states.PluginTestState));
@@ -139,32 +137,53 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.MouseScreenTestState3200, 2, 800-80, 800));
         // addChild(new TestGame(states.BigMoverPathfinderTestState));
         // addChild(new TestGame(states.AnimFinishedTestState));
-        // addChild(new TestGame(states.FlxStripBlendModeTestState));
-        // addChild(new TestGame(states.FlxTextMultilineTest));
         // addChild(new TestGame(states.LastBlendTestState));
         // addChild(new TestGame(states.LastBlendTestState2));
         // addChild(new TestGame(states.SpriteGroupScaleTestState));
         // addChild(new TestGame(states.ResizeGameTestState));
-        // addChild(new TestGame(states.SliderTestState));
         // addChild(new TestGame(states.PolymodTestState));
-        // addChild(new TestGame(states.FlxStripColorTestState));
         // addChild(new TestGame(states.ButtonLabelOffsetTestState, 2));
         // addChild(new TestGame(states.TextShadowTestState, 4));
-        // addChild(new TestGame(states.ShaderColorTestState));
         // addChild(new TestGame(states.FlxBarBorderTestState));
         // addChild(new TestGame(states.SpriteMatrixTestState));
         // addChild(new TestGame(states.VolumeTestState));
-        // addChild(new TestGame(states.WatchFunctionTestState));
         // addChild(new TestGame(states.ByteArrayTestState));
-        // addChild(new TestGame(states.InputTextTestState2846));
-        // addChild(new TestGame(states.InputTextTestState283));
-        // addChild(new TestGame(states.FlxInputTextTest, 2));
-        // addChild(new TestGame(states.FlxInputTextBannerTest, 4));
         // addChild(new TestGame(states.StarFieldTestState));
         // addChild(new TestGame(states.AssetFrontEndTestState));
         // addChild(new TestGame(states.SaveCrashTestState3270));
         // addChild(new TestGame(states.SoundPanTestState2852));
         // addChild(new TestGame(states.SoundFocusTestState3271));
+        //} endregion  Older Test States
+        //{ region  RENDERING
+            addChild(new TestGame(states.ShaderColorTestState));
+            // addChild(new TestGame(states.FlxStripColorTestState));
+            // addChild(new TestGame(states.FlxStripBlendModeTestState));
+            // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
+            // addChild(new TestGame(states.AustinPixelTestState));
+            // addChild(new TestGame(states.RuntimeShaderTestState399));
+            // addChild(new TestGame(states.CameraBlackLineTestState));
+        //{ endregion  RENDERING
+        //{ region  UI
+            // addChild(new TestGame(states.JustifyTextTestState));
+            // addChild(new TestGame(states.TintTestState));
+            // addChild(new TestGame(states.FlxTextMultilineTest));
+            // addChild(new TestGame(states.SliderTestState));
+            // addChild(new TestGame(states.InputTextTestState2846));
+            // addChild(new TestGame(states.InputTextTestState283));
+            // addChild(new TestGame(states.FlxInputTextTest, 2));
+            // addChild(new TestGame(states.FlxInputTextBannerTest, 4));
+            // addChild(new TestGame(states.FlxUIButtonTestState, 2));
+            // addChild(new TestGame(states.UiListTestState254));
+            // addChild(new TestGame(states.UiInputTextState253));
+        //} endregion  UI
+        //{ region  DEBUG
+            // addChild(new TestGame(states.DebugSelectionTestState, 4));
+            // addChild(new TestGame(states.WatchFunctionTestState));
+            // addChild(new TestGame(states.VscDebuggerTestState));
+            // addChild(new TestGame(states.DebugToolTestState));
+            // addChild(new TestGame(states.TryCatchTestState));
+        //} endregion  DEBUG
+        //{ region  MISC
         // addChild(new TestGame(states.BackdropTestState));
         // addChild(new TestGame(states.AssetPathsTestState));
         // addChild(new TestGame(states.ViewCenterTestState));
@@ -178,9 +197,10 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.RayTestState, 2));
         // addChild(new TestGame(states.CollisionTestState, 2));
         // addChild(new TestGame(states.FlxVirtualStickTestState, 2));
-        addChild(new TestGame(states.FlxUIButtonTestState, 2));
-        // addChild(new TestGame(states.DebugSelectionTestState, 4));
         // addChild(new TestGame(states.MultiLockTestState, 2));
+        // addChild(new TestGame(states.HtmlFlickerTestState3354));
+        //} endregion  MISC
+        //} endregion  Test States
         
         flixel.tile.FlxBaseTilemap;
         

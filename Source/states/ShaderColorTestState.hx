@@ -7,7 +7,7 @@ class ShaderColorTestState extends flixel.FlxState
 		super.create();
 		
 		final sprite = new flixel.FlxSprite().makeGraphic(100, 100);
-		sprite.shader = new SimpleShader();
+		sprite.shader = new flixel.system.FlxAssets.FlxShader();
 		sprite.color = 0xFFff00ff;
 		add(sprite);
 	}
