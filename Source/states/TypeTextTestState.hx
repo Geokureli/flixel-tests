@@ -1,9 +1,9 @@
 package states;
 
 import flixel.FlxG;
+import flixel.addons.text.FlxTextTyper;
 import flixel.text.FlxBitmapText;
 import flixel.text.FlxText;
-import flixel.addons.text.FlxTextTyper;
 
 class TypeTextTestState extends flixel.FlxState
 {
@@ -17,6 +17,7 @@ class TypeTextTestState extends flixel.FlxState
 	{
 		super.create();
 		bgColor = 0xFFc0c0c0;
+		js.Syntax.code("console.log({0}, {1})", "hi", 42);
 		
 		final prefix = "Prefix:";
 		

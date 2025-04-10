@@ -15,14 +15,19 @@
 	<!-- WINDOW SETTINGS -->
 	
 	<!--These window settings apply to all targets-->
-	<window width="800" height="800" fps="60" background="#000000" hardware="true" vsync="true" unless="no_hardware"/>
-	<window width="800" height="800" fps="60" background="#000000" hardware="false" vsync="true" if="no_hardware"/>
+	<window width="800" height="800" fps="60" background="#000000" />
+	<window width="800" height="800" fps="60" background="#000000" />
+	<window hardware="true" unless="no_hardware"/>
+	<window hardware="false" if="no_hardware"/>
+	<window vsync="true" unless="no_vsync"/>
+	<window vsync="true" if="no_vsync"/>
+	<window if="resizable" resizable="true" />
 	
 	<!--HTML5-specific-->
-	<window if="html5" resizable="false" />
+	<window if="html5||desktop" resizable="false" />
 	
 	<!--Desktop-specific-->
-	<window if="desktop" orientation="landscape" fullscreen="false" resizable="true" />
+	<window if="desktop" orientation="landscape" fullscreen="false" />
 	
 	<!--Mobile-specific-->
 	<window if="mobile" orientation="landscape" fullscreen="true" width="0" height="0" />
@@ -71,6 +76,7 @@
 	<haxelib name="spinehaxe" />
 	<haxelib name="polymod" />
 	<haxelib name="newgrounds" />
+	<haxelib name="krakel" />
 	
 	<!--In case you want to use nape with flixel-->
 	<!-- <haxelib name="nape" /> -->
@@ -93,6 +99,9 @@
 		<!-- already included if telemetry is defined -->
 		<haxelib name="hxtelemetry"/>
 	</section>
+	
+	<!-- <haxedef name="FLX_NO_HEALTH"/> -->
+	<!-- <haxedef name="FLX_HEALTH"/> -->
 	
 	<!--Enable this for nape release builds for a serious peformance improvement-->
 	<!-- <haxedef name="NAPE_RELEASE_BUILD" unless="debug" /> -->

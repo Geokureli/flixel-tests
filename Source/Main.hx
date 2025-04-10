@@ -155,7 +155,7 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.SoundFocusTestState3271));
         //} endregion  Older Test States
         //{ region  RENDERING
-            addChild(new TestGame(states.ShaderColorTestState));
+            // addChild(new TestGame(states.ShaderColorTestState));
             // addChild(new TestGame(states.FlxStripColorTestState));
             // addChild(new TestGame(states.FlxStripBlendModeTestState));
             // addChild(new TestGame(states.BlackDebugSliceSpriteTestState, 4));
@@ -199,6 +199,15 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.FlxVirtualStickTestState, 2));
         // addChild(new TestGame(states.MultiLockTestState, 2));
         // addChild(new TestGame(states.HtmlFlickerTestState3354));
+        // addChild(new TestGame(states.ScrollingTextTestState, 2));
+        // addChild(new TestGame(states.ClipRectRoundTestState, 2));
+        // addChild(new TestGame(states.ClipRectSlameronTestState));
+        // addChild(new TestGame(states.PresidentsTestState));
+        // addChild(new TestGame(states.HScriptTestState));
+        // addChild(new TestGame(states.AssetCacheTestState, 4));
+        // addChild(new TestGame(states.ClipRectPortalTestState, 2));
+        // addChild(new TestGame(states.KeyPressReleaseTestState));
+        addChild(new TestGame(states.ColorOffsetTestState));
         //} endregion  MISC
         //} endregion  Test States
         

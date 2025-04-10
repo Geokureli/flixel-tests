@@ -13,6 +13,7 @@
 		},
 		{
 			"name": "Macro",
+			
 			"type": "haxe-eval",
 			"request": "launch"
 		},

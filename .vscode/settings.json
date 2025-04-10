@@ -9,9 +9,13 @@
     ]
 ,   "haxeTestExplorer.testCommand":
     [ "haxelib", "run", "openfl", "test"
-    , "../../lib/flixel/tests/unit"
+    // , "../../lib/flixel/tests/unit" // og book
+    , "../flixel/tests/unit" // new book
     , "hl", "-clean"
     // , "cpp"
+    // , "cpp", "-clean"
+    // , "-v"
+    , "-debug"
     , "-Dtravis", "--haxelib=test-adapter"
     ]
 ,   "[haxe]":
@@ -19,8 +23,9 @@
     , "editor.formatOnSaveMode": "modifications"
     }
 ,   "lime.targetConfigurations":
-    [ { "label": "Hashlink", "target": "hl", "args":["-clean"] }
-    , { "label": "Hashlink Debug", "target": "hl", "args":["-clean", "-debug"] }
+    [ { "label": "Hashlink-clean", "target": "hl", "args":["-clean"] }
+    , { "label": "Hashlink Debug-clean", "target": "hl", "args":["-debug", "-clean"] }
+    , { "label": "Html5 No Hardware", "target": "html5", "args":["-debug", "-Dno_hardware"] }
     ]
 ,   "lime.targets":
     [ { "label": "AIR"     , "enabled":false }
