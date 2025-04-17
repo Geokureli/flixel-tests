@@ -76,7 +76,7 @@
 	<haxelib name="spinehaxe" />
 	<haxelib name="polymod" />
 	<haxelib name="newgrounds" />
-	<haxelib name="krakel" />
+	<!-- <haxelib name="krakel" /> -->
 	
 	<!--In case you want to use nape with flixel-->
 	<!-- <haxelib name="nape" /> -->

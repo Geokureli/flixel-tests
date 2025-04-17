@@ -264,14 +264,14 @@ class FlxCoordUtil
 	{
 		// return cameraX / camera.zoom + camera.viewX;
 		@:privateAccess
-		return cameraX / camera.zoom + camera.scroll.x + camera.viewOffsetX;
+		return cameraX / camera.zoom + camera.scroll.x + camera.viewMarginX;
 	}
 	
 	inline static function cameraToWorldYUnsafe(cameraY:Float, camera:FlxCamera)
 	{
 		// return cameraY / camera.zoom + camera.viewY;
 		@:privateAccess
-		return cameraY / camera.zoom + camera.scroll.y + camera.viewOffsetY;
+		return cameraY / camera.zoom + camera.scroll.y + camera.viewMarginY;
 	}
 	
 	// --- --- --- WORLD-TO-WINDOW --- --- --- //

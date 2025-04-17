@@ -207,7 +207,8 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.AssetCacheTestState, 4));
         // addChild(new TestGame(states.ClipRectPortalTestState, 2));
         // addChild(new TestGame(states.KeyPressReleaseTestState));
-        addChild(new TestGame(states.ColorOffsetTestState));
+        // addChild(new TestGame(states.ColorOffsetTestState));
+        addChild(new TestGame(states.TransformToPixelsTestState));
         //} endregion  MISC
         //} endregion  Test States
         
