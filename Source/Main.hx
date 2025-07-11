@@ -208,11 +208,21 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.ClipRectPortalTestState, 2));
         // addChild(new TestGame(states.KeyPressReleaseTestState));
         // addChild(new TestGame(states.ColorOffsetTestState));
-        addChild(new TestGame(states.TransformToPixelsTestState));
+        // addChild(new TestGame(states.TransformToPixelsTestState, 2));
+        // addChild(new TestGame(states.UseFramePixelsTestState, 2));
+        // addChild(new TestGame(states.ColorTransformTestState3413));
+        // addChild(new TestGame(states.AxisSeparateTestState3418));
+        // addChild(new TestGame(states.RotateFrameTestState3433));
+        // addChild(new TestGame(states.FlxQuadTreeTestState));
+        // addChild(new TestGame(states.FlxSignalDestroyTestState));
+        addChild(new TestGame(states.PixelPerfectOverlapTestState, 4
+        ));
         //} endregion  MISC
         //} endregion  Test States
+        // addChild(new TestGame(flixel.FlxState, 2));
         
-        flixel.tile.FlxBaseTilemap;
+        // flixel.tile.FlxBaseTilemap;
+        // flixel.system.replay.FlxReplay;
         
         // addChild(new TestGame()); 
         // FlxG.camera.bgColor = 0x0;

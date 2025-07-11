@@ -19,3 +19,4 @@ class $1 extends flixel.FlxState
 }" > "Source/states/$1.hx"
 
 #todo add to Source.Main.hx before "        //} endregion  Test States"
+#todo open file in the executing instance of vscode

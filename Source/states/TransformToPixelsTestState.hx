@@ -1,13 +1,13 @@
 package states;
 
-import flixel.math.FlxRect;
-import flixel.math.FlxPoint;
-import flixel.FlxSprite;
 import flixel.FlxG;
+import flixel.FlxSprite;
 import flixel.graphics.frames.FlxFrame;
-import tools.SpriteMover;
-import sprites.RectSprite;
+import flixel.math.FlxPoint;
+import flixel.math.FlxRect;
 import sprites.AnimSprite;
+import sprites.RectSprite;
+import tools.SpriteMover;
 
 class TransformToPixelsTestState extends flixel.FlxState
 {
@@ -19,6 +19,7 @@ class TransformToPixelsTestState extends flixel.FlxState
     var color:FlxSprite;
     var mover:SpriteMover;
     
+    @:haxe.warning("-WDeprecated")
     override function create()
     {
         super.create();
@@ -32,7 +33,12 @@ class TransformToPixelsTestState extends flixel.FlxState
         source.clipRect = new FlxRect(0, 0, source.frameWidth, source.frameHeight);
         hidden.x = source.x;
         hidden.y = source.y;
-        hidden.alpha = 0.5;
+        source.alpha = 0.5;
+        source.color = 0xFFff8800;
+        hidden.alpha = source.alpha * 0.5;
+        hidden.color = source.color;
+        // source.setColorTransform(0.0, 0.5, 0.25, 1.0, 0x0, 0x40, 0x80);
+        // hidden.setColorTransform(0.0, 0.5, 0.25, 1.0, 0x0, 0x40, 0x80);
         
         add(color = new FlxSprite().makeGraphic(20, 20, 0xFF000000));
         color.graphic.bitmap.fillRect(new openfl.geom.Rectangle(1, 1, 18, 18), 0xFFffffff);
@@ -41,15 +47,21 @@ class TransformToPixelsTestState extends flixel.FlxState
         
         add(mover = new SpriteMover(source));
         
-        FlxG.watch.addFunction("rect", ()->rect);
+        // FlxG.watch.addFunction("rect", ()->rect);
         FlxG.watch.addFunction("clipRect", ()->source.clipRect);
-        final viewPos = FlxPoint.get();
-        FlxG.watch.addFunction("viewPos", ()->camera.worldToViewPosition(source.x, source.y, 0, 0, viewPos));
+        final p = FlxPoint.get();
+        final r = FlxRect.get();
+        // FlxG.watch.addFunction("source.p", ()->camera.worldToViewPosition(source.x, source.y, 0, 0, p));
+        FlxG.watch.addFunction("cam.scroll", ()->camera.scroll);
+        FlxG.watch.addFunction('cam.view', ()->r.set(camera.viewX, camera.viewY, camera.viewWidth, camera.viewHeight));
+        FlxG.watch.addFunction('mGame', ()->FlxG.mouse.getGamePosition(p));
+        FlxG.watch.addFunction('mWorld', ()->FlxG.mouse.getWorldPosition(camera, p));
+        FlxG.watch.addFunction('mScreen', ()->FlxG.mouse.getScreenPosition(camera, p));
+        FlxG.watch.addFunction('mView', ()->FlxG.mouse.getViewPosition(camera, p));
     }
     
     static final mouse = FlxPoint.get();
     static final viewMouse = FlxPoint.get();
-    static final viewToWorld = FlxPoint.get();
     override function update(elapsed)
     {
         super.update(elapsed);
@@ -64,9 +76,11 @@ class TransformToPixelsTestState extends flixel.FlxState
         
         final cam = FlxG.camera;
         FlxG.mouse.getWorldPosition(cam, mouse);
-        FlxG.mouse.getViewPosition(cam, viewMouse);
-        FlxG.camera.viewToWorldPosition(viewMouse, null, viewToWorld);
-        FlxG.watch.addQuick('view == world', '$viewToWorld == $mouse');
+        cam.worldToViewPosition(mouse.x, mouse.y, 1, 1, viewMouse);
+        FlxG.watch.addQuick("toView(mouse)", viewMouse);
+        final p = FlxPoint.get();
+        FlxG.watch.addQuick("toWorld(viewMouse)", cam.viewToWorldPosition(viewMouse, 1, 1, p));
+        p.put();
         
         if (color != null)
         {
@@ -75,25 +89,29 @@ class TransformToPixelsTestState extends flixel.FlxState
             color.alpha = pixelColor != null ? pixelColor.alphaFloat : 0;
             color.x = mouse.x;
             color.y = mouse.y;
+            FlxG.watch.addQuick("color", pixelColor.toHexString());
         }
         
         if (FlxG.mouse.justPressed)
         {
-            start.x = viewMouse.x;
-            start.y = viewMouse.y;
-            rectSprite.orient(0, 0);
+            // start.x = viewMouse.x;
+            // start.y = viewMouse.y;
+            start.x = mouse.x;
+            start.y = mouse.y;
         }
         
         if (FlxG.mouse.pressed)
-            rect.setBoundsAbs(start.x, start.y, viewMouse.x, viewMouse.y);
+            // rect.setBoundsAbs(start.x, start.y, viewMouse.x, viewMouse.y);
+            rect.setBoundsAbs(start.x, start.y, mouse.x, mouse.y);
         
-        final worldX = camera.viewToWorldX(rect.x);
-        final worldY = camera.viewToWorldY(rect.y);
-        final worldRight = camera.viewToWorldX(rect.right);
-        final worldBottom = camera.viewToWorldY(rect.bottom);
-        rectSprite.orient(worldX, worldY, worldRight - worldX, worldBottom - worldY);
+        // final toX = camera.viewToWorldX;
+        // final toY = camera.viewToWorldY;
+        // rectSprite.orientBounds(toX(rect.x), toY(rect.y), toX(rect.right), toY(rect.bottom));
+        // source.clipToViewRect(rect);
         
-        source.clipToViewRect(rect);
+        rectSprite.orientBounds(rect.x, rect.y, rect.right, rect.bottom);
+        // source.clipToWorldRectSimple(rect);
+        source.clipToWorldRect(rect);
     }
 }
 
@@ -113,10 +131,10 @@ class Sprite extends sprites.AnimSprite
                 case [false, false]: "NONE";
             }
         }
-        FlxG.watch.addFunction("flip", ()->flipToString(flipX, flipY));
-        FlxG.watch.addFunction("anim.flip", ()->flipToString(animation.curAnim.flipX, animation.curAnim.flipY));
-        FlxG.watch.addFunction("frames.flip", ()->flipToString(frame.flipX, frame.flipY));
-        FlxG.watch.addFunction("frames.angle", ()->frame.angle);
+        // FlxG.watch.addFunction("flip", ()->flipToString(flipX, flipY));
+        // FlxG.watch.addFunction("anim.flip", ()->flipToString(animation.curAnim.flipX, animation.curAnim.flipY));
+        // FlxG.watch.addFunction("frames.flip", ()->flipToString(frame.flipX, frame.flipY));
+        // FlxG.watch.addFunction("frames.angle", ()->frame.angle);
     }
     
     override function update(elapsed:Float)

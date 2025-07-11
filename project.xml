@@ -16,7 +16,6 @@
 	
 	<!--These window settings apply to all targets-->
 	<window width="800" height="800" fps="60" background="#000000" />
-	<window width="800" height="800" fps="60" background="#000000" />
 	<window hardware="true" unless="no_hardware"/>
 	<window hardware="false" if="no_hardware"/>
 	<window vsync="true" unless="no_vsync"/>

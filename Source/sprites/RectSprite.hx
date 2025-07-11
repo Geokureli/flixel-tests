@@ -1,25 +1,55 @@
 package sprites;
 
-abstract RectSprite(flixel.FlxSprite) to flixel.FlxSprite
+class RectSprite extends flixel.FlxSprite
 {
-    inline public function new (x = 0.0, y = 0.0, color = flixel.util.FlxColor.WHITE)
+    public var hollow:Bool;
+    
+    public function new (x = 0.0, y = 0.0, color = 0xFFffffff, hollow = true)
     {
-        this = new flixel.FlxSprite(x, y).makeGraphic(1, 1, color);
+        this.hollow = hollow;
+        super(x, y);
+        
+        this.color = color;
     }
     
-    inline public function orient(x:Float, y:Float, width = 0.0, height = 0.0)
+    function autoMakeGraphic()
+    {
+        visible = width * height > 0;
+        scale.set(1, 1);
+        
+        if (visible)
+        {
+            if (hollow)
+                makeGraphic(Std.int(width), Std.int(height), 0xFFffffff, false, 'hollow-${width}x${height}');
+            else
+            {
+                final w = width;
+                final h = height;
+                makeGraphic(1, 1, 0xFFffffff);
+                width = w;
+                height = h;
+                setGraphicSize(width, height);
+            }
+            
+            centerOrigin();
+            centerOffsets();
+        }
+    }
+    
+    inline public function orientBounds(left:Float, top:Float, right:Float, bottom:Float)
+    {
+        return orient(left, top, right - left, bottom - top);
+    }
+    
+    public function orient(x:Float, y:Float, width = 0.0, height = 0.0)
     {
         this.x = x;
         this.y = y;
-        final w = Std.int(width);
-        final h = Std.int(height);
+        this.width = width;
+        this.height = height;
         
-        this.visible = w * h > 0;
-        if (this.visible == false)
-            return;
+        autoMakeGraphic();
         
-        this.makeGraphic(w, h, 0xFF0000ff);
-        if (w > 2 && h > 2)
-            this.graphic.bitmap.fillRect(new openfl.geom.Rectangle(1, 1, w - 2, h - 2), 0x0);
+        return this;
     }
 }

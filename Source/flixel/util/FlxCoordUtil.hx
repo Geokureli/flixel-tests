@@ -1,7 +1,7 @@
 package flixel.util;
 
-import flixel.FlxG;
 import flixel.FlxCamera;
+import flixel.FlxG;
 import flixel.math.FlxPoint;
 
 /**
@@ -425,13 +425,13 @@ class FlxCoordUtil
 	inline static function worldToCameraXUnsafe(worldX:Float, camera:FlxCamera)
 	{
 		@:privateAccess
-		return (worldX - camera.scroll.x - camera.viewOffsetX) * camera.zoom;
+		return (worldX - camera.scroll.x - camera.viewMarginX) * camera.zoom;
 	}
 	
 	inline static function worldToCameraYUnsafe(worldY:Float, camera:FlxCamera)
 	{
 		@:privateAccess
-		return (worldY - camera.scroll.y - camera.viewOffsetY) * camera.zoom;
+		return (worldY - camera.scroll.y - camera.viewMarginY) * camera.zoom;
 	}
 	
 	// --- --- --- WINDOW-TO-CAMERA --- --- --- //
