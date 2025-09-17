@@ -6,13 +6,24 @@ class LineSprite extends flixel.FlxSprite
 {
     public final end = FlxPoint.get();
     
-    public function new (x = 0.0, y = 0.0, thickness = 5)
+    public function new (x = 0.0, y = 0.0, thickness = 5, scaleY = true)
     {
         super(x, y);
         
-        makeGraphic(1, thickness);
-        origin.x = 0;
-        origin.y = thickness / 2;
+        if (scaleY)
+        {
+            makeGraphic(1, 1);
+            scale.y = thickness;
+            origin.x = 0;
+            origin.y = 0.5;
+        }
+        else
+        {
+            makeGraphic(1, thickness);
+            origin.x = 0;
+            origin.y = thickness / 2;
+        }
+        offset.y = origin.y;
     }
     
     override function draw()
@@ -23,8 +34,10 @@ class LineSprite extends flixel.FlxSprite
     
     function orient()
     {
-        final dis = FlxPoint.get(end.x - x, end.y - y);
+        inline function rnd(n:Float) return pixelPerfectPosition ? Math.round(n) : n;
+        final dis = FlxPoint.get(rnd(end.x) - rnd(x), rnd(end.y) - rnd(y));
         scale.x = dis.length;
         angle = dis.degrees;
+        dis.put();
     }
 }

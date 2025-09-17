@@ -2,11 +2,8 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.addons.ui.FlxInputText;
-import flixel.effects.FlxMatrixSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxRect;
-// import flixel.system.debug.FlxDebugDrawGraphic;
 import flixel.util.FlxColor;
 import lime.math.Rectangle;
 
@@ -20,8 +17,6 @@ class DebugSelectionTestState extends flixel.FlxState
 	{
 		super.create();
 		
-		new FlxMatrixSprite();
-		
 		add(sprites);
 		autoCreateMess();
 		
@@ -32,7 +27,6 @@ class DebugSelectionTestState extends flixel.FlxState
 		#if FLX_DEBUG
 		FlxG.debugger.drawDebug = true;
 		FlxG.debugger.visible = true;
-		FlxG.console.registerEnum(TestEnum);
 		// FlxG.watch.addFunction('forceHardware', ()->FlxDebugDrawGraphic.forceHardware);
 		FlxG.watch.addFunction('drawSize', ()->drawSize);
 		FlxG.watch.addFunction('sprites', sprites.countLiving);
@@ -60,13 +54,13 @@ class DebugSelectionTestState extends flixel.FlxState
 	function initSprite(size, sprite:FlxSprite, area:FlxRect)
 	{
 		sprite.makeGraphic(size, size);
-			sprite.x = FlxG.random.float(area.left, area.right - size);
-			sprite.y = FlxG.random.float(area.top, area.bottom - size);
+		sprite.x = FlxG.random.float(area.left, area.right - size);
+		sprite.y = FlxG.random.float(area.top, area.bottom - size);
 		final hue = 60 * FlxG.random.int(0, 6);
 		sprite.color = FlxColor.fromHSB(hue, 1, 1);
 		sprite.solid = FlxG.random.bool();
 		// sprite.ignoreDrawDebug = true;
-		sprite.scrollFactor.set(0.5, 0.5);
+		// sprite.scrollFactor.set(0.5, 0.5);
         // sprite.graphic.bitmap.fillRect(new Rectangle(10, 10, 80, 80), 0x0000ff);
 	}
 	
@@ -93,7 +87,8 @@ class DebugSelectionTestState extends flixel.FlxState
 			}
 			autoCreateMess();
 		}
+		
+		if (FlxG.keys.pressed.Q && camera.zoom > 0.1) camera.zoom *= 0.99;
+		if (FlxG.keys.pressed.E) camera.zoom *= 1.01;
 	}
 }
-
-enum TestEnum { A; B; C; }

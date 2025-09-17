@@ -215,8 +215,20 @@ class Main extends openfl.display.Sprite
         // addChild(new TestGame(states.RotateFrameTestState3433));
         // addChild(new TestGame(states.FlxQuadTreeTestState));
         // addChild(new TestGame(states.FlxSignalDestroyTestState));
-        addChild(new TestGame(states.PixelPerfectOverlapTestState, 4
-        ));
+        // addChild(new TestGame(states.PixelPerfectOverlapTestState, 4));
+        // addChild(new TestGame(states.SimplePixelPerfectOverlapTestState, 4));
+        // addChild(new TestGame(states.TixyTestState));
+        // addChild(new TestGame(states.CallbackPointTestState));
+        // addChild(new TestGame(states.LogErrorTestState));
+        // addChild(new TestGame(states.CamMemLeakTestState));
+        // addChild(new TestGame(states.OklabTestState));
+        // addChild(new TestGame(states.GitShaTestState));
+        // addChild(new TestGame(states.AseAtlasTestState3473));
+        // addChild(new TestGame(states.UVRectTestState3471));
+        // addChild(new TestGame(states.GameFiltersTestState, 4));
+        addChild(new TestGame(states.FlxTextTestState, 4));
+        // addChild(new TestGame(states.ActiveCamFiltersTestState3470));
+        // addChild(new TestGame(states.StripViewTestState3483));
         //} endregion  MISC
         //} endregion  Test States
         // addChild(new TestGame(flixel.FlxState, 2));
