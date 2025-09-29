@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.input.keyboard.FlxKey;
 import flixel.system.FlxAssets;
 import flixel.text.FlxText;
+import flixel.ui.FlxVirtualPad;
 import openfl.filters.ShaderFilter;
 
 class GameFiltersTestState extends flixel.FlxState
@@ -18,7 +19,10 @@ class GameFiltersTestState extends flixel.FlxState
 		
 		FlxG.game.setFilters([new ShaderFilter(new BorderShader())]);
 		FlxG.game.filtersEnabled = true;
-
+		
+		final pad = new FlxVirtualPad(FULL, A_B_X_Y);
+		add(pad);
+		
 		final text = new FlxText("Hello World!");
 		text.screenCenter();
 		add(text);

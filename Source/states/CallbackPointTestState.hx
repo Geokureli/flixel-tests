@@ -12,5 +12,7 @@ class CallbackPointTestState extends flixel.FlxState
         final point = new FlxCallbackPoint((_)->trace("set x"), (_)->trace("set y"), (_)->trace("set xy"));
         
         point.set(5, 10);
+        point.set(5);
+        point.set();
     }
 }

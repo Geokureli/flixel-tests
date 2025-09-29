@@ -30,12 +30,17 @@ class DebugSelectionTestState extends flixel.FlxState
 		// FlxG.watch.addFunction('forceHardware', ()->FlxDebugDrawGraphic.forceHardware);
 		FlxG.watch.addFunction('drawSize', ()->drawSize);
 		FlxG.watch.addFunction('sprites', sprites.countLiving);
+		FlxG.watch.addFunction('zoom', ()->FlxG.camera.zoom);
+		FlxG.watch.addFunction('scroll', ()->FlxG.camera.scroll);
 		#end
 	}
 	
 	function autoCreateMess()
 	{
 		createMess(drawSize, mult * (drawSize / 16) * (drawSize / 16));
+		// final sprite = sprites.recycle(()->new FlxSprite());
+		// final area = FlxRect.get(FlxG.width / 2, FlxG.height / 2, FlxG.width, FlxG.height);
+		// initSprite(16, sprite, area);
 	}
 	
 	function createMess(size = 16, density = 0.5, sortColors = true)
@@ -90,5 +95,17 @@ class DebugSelectionTestState extends flixel.FlxState
 		
 		if (FlxG.keys.pressed.Q && camera.zoom > 0.1) camera.zoom *= 0.99;
 		if (FlxG.keys.pressed.E) camera.zoom *= 1.01;
+		
+		if (FlxG.keys.pressed.LEFT)
+			FlxG.camera.scroll.x -= elapsed * 100;
+		
+		if (FlxG.keys.pressed.RIGHT)
+			FlxG.camera.scroll.x += elapsed * 100;
+		
+		if (FlxG.keys.pressed.UP)
+			FlxG.camera.scroll.y -= elapsed * 100;
+		
+		if (FlxG.keys.pressed.DOWN)
+			FlxG.camera.scroll.y += elapsed * 100;
 	}
 }

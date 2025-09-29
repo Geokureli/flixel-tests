@@ -5,7 +5,13 @@ import flixel.util.FlxAxes;
 
 class SpriteMover extends flixel.FlxBasic
 {
-    final target:flixel.FlxSprite;
+    public final target:flixel.FlxSprite;
+    public var move:KeyControls = ARROWS;
+    public var moveOffset:KeyControls = ARROWS;
+    public var flip:KeyControls = IJKL;
+    public var moveScroll:KeyControls = WASD;
+    public var moveOrigin:KeyControls = WASD;
+    public var scale:KeyControls = WASD;
     
     public function new (target)
     {
@@ -34,39 +40,24 @@ class SpriteMover extends flixel.FlxBasic
         
         if (FlxG.keys.pressed.SHIFT)
         {
-            if (A) target.origin.x += 1;
-            if (D) target.origin.x -= 1;
-            if (S) target.origin.y += 1;
-            if (W) target.origin.y -= 1;
+            target.origin.x += moveOrigin.x();
+            target.origin.y += moveOrigin.y();
             
-            if (RT) target.offset.x += 1;
-            if (LF) target.offset.x -= 1;
-            if (DN) target.offset.y += 1;
-            if (UP) target.offset.y -= 1;
-        }
-        else if (FlxG.keys.pressed.ALT)
-        {
-            if (A) camera.scroll.x += 1;
-            if (D) camera.scroll.x -= 1;
-            if (S) camera.scroll.y += 1;
-            if (W) camera.scroll.y -= 1;
+            target.offset.x += moveOffset.x();
+            target.offset.y += moveOffset.y();
         }
         else
         {
-            if (L) target.flipX = true;
-            if (J) target.flipX = false;
-            if (K) target.flipY = true;
-            if (I) target.flipY = false;
+            if (flip.leftJust()) target.flipX = true;
+            if (flip.rightJust()) target.flipX = false;
+            if (flip.downJust()) target.flipY = true;
+            if (flip.upJust()) target.flipY = false;
             
-            if (D) target.scale.x += 0.01;
-            if (A) target.scale.x -= 0.01;
-            if (S) target.scale.y += 0.01;
-            if (W) target.scale.y -= 0.01;
+            target.scale.x += scale.x() * 0.01;
+            target.scale.y += scale.y() * 0.01;
             
-            if (RT) target.x += 1;
-            if (LF) target.x -= 1;
-            if (DN) target.y += 1;
-            if (UP) target.y -= 1;
+            target.x += move.x();
+            target.y += move.y();
         }
         
         if (FlxG.keys.pressed.Q && camera.zoom > 0.1) camera.zoom -= 0.01;
