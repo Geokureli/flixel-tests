@@ -196,7 +196,7 @@ class Main extends openfl.display.Sprite
         //{ region  TEXT
             // addChild(new TestGame(states.TextShadowTestState, 4));
             // addChild(new TestGame(states.ScrollingTextTestState, 2));
-            addChild(new TestGame(states.FlxTextTestState));
+            addChild(new TestGame(states.FlxTextTestState, 1));
         //} endregion  TEXT
         //{ region  COLLISION
             // addChild(new TestGame(states.RayTestState, 2));
@@ -237,6 +237,7 @@ class Main extends openfl.display.Sprite
             // addChild(new TestGame(states.FocusTestState3271));
         //} endregion  RECENT
         //} endregion  Test States
+
         //{ region  OpenFL Tests
             // addChild(new tests.ShapeColorTest());
             // addChild(new tests.KeyEventTest());

@@ -9,7 +9,6 @@ class SpriteMover extends flixel.FlxBasic
     public var move:KeyControls = ARROWS;
     public var moveOffset:KeyControls = ARROWS;
     public var flip:KeyControls = IJKL;
-    public var moveScroll:KeyControls = WASD;
     public var moveOrigin:KeyControls = WASD;
     public var scale:KeyControls = WASD;
     
@@ -59,9 +58,6 @@ class SpriteMover extends flixel.FlxBasic
             target.x += move.x();
             target.y += move.y();
         }
-        
-        if (FlxG.keys.pressed.Q && camera.zoom > 0.1) camera.zoom -= 0.01;
-        if (FlxG.keys.pressed.E && camera.zoom < 2.0) camera.zoom += 0.01;
         
         if (FlxG.keys.pressed.PERIOD) target.angle++;
         if (FlxG.keys.pressed.COMMA ) target.angle--;
