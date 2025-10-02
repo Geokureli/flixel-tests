@@ -1,8 +1,9 @@
 package states;
 
-import flixel.input.mouse.FlxMouseEvent;
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
+import flixel.input.mouse.FlxMouseEvent;
 import flixel.util.FlxColor;
 import flixel.util.FlxDirection;
 import flixel.util.FlxDirectionFlags;

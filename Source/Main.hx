@@ -193,7 +193,7 @@ class Main extends openfl.display.Sprite
             // addChild(new TestGame(states.DebugToolTestState));
             // addChild(new TestGame(states.TryCatchTestState));
         //} endregion  DEBUG
-        //{ region  TEXT
+        // { region  TEXT
             // addChild(new TestGame(states.TextShadowTestState, 4));
             // addChild(new TestGame(states.ScrollingTextTestState, 2));
             addChild(new TestGame(states.FlxTextTestState, 1));

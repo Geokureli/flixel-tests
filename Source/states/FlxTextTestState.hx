@@ -16,23 +16,23 @@ class FlxTextTestState extends flixel.FlxState
 		bgColor = 0xFF808080;
 		
 		// final text1 = new FlxText(0, 0, FlxG.width, "Hello World!");
-		final text1 = new FlxText(0, 0, 0, "Hello, world!", 16);
+		final text1 = new FlxText(0, 0, 0, "Hello, world!", 43);
 		text1.alignment = CENTER;
 		text1.screenCenter();
 		text1.y += 20;
 		add(text1);
 		
-		final spriteMover = new SpriteMover(text1);
-		spriteMover.flip = null;
-		spriteMover.move = WASD;
-		spriteMover.moveOrigin = null;
-		spriteMover.moveOffset = null;
-		add(spriteMover);
+		// final spriteMover = new SpriteMover(text1);
+		// spriteMover.flip = null;
+		// spriteMover.move = WASD;
+		// spriteMover.moveOrigin = null;
+		// spriteMover.moveOffset = null;
+		// add(spriteMover);
 		
 		final camControls = new CameraControl(FlxG.camera);
 		add(camControls);
 		
-		text = new FlxText(0, text1.y + text1.height + 2, FlxG.width, textStr);
+		text = new FlxText(0, text1.y + text1.height + 2, FlxG.width, textStr, 43);
 		text.alignment = CENTER;
 		text.screenCenter(X);
 		add(text);
