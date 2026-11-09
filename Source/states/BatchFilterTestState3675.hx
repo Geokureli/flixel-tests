@@ -25,8 +25,14 @@ class BatchFilterTestState3675 extends flixel.FlxState
     {
         super.update(elapsed);
 
-        if (flixel.FlxG.keys.justPressed.SPACE) 
+        if (FlxG.keys.justPressed.SPACE) 
             camera.filtersEnabled = !camera.filtersEnabled;
+        
+        if (FlxG.keys.justPressed.ONE)
+            camera.color = camera.color == 0xFF8080ff ? 0xFFffffff : 0xFF8080ff;
+        
+        if (FlxG.keys.justPressed.TWO)
+            camera.alpha = camera.alpha == 0.5 ? 1.0 : 0.5;
     }
 }
 

@@ -162,9 +162,9 @@ class Main extends openfl.display.Sprite
             // addChild(new TestGame(states.HtmlFlickerTestState3354));
             // addChild(new TestGame(states.GameFiltersTestState, 4));
             // addChild(new TestGame(states.StripViewTestState3483));
-            addChild(new TestGame(states.ColorBatchingTestState));
+            // addChild(new TestGame(states.ColorBatchingTestState));
             // addChild(new TestGame(states.BlitColorTestState));
-            // addChild(new TestGame(states.BatchFilterTestState3675));
+            addChild(new TestGame(states.BatchFilterTestState3675));
         //} endregion  RENDERING
         //{ region     UI
             // addChild(new TestGame(states.JustifyTextTestState));
@@ -197,6 +197,7 @@ class Main extends openfl.display.Sprite
             // addChild(new TestGame(states.SoundRecycleTestState, 2));
             // addChild(new TestGame(states.SoundPanTestState2852));
             // addChild(new TestGame(states.SoundLoopTestState));
+            // addChild(new TestGame(states.SoundTimeTestState));
             // addChild(new TestGame(states.SoundFocusTestState3580));
         //} endregion  SOUND
         //{ region     
