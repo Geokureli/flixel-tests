@@ -164,6 +164,7 @@ class Main extends openfl.display.Sprite
             // addChild(new TestGame(states.StripViewTestState3483));
             addChild(new TestGame(states.ColorBatchingTestState));
             // addChild(new TestGame(states.BlitColorTestState));
+            // addChild(new TestGame(states.BatchFilterTestState3675));
         //} endregion  RENDERING
         //{ region     UI
             // addChild(new TestGame(states.JustifyTextTestState));
