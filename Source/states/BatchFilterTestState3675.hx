@@ -1,6 +1,7 @@
 package states;
 
 import flixel.FlxG;
+import openfl.geom.ColorTransform;
 
 class BatchFilterTestState3675 extends flixel.FlxState
 {
@@ -33,6 +34,15 @@ class BatchFilterTestState3675 extends flixel.FlxState
         
         if (FlxG.keys.justPressed.TWO)
             camera.alpha = camera.alpha == 0.5 ? 1.0 : 0.5;
+        
+        if (FlxG.keys.justPressed.THREE && FlxG.renderTile)
+        {
+            final camColor = camera.canvas.transform.colorTransform;
+            final on = camColor.redMultiplier == 0.5;
+            camColor.redMultiplier = on ? 1.0 : 0.5;
+            camColor.greenMultiplier = on ? 1.0 : 0.5;
+            camera.canvas.transform.colorTransform = camColor;
+        }
     }
 }
 
