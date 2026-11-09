@@ -6,13 +6,12 @@ import flixel.graphics.FlxGraphic;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxColor;
-
 import openfl.display.BitmapData;
 import openfl.system.System;
 
+using StringTools;
 using flixel.util.FlxStringUtil;
 using flixel.util.FlxUnicodeUtil;
-using StringTools;
 
 /**
  * https://github.com/HaxeFlixel/flixel/pull/2656

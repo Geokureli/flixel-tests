@@ -19,8 +19,8 @@ class ScrollingTextTestState extends flixel.FlxState
 	final stringLong = "Lorem ipsum dolor sit (amet), consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 	final stringShort = "Lorem ipsum dolor sit (amet), consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
 	
-    var text:FlxBitmapText;
-    var bTextY:ScrollingBitmapTextY;
+    // var text:FlxBitmapText;
+    // var bTextY:ScrollingBitmapTextY;
     var bTextX:ScrollingBitmapTextX;
     
     override function create()
@@ -48,18 +48,16 @@ class ScrollingTextTestState extends flixel.FlxState
 		FlxG.log.notice(bTextX.maxScrollX);
 		final y = (bTextX != null ? bTextX.y + bTextX.textHeight + 20 : 10);
 		
-		text = new BaseTextBMP(10, y, stringLong, 210, MAIN(WHITE));
-        text.background = true;
-        text.backgroundColor = 0xFF808080;
-		text.autoSize = false;
-		text.multiLine = true;
-		text.wrap = WORD(NEVER);
-		text.padding = 2;
-		add(text);
+		// text = new BaseTextBMP(10, y, stringLong, 210, MAIN(WHITE));
+		// // text.background = true;
+		// // text.backgroundColor = 0xFF808080;
+		// text.autoSize = false;
+		// text.multiLine = true;
+		// text.wrap = WORD(NEVER);
+		// text.padding = 2;
+		// add(text);
 		
-		FlxG.console.registerFunction("functionName", (arg:String)->{ return arg.split("").join(" "); });
-		
-		FlxG.watch.addFunction('scroll', ()->'${bTextX.scrollX}/${bTextX.maxScrollX}');
+		// FlxG.watch.addFunction('scroll', ()->'${bTextX.scrollX}/${bTextX.maxScrollX}');
 		// FlxG.watch.addFunction('scroll', ()->'${bTextY.scrollY}/${bTextY.maxScrollY}');
     }
     
@@ -71,22 +69,22 @@ class ScrollingTextTestState extends flixel.FlxState
         	+ (FlxG.keys.justPressed.DOWN ? 1 : 0) - (FlxG.keys.justPressed.UP ? 1 : 0);
 		if (delta != 0)
 		{
-			if (bTextY != null)
-				bTextY.scrollY += delta * 50 * elapsed;
+			// if (bTextY != null)
+			// 	bTextY.scrollY += delta * 100 * elapsed;
 			
 			if (bTextX != null)
-				bTextX.scrollX += delta * 50 * elapsed;
+				bTextX.scrollX += delta * 100 * elapsed;
 		}
 		
 		if (FlxG.keys.justPressed.ENTER)
 			FlxG.resetState();
     }
 	
-	override function draw()
-	{
-		// for (i in 0...100)
-			super.draw();
-	}
+	// override function draw()
+	// {
+	// 	// for (i in 0...100)
+	// 		super.draw();
+	// }
 }
 
 class ScrollBitmapText extends FlxBitmapText

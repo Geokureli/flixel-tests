@@ -6,8 +6,8 @@ class GitShaTestState extends flixel.FlxState
 {
     override function create()
     {
-        final version = new FlxVersion();
-        trace('HaxeFlixel $version');
+        // final version = new FlxVersion();
+        // trace('HaxeFlixel $version');
         
         function gt(a:String, b:String)
         {

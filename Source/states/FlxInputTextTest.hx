@@ -1,11 +1,12 @@
 package states;
 
-import flixel.group.FlxGroup;
 import flixel.FlxG;
+import flixel.group.FlxGroup;
+import flixel.math.FlxRect;
 import flixel.system.FlxAssets;
 import flixel.text.FlxInputText;
-import flixel.text.FlxText;
 import flixel.text.FlxInputTextManager;
+import flixel.text.FlxText;
 import flixel.util.FlxColor;
 
 class FlxInputTextTest extends flixel.FlxState
@@ -108,6 +109,15 @@ class FlxInputTextTest extends flixel.FlxState
 		final textInput = createInputTextBelow("A text input without a background.");
 		textInput.color = FlxColor.WHITE;
 		textInput.background = false;
+		
+		final textInput = createInputTextBelow(FlxG.width / 2 - 10, "A 2x scale text input.");
+		textInput.origin.zero();
+		// textInput.offset.set(10, 10);
+		textInput.scale.set(2, 2);
+		textInput.clipRect = new FlxRect(5, -1, textInput.width - 10, textInput.height + 2);
+		// textInput.x += FlxG.width / 2;
+		textInput.width *= 2;
+		textInput.height *= 2;
 		
 		final actionList = new ActionsText(textInput.x, textInput.y + textInput.height + 5, FlxG.width - 10);
 		actionList.fieldHeight = FlxG.height - 5 - actionList.y;

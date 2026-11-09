@@ -2,61 +2,77 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxTimer;
-import flixel.tweens.FlxTween;
-import flixel.tweens.FlxEase;
+import flixel.ui.FlxVirtualPad;
+import flixel.util.FlxArrayUtil;
 
 class JumpTestState extends flixel.FlxState
 {
-	override function create():Void
-	{
-		var sprite = new JumpSprite(FlxG.width * .25, FlxG.height * 0.75);
-		add(sprite);
-		
-		var jumpRight = true;
-		final width = FlxG.width * 0.5;
-		final height = FlxG.height * 0.5;
-		function onJumpComplete()
-		{
-			sprite.jumpTo(sprite.x + (jumpRight ? width : -width), sprite.y, sprite.y - height, 2, ()->{
-				new FlxTimer().start(0.5, (_)->onJumpComplete());
-			});
-			jumpRight = !jumpRight;
-		}
-		onJumpComplete();
-	}
-	
+    var sprite:FlxSprite;
+    var box:FlxSprite;
+    var pad:FlxVirtualPad;
+    
+    override function create()
+    {
+        super.create();
+        
+        sprite = new Jumper();
+        sprite.x = FlxG.width / 2 - sprite.width / 2;
+        add(sprite);
+        
+        box = new FlxSprite();
+        box.makeGraphic(40, 40);
+        box.x = FlxG.width / 2 - box.width / 2;
+        box.y = FlxG.height * 0.75 - box.height / 2;
+        box.immovable = true;
+        add(box);
+        
+        pad = new FlxVirtualPad(FlxDPadMode.NONE, FlxActionMode.A);
+        add(pad);
+    }
+    
+    override function update(elapsed:Float)
+    {
+        // call super.update first, as it sets touching flags to NONE
+        super.update(elapsed);
+        
+        FlxG.watch.addQuick("sprite.pre-vy", sprite.velocity.y);
+        
+        // If sprite is resting on box it will set its touching to DOWN
+        FlxG.collide(box, sprite);
+        // if (FlxG.collide(box, sprite) && Math.abs(sprite.velocity.y) < 10)
+        //     sprite.velocity.y = 0;
+        
+        final a = pad.getButton(A);
+        
+        // jump if touching the box, and jump is pressed
+        if (a.justPressed && sprite.isTouching(DOWN))
+            sprite.velocity.y = -300;
+        
+        FlxG.watch.addQuick("isTouching(floor)", sprite.isTouching(FLOOR));
+        FlxG.watch.addQuick("isTouching(down)", sprite.isTouching(DOWN));
+        FlxG.watch.addQuick("is/wasTouching(down)", sprite.isTouching(DOWN) || sprite.justTouched(DOWN));
+        FlxG.watch.addQuick("a.press", a.pressed);
+        FlxG.watch.addQuick("a.justPress", a.justPressed);
+        FlxG.watch.addQuick("sprite.post-vy", sprite.velocity.y);
+    }
 }
 
-class JumpSprite extends flixel.FlxSprite
+
+class Jumper extends FlxSprite
 {
-	public function new (x = 0.0, y = 0.0)
-	{
-		super(x, y);
-		makeGraphic(100, 100, 0xFFffffff);
-	}
-	
-	public function jumpTo(toX:Float, toY:Float, apex:Float, time:Float, ?onComplete:()->Void)
-	{
-		var func:(FlxTween)->Void = null;
-		if (onComplete != null)
-			func = (_)->onComplete();
-		
-		// FlxTween.tween(this, { y: apex }, time / 2, { ease: FlxEase.expoOut });
-		// FlxTween.tween(this, { y: newY }, time / 2, { ease: FlxEase.expoIn, startDelay: time / 2 });
-		// FlxTween.tween(this, { x: x }, time, { ease: FlxEase.linear, onComplete:func });
-		
-		final oldX = x;
-		final oldY = y;
-		FlxTween.num(0, 1, time, { ease: FlxEase.linear, onComplete:func },
-			function update (num)
-			{
-				x = oldX + (toX - oldX) * FlxEase.linear(num);
-				if (num < 0.5)
-					y = oldY + (apex - oldY) * FlxEase.circOut(num * 2);
-				else
-					y = apex + (toY - apex) * FlxEase.circIn((num - 0.5) * 2);
-			}
-		);
-	}
+    public function new (x = 0.0, y = 0.0)
+    {
+        super(x, y);
+        
+        makeGraphic(24, 24);
+        acceleration.y = 900;
+        maxVelocity.y = 300;
+        elasticity = 0.5;
+        drag.y = 300;
+    }
+    
+    override function updateMotion(elapsed)
+    {
+        super.updateMotion(elapsed);
+    }
 }

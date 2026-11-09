@@ -59,12 +59,12 @@ class ClipRectSlameronTestState extends FlxState
 			if (text.y < topBound)
 			{
 				var yDiff = topBound - text.y;
-				text.clipRect = FlxRect.get(0, yDiff, text.width, text.height - yDiff);
+				text.clipRect = FlxRect.get(0, yDiff, text.width, text.height);
 			}
 			else if (text.y + text.height > bottomBound)
 			{
 				var yDiff = text.y + text.height - bottomBound;
-				text.clipRect = FlxRect.get(0, 0, text.width, text.height - yDiff);
+				text.clipRect = FlxRect.get(0, -yDiff, text.width, text.height);
 			}
 			FlxG.watch.addQuick('text-$i', text.clipRect);
 		}

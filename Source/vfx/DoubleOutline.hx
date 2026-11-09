@@ -15,14 +15,35 @@ class DoubleOutline extends flixel.system.FlxAssets.FlxShader
         return value;
     }
     
+    public var inColor(get, set):FlxColor;
+    inline function get_inColor()
+    {
+        return FlxColor.fromRGBFloat(_inColor.value[0], _inColor.value[1], _inColor.value[2], _inColor.value[3]);
+    }
+    inline function set_inColor(value:FlxColor)
+    {
+        _inColor.value = [value.red, value.blue, value.green, value.alpha];
+        return value;
+    }
+    
+    public var outColor(get, set):FlxColor;
+    inline function get_outColor()    {
+        return FlxColor.fromRGBFloat(_outColor.value[0], _outColor.value[1], _outColor.value[2], _outColor.value[3]);
+    }
+    inline function set_outColor(value:FlxColor)
+    {
+        _outColor.value = [value.red, value.blue, value.green, value.alpha];
+        return value;
+    }
+
     @:glFragmentSource('
         #pragma header
 
         uniform bool _enabled;
-        uniform float inSize;
-        uniform float outSize;
-        uniform vec4 inColor;
-        uniform vec4 outColor;
+        uniform float _inSize;
+        uniform float _outSize;
+        uniform vec4 _inColor;
+        uniform vec4 _outColor;
 
         bool outline(vec2 coord, float size)
         {
@@ -42,21 +63,21 @@ class DoubleOutline extends flixel.system.FlxAssets.FlxShader
             vec4 color = flixel_texture2D(bitmap, openfl_TextureCoordv);
             if (color.a == 0.0 && _enabled)
             {
-                if (outline(openfl_TextureCoordv, inSize))
-                    color = inColor;
-                else if (outline(openfl_TextureCoordv, outSize))
-                    color = outColor;
+                if (outline(openfl_TextureCoordv, _inSize))
+                    color = _inColor;
+                else if (outline(openfl_TextureCoordv, _outSize))
+                    color = _outColor;
             }
             gl_FragColor = color;
         }')
     public function new(inColor:FlxColor = 0xFFFFFFFF, outColor:FlxColor = 0xFF000000, inSize = 1, outSize = 1)
     {
         super();
-        this.inColor.value = [inColor.red, inColor.blue, inColor.green, inColor.alpha];
-        this.outColor.value = [outColor.red, outColor.blue, outColor.green, outColor.alpha];
+        this._inColor.value = [inColor.red, inColor.blue, inColor.green, inColor.alpha];
+        this._outColor.value = [outColor.red, outColor.blue, outColor.green, outColor.alpha];
         this._enabled.value = [true];
-        this.inSize.value = [inSize];
-        this.outSize.value = [inSize + outSize];
+        this._inSize.value = [inSize];
+        this._outSize.value = [inSize + outSize];
     }
 }
 

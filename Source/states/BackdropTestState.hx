@@ -1,11 +1,9 @@
 package states;
 
 import flixel.FlxG;
+import flixel.addons.display.FlxBackdrop;
 import flixel.group.FlxGroup;
 import flixel.util.FlxAxes;
-import flixel.addons.util.FlxScene;
-
-import flixel.addons.display.FlxBackdrop;
 
 class BackdropTestState extends flixel.FlxState
 {
@@ -108,7 +106,6 @@ class BackdropTestState extends flixel.FlxState
 		if (FlxG.keys.justPressed.EIGHT) backdrop.blitMode = shift ? MAX_TILES(8) : SPLIT(8);
 		if (FlxG.keys.justPressed.NINE ) backdrop.blitMode = shift ? MAX_TILES(9) : SPLIT(9);
 		
-		FlxScene;
 	}
 	
 	function fromBools(x:Bool, y:Bool):FlxAxes

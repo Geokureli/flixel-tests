@@ -12,6 +12,8 @@
     // , "../../lib/flixel/tests/unit" // og book
     , "../flixel/tests/unit" // new book
     , "hl", "-clean"
+    // , "html5"
+    // , "flash"
     // , "cpp"
     // , "cpp", "-clean"
     // , "-v"

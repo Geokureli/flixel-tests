@@ -1,18 +1,19 @@
 package states;
 
-import flixel.addons.effects.FlxSkewedSprite;
-import flixel.tweens.FlxTween;
 import flixel.FlxBasic;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.FlxStrip;
+import flixel.addons.display.FlxShaderMaskCamera;
 import flixel.addons.display.FlxTiledSprite;
+import flixel.addons.effects.FlxClothSprite;
+import flixel.addons.effects.FlxSkewedSprite;
 import flixel.graphics.tile.FlxDrawTrianglesItem;
 import flixel.group.FlxGroup;
 import flixel.system.FlxAssets.FlxShader;
+import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
-import flixel.addons.effects.FlxClothSprite;
 
 #if spinehaxe
 import flixel.addons.editors.spine.FlxSpine;
@@ -28,6 +29,9 @@ class FlxStripShaderTestState extends FlxState
 	
 	var colored = new FlxTypedGroup<FlxSprite>();
 	var shaded = new FlxTypedGroup<FlxSprite>();
+	
+	var flags = new FlxTypedGroup<FlxClothSprite>();
+	var scaled = new FlxTypedGroup<FlxSprite>();
 	
 	override public function create()
 	{
@@ -66,19 +70,21 @@ class FlxStripShaderTestState extends FlxState
 		x += SPACING;
 		
 		add(sprite = func(x, y));
-		sprite.scale.scale(0.5, 0.5);
+		// sprite.scale.scale(0.5, 0.5);
+		scaled.add(sprite);
 		x += SPACING;
 	}
 	
 	function createFlag(x = 0.0, y = 0.0, color = 0xFFffffff)
 	{
 		final flag = new FlxClothSprite(x, y, "assets/images/haxe.png");
-		flag.pinnedSide = NONE;
+		flag.pinnedSide = LEFT;
 		flag.meshScale.set(1.5, 1);
 		flag.setMesh(15, 10, 0, 0, [0, 14]);
 		flag.iterations = 8;
 		flag.maxVelocity.set(200, 200);
 		flag.meshVelocity.y = 40;
+		flags.add(flag);
 		return flag;
 	}
 	
@@ -98,6 +104,7 @@ class FlxStripShaderTestState extends FlxState
 		strip.vertices = DrawData.ofArray([0.0, 0.0, SIZE, 0.0, SIZE / 2, SIZE]);
 		strip.indices = DrawData.ofArray([0, 1, 2]);
 		strip.uvtData = DrawData.ofArray([0, 0, 0, 1, 1, 1.0]);
+		strip.colors = DrawData.ofArray([FlxColor.RED, FlxColor.GREEN, FlxColor.BLUE]);
 		return strip;
 	}
 	
@@ -133,6 +140,36 @@ class FlxStripShaderTestState extends FlxState
 		
 		for (sprite in colored)
 			sprite.color = FlxColor.interpolate(colors[color1], colors[color2], factor);
+		
+		final keys = FlxG.keys.pressed;
+		
+		final windX = (keys.D ? 1 : 0) - (keys.A ? 1 : 0);
+		final windY = (keys.S ? 1 : 0) - (keys.W ? 1 : 0);
+		for (flag in flags)
+		{
+			flag.meshVelocity.set(windX * 10, windY * 10);
+		}
+		
+		final deltaX = (keys.L ? 1 : 0) - (keys.J ? 1 : 0);
+		final deltaY = (keys.K ? 1 : 0) - (keys.I ? 1 : 0);
+		if (deltaX != 0 || deltaY != 0)
+		{
+			for (sprite in scaled)
+			{
+				sprite.scale.x += deltaX / 100;
+				sprite.scale.y += deltaY / 100;
+			}
+		}
+	}
+	
+	override function draw()
+	{
+		super.draw();
+		
+		FlxG.bitmapLog.clear();
+		final scaleFlag = flags.members[flags.length - 1];
+		@:privateAccess
+		FlxG.bitmapLog.add(scaleFlag.meshPixels, 'mesh');
 	}
 }
 

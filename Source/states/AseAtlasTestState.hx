@@ -8,6 +8,10 @@ import flixel.system.FlxAssets;
 
 using flixel.graphics.FlxAsepriteUtil;
 
+#if !all_assets
+#error "AseAtlasTestState requires -Dall_assets"
+#end
+
 class AseAtlasTestState extends flixel.FlxState
 {
     override function create()
@@ -55,7 +59,7 @@ class AdventurerSprite extends AseAtlasSprite
         super(x, y, "adventurerAssets/adventurer.png", "adventurerAssets/adventurer.json");
         animation.play("idle");
         shader = new vfx.DoubleOutline(0xFFff0000, 0xFFffffff);
-        shader = new vfx.DoubleOutline.TestShader();
+        // shader = new vfx.DoubleOutline.TestShader();
     }
     
     override function update(elapsed:Float)
@@ -65,7 +69,7 @@ class AdventurerSprite extends AseAtlasSprite
         if (FlxG.keys.justPressed.ENTER)
         {
             final outline:vfx.DoubleOutline = cast shader;
-            outline.enabled = !outline.enabled;
+            // outline.enabled = !outline.enabled;
         }
         
         if (animation.curAnim.name == ATTACK && animation.finished)

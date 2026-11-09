@@ -4,6 +4,7 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.group.FlxGroup;
 import flixel.math.FlxRect;
+import flixel.tile.FlxTilemap;
 import flixel.util.FlxColor;
 import lime.math.Rectangle;
 
@@ -33,6 +34,16 @@ class DebugSelectionTestState extends flixel.FlxState
 		FlxG.watch.addFunction('zoom', ()->FlxG.camera.zoom);
 		FlxG.watch.addFunction('scroll', ()->FlxG.camera.scroll);
 		#end
+		
+		// final map = new FlxTilemap();
+		// final size = 16;
+		// final cols = Math.ceil(FlxG.width / size);
+		// final rows = Math.ceil(FlxG.height / size);
+		// map.loadMapFromArray([for (i in 0...cols*rows) i%4], cols, rows, new openfl.display.BitmapData(size * 4, size, false), size, size);
+		// map.setTileProperties(2, NONE);
+		// map.setTileProperties(3, WALL);
+		// map.scrollFactor.set(1, 0.5);
+		// add(map);
 	}
 	
 	function autoCreateMess()

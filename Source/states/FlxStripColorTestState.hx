@@ -2,8 +2,8 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxStrip;
-import flixel.group.FlxGroup;
 import flixel.graphics.FlxGraphic;
+import flixel.group.FlxGroup;
 import openfl.Vector;
 
 class FlxStripColorTestState extends flixel.FlxState
@@ -40,8 +40,8 @@ class FlxStripColorTestState extends flixel.FlxState
 @:forward
 abstract Mesh(FlxStrip) to FlxStrip
 {
-	static inline var ON_COLOR = 0xFFffff00;
-	static inline var OFF_COLOR = 0xFFffffff;
+	static inline var ON_COLOR  = 0xFFffff00;// 0xFFff8000
+	static inline var OFF_COLOR = 0xFFffffff;// 0xFFff80ff
 	
 	inline public function new (x = 0.0, y = 0.0)
 	{

@@ -55,6 +55,5 @@ class FlxTextTestState extends flixel.FlxState
 		
 		if (FlxG.keys.justPressed.LEFT && text.text.length > 0)
 			text.text = textStr.substr(0, text.text.length - 1);
-		
 	}
 }

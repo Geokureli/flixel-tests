@@ -2,10 +2,10 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.text.FlxText;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
+import flixel.text.FlxText;
 
 class ScaleOffsetTestState extends flixel.FlxState
 {
@@ -64,10 +64,10 @@ class ScaleOffsetTestGroup extends FlxSpriteGroup
 			FlxG.watch.add(_sprite, "scale");
 		}
 		
-		scaleOffset
-			= _sprite.scaleOffset
-			= _text.scaleOffset
-			= newMethod;
+		// scaleOffset
+		// 	= _sprite.scaleOffset
+		// 	= _text.scaleOffset
+		// 	= newMethod;
 	}
 	
 	override function update(elapsed:Float)
@@ -136,7 +136,7 @@ class ScaleOffsetTestGroup extends FlxSpriteGroup
 		_origin.draw();
 		
 		var gfx = _sprite.beginDrawDebug(camera);
-		_sprite.drawDebugBoundingBoxColor(gfx, _sprite.getScreenBounds());
+		_sprite.drawDebugBoundingBoxColor(gfx, _sprite.getScreenBounds(), _sprite.getDebugBoundingBoxColor(_sprite.allowCollisions));
 		_sprite.endDrawDebug(camera);
 		
 		var pos = _sprite.getScreenPosition();

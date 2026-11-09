@@ -2,8 +2,8 @@ package states;
 
 import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.util.FlxColor;
 import flixel.addons.display.FlxBackdrop;
+import flixel.util.FlxColor;
 
 class StopFxTestState extends flixel.FlxState
 {

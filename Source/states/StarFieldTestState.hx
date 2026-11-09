@@ -1,16 +1,22 @@
 package states;
 
-import flixel.addons.display.FlxStarField;
 import flixel.FlxG;
+import flixel.addons.display.FlxStarField2D;
 
-// https://github.com/HaxeFlixel/flixel-ui/pull/283
-class StarFieldTestState extends flixel.FlxState
+// import flixel.addons.display.FlxStarField;
+
+class StarfieldTestState extends flixel.FlxState
 {
+    var stars:FlxStarField2D;
     
     override function create()
     {
         super.create();
         
-        add(new FlxStarField2D(0, 0, FlxG.width, FlxG.height));
+    }
+    
+    override function update(elapsed)
+    {
+        super.update(elapsed);
     }
 }
